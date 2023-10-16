@@ -1,6 +1,7 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .fighters import seed_fighters, undo_fighters
+from .teams import seed_teams, undo_teams
 
 
 from app.models.db import db, environment, SCHEMA
@@ -20,8 +21,11 @@ def seed():
         # Make sure to add all your other model's undo functions below
         undo_users()
         undo_fighters()
+        undo_teams
     seed_users()
     seed_fighters()
+    seed_teams()
+    print('everything has been seeded!')
     # Add other seed functions here
 
 
@@ -30,4 +34,5 @@ def seed():
 def undo():
     undo_users()
     undo_fighters()
+    undo_teams()
     # Add other undo functions here
