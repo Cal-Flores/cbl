@@ -35,6 +35,8 @@ class Team(db.Model, UserMixin):
     name = db.Column(db.String(40))
     logo_img = db.Column(db.String)
     background_img = db.Column(db.String)
+    conf = db.Column(db.String)
+    divison = db.Column(db.String)
     fly = db.Column(db.String)
     bantam = db.Column(db.String)
     feather = db.Column(db.String)
@@ -50,12 +52,16 @@ class Team(db.Model, UserMixin):
         return {
             'id': self.id,
             'name': self.name,
-            'fly_id': self.fly_id,
-            'bantam_id': self.bantam_id,
-            'feather_id': self.feather_id,
-            'light_id': self.light_id,
-            'welter_id': self.welter_id,
-            'middle_id': self.middle_id,
-            'light_heavy_id': self.light_heavy_id,
-            'heavy': self.heavy_id
+            'logo_img': self.logo_img,
+            'background_img': self.background_img,
+            'conf': self.conf,
+            'divison': self.divison,
+            'fly_id': self.fly,
+            'bantam_id': self.bantam,
+            'feather_id': self.feather,
+            'light_id': self.light,
+            'welter_id': self.welter,
+            'middle_id': self.middle,
+            'light_heavy_id': self.light_heavy,
+            'heavy': self.heavy
         }

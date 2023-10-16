@@ -4,10 +4,11 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
-from .models import db, User, Fighter
+from .models import db, User, Fighter, Team
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.fighter_routes import fighter_routes
+from .api.team_routes import team_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -30,6 +31,7 @@ app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(fighter_routes, url_prefix='/api/fighter')
+app.register_blueprint(team_routes, url_prefix='/api/team')
 db.init_app(app)
 Migrate(app, db)
 

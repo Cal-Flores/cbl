@@ -46,6 +46,8 @@ def upgrade():
     sa.Column('name', sa.String()),
     sa.Column('logo_img', sa.String()),
     sa.Column('background_img', sa.String()),
+    sa.Column('conf', sa.String()),
+    sa.Column('divison', sa.String()),
     sa.Column('fly', sa.String()),
     sa.Column('bantam', sa.String()),
     sa.Column('feather', sa.String()),
