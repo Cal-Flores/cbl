@@ -25,6 +25,17 @@ class Fighter(db.Model, UserMixin):
             'weight': self.weight
         }
 
+class Tournament(db.Model, UserMixin):
+    __tablename__ = 'Tournaments'
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
+    id = db.Column(db.Integer, primary_key=True)
+    year = db.Column(db.String)
+    img = db.Column(db.String)
+    cons_img = db.Column(db.String)
+
 class Team(db.Model, UserMixin):
     __tablename__ = 'teams'
 

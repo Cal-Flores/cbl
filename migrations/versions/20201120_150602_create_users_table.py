@@ -58,6 +58,13 @@ def upgrade():
     sa.Column('heavy', sa.String()),
     )
 
+    op.create_table('tournaments',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('year', sa.String()),
+    sa.Column('img', sa.String()),
+    sa.Column('cons_img', sa.String()),
+    )
+
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###qqqqqqqqq
@@ -68,4 +75,5 @@ def downgrade():
     op.drop_table('users')
     op.drop_table('fighters')
     op.drop_table('teams')
+    op.drop_table('tournaments')
     # ### end Alembic commands ###
