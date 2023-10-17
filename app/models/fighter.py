@@ -14,6 +14,7 @@ class Fighter(db.Model, UserMixin):
     prof_img = db.Column(db.String)
     body_img = db.Column(db.String)
     weight = db.Column(db.String)
+    team_name = db.Column(db.String)
 
     def to_dict(self):
         return {

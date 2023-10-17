@@ -39,6 +39,7 @@ def upgrade():
     sa.Column('prof_img', sa.String()),
     sa.Column('body_img', sa.String()),
     sa.Column('weight', sa.String()),
+    sa.Column('team_name', sa.String())
     )
 
     op.create_table('teams',
