@@ -5,3 +5,27 @@
 .hidden {
   display: none;
 }
+
+#navcont {
+  padding-top: 1%;
+  padding-bottom: .5%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #013369;
+  margin: -10px 0 5px 0;
+  margin-left: -10px 0 5px 0;
+  margin-bottom: 3%;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.navlinks {
+  color: #fafafa;
+  text-decoration: none;
+  font-family: All-ProSans, Helvetica, Arial, sans-serif;
+}

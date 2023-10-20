@@ -20,15 +20,17 @@ function AllTeams() {
 
     let contentDiv;
 
-    const changeConf = () => {
-        if (nfc_display == true) setnfc_display(false)
-        else setnfc_display(true)
+    const changeConfNfc = () => {
+        setnfc_display(false)
+    }
+    const changeConfAfc = () => {
+        setnfc_display(true)
     }
 
     if (nfc_display == true) {
         contentDiv = (
             <div>
-                <h3>NFC North</h3>
+                <h4>NFC North</h4>
                 <div id='allTeamCont'>
                     {nfcNorth?.map(team => (
                         <div id='teamCard' style={{ backgroundImage: "url(" + `${team.background_img}` + ")" }} key={team.id}>
@@ -48,7 +50,7 @@ function AllTeams() {
                     ))}
                 </div>
 
-                <h3>NFC East</h3>
+                <h4>NFC East</h4>
                 <div id='allTeamCont'>
                     {nfcEast?.map(team => (
                         <div id='teamCard' style={{ backgroundImage: "url(" + `${team.background_img}` + ")" }} key={team.id}>
@@ -68,7 +70,7 @@ function AllTeams() {
                     ))}
                 </div>
 
-                <h3>NFC South</h3>
+                <h4>NFC South</h4>
                 <div id='allTeamCont'>
                     {nfcSouth?.map(team => (
                         <div id='teamCard' style={{ backgroundImage: "url(" + `${team.background_img}` + ")" }} key={team.id}>
@@ -88,7 +90,7 @@ function AllTeams() {
                     ))}
                 </div>
 
-                <h3>NFC West</h3>
+                <h4>NFC West</h4>
                 <div id='allTeamCont'>
                     {nfcWest?.map(team => (
                         <div id='teamCard' style={{ backgroundImage: "url(" + `${team.background_img}` + ")" }} key={team.id}>
@@ -113,7 +115,7 @@ function AllTeams() {
         contentDiv = (
 
             <div>
-                <h3>AFC North</h3>
+                <h4>AFC North</h4>
                 <div id='allTeamCont'>
                     {afcNorth?.map(team => (
                         <div id='teamCard' style={{ backgroundImage: "url(" + `${team.background_img}` + ")" }} key={team.id}>
@@ -133,7 +135,7 @@ function AllTeams() {
                     ))}
                 </div>
 
-                <h3>AFC East</h3>
+                <h4>AFC East</h4>
                 <div id='allTeamCont'>
                     {afcEast?.map(team => (
                         <div id='teamCard' style={{ backgroundImage: "url(" + `${team.background_img}` + ")" }} key={team.id}>
@@ -153,7 +155,7 @@ function AllTeams() {
                     ))}
                 </div>
 
-                <h3>AFC South</h3>
+                <h4>AFC South</h4>
                 <div id='allTeamCont'>
                     {afcSouth?.map(team => (
                         <div id='teamCard' style={{ backgroundImage: "url(" + `${team.background_img}` + ")" }} key={team.id}>
@@ -173,7 +175,7 @@ function AllTeams() {
                     ))}
                 </div>
 
-                <h3>AFC West</h3>
+                <h4>AFC West</h4>
                 <div id='allTeamCont'>
                     {afcWest?.map(team => (
                         <div id='teamCard' style={{ backgroundImage: "url(" + `${team.background_img}` + ")" }} key={team.id}>
@@ -205,8 +207,11 @@ function AllTeams() {
 
 
     return (
-        <div>
-            <button onClick={changeConf}>AFC</button> <button onClick={changeConf}>NFC</button>
+        <div id='teamcont'>
+            <div class='conflinks'>
+                <button class='displayBtn' onClick={changeConfNfc}><img style={{ width: '23px', height: '23px', marginRight: '10px' }} src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/American_Football_Conference_logo.svg/2560px-American_Football_Conference_logo.svg.png' />AFC</button>
+                <button class='displayBtn' onClick={changeConfAfc}><img style={{ width: '23px', height: '23px', marginRight: '10px' }} src='https://www.pinclipart.com/picdir/big/83-831524_open-nfc-logo-clipart.png' />NFC</button>
+            </div>
 
             {nfc_display ? (
                 <div>
