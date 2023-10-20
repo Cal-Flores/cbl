@@ -9,7 +9,7 @@ def seed_teams():
     team_4 = Team(id=4,name='Azle Titans', logo_img='', background_img='',conf='AFC', divison='South')
     team_5 = Team(id=5,name='Heritage Redskins', logo_img='', background_img='',conf='NFC', divison='East')
     team_6 = Team(id=6,name='Wakeland Raiders', logo_img='', background_img='',conf='AFC', divison='West')
-    team_7 = Team(id=7,name='Seguin Cardinals', logo_img='', background_img='',conf='NFC', divison='West')
+    team_7 = Team(id=7,name='Seguin Cardinals', logo_img='https://static.www.nfl.com/image/private/f_auto/league/u9fltoslqdsyao8cpm0k', background_img='',conf='NFC', divison='West')
     team_8 = Team(id=8,name='Liberty Saints', logo_img='', background_img='',conf='NFC', divison='South')
     team_9 = Team(id=9,name='Grapevine Falcons', logo_img='', background_img='',conf='NFC', divison='South')
     team_10 = Team(id=10,name='AM Consolidated Steelers', logo_img='', background_img='',conf='AFC', divison='West')

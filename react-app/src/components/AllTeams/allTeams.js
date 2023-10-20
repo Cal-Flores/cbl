@@ -6,6 +6,8 @@ import { getAllTeams } from '../../store/teams';
 
 function AllTeams() {
     const dispatch = useDispatch()
+    let teams = useSelector(state => state.teams.All_Teams)
+    console.log('Amy smells', teams)
 
     useEffect(() => {
         dispatch(getAllTeams())
@@ -15,6 +17,10 @@ function AllTeams() {
     return (
         <div>
             <h1>All Teams</h1>
+            {teams?.map(team => (
+                <h3 key={team.id}> {team.name}</h3>
+            ))}
+
         </div>
     )
 }
