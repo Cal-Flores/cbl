@@ -18,7 +18,17 @@ function AllTeams() {
         <div>
             <h1>All Teams</h1>
             {teams?.map(team => (
-                <h3 key={team.id}> {team.name}</h3>
+                <div style={{
+                    width: '400px',
+                    height: '150px',
+                    backgroundImage: "url(" + `${team.background_img}` + ")",
+                    backgroundPosition: 'center',
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'no-repeat'
+                }} key={team.id}>
+                    <h3> {team.name}</h3>
+                    <img src={team?.logo_img} style={{ width: '140px', height: '140px' }} />
+                </div>
             ))}
 
         </div>
