@@ -7,7 +7,16 @@ import { getAllTeams } from '../../store/teams';
 function AllTeams() {
     const dispatch = useDispatch()
     let teams = useSelector(state => state.teams.All_Teams)
-    console.log('Amy smells', teams)
+
+    let nfcNorth = teams?.filter(team => team.conf == 'NFC' && team.divison == 'North')
+    let nfcEast = teams?.filter(team => team.conf == 'NFC' && team.divison == 'East')
+    let nfcSouth = teams?.filter(team => team.conf == 'NFC' && team.divison == 'South')
+    let nfcWest = teams?.filter(team => team.conf == 'NFC' && team.divison == 'West')
+
+    let afcNorth = teams?.filter(team => team.conf == 'AFC' && team.divison == 'North')
+    let afcEast = teams?.filter(team => team.conf == 'AFC' && team.divison == 'East')
+    let afcSouth = teams?.filter(team => team.conf == 'AFC' && team.divison == 'South')
+    let afcWest = teams?.filter(team => team.conf == 'AFC' && team.divison == 'West')
 
     useEffect(() => {
         dispatch(getAllTeams())
@@ -16,22 +25,173 @@ function AllTeams() {
 
     return (
         <div>
-            <h1>All Teams</h1>
-            {teams?.map(team => (
-                <div style={{
-                    width: '400px',
-                    height: '150px',
-                    backgroundImage: "url(" + `${team.background_img}` + ")",
-                    backgroundPosition: 'center',
-                    backgroundSize: 'cover',
-                    backgroundRepeat: 'no-repeat'
-                }} key={team.id}>
-                    <h3> {team.name}</h3>
-                    <img src={team?.logo_img} style={{ width: '140px', height: '140px' }} />
-                </div>
-            ))}
+            <h3>NFC North</h3>
+            <div id='allTeamCont'>
+                {nfcNorth?.map(team => (
+                    <div id='teamCard' style={{ backgroundImage: "url(" + `${team.background_img}` + ")" }} key={team.id}>
+                        <div>
+                            <img src={team?.logo_img} style={{ width: '160px', height: '160px' }} />
+                        </div>
+                        <div class='teamInfo'>
+                            <div>
+                                <h3 class='teamName'> {team.name}</h3>
+                            </div>
+                            <div>
+                                <button class='teamBtn'>Players</button>
+                                <button class='teamBtn'>Stats</button>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <h3>NFC East</h3>
+            <div id='allTeamCont'>
+                {nfcEast?.map(team => (
+                    <div id='teamCard' style={{ backgroundImage: "url(" + `${team.background_img}` + ")" }} key={team.id}>
+                        <div>
+                            <img src={team?.logo_img} style={{ width: '160px', height: '160px' }} />
+                        </div>
+                        <div class='teamInfo'>
+                            <div>
+                                <h3 class='teamName'> {team.name}</h3>
+                            </div>
+                            <div>
+                                <button class='teamBtn'>Players</button>
+                                <button class='teamBtn'>Stats</button>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <h3>NFC South</h3>
+            <div id='allTeamCont'>
+                {nfcSouth?.map(team => (
+                    <div id='teamCard' style={{ backgroundImage: "url(" + `${team.background_img}` + ")" }} key={team.id}>
+                        <div>
+                            <img src={team?.logo_img} style={{ width: '160px', height: '160px' }} />
+                        </div>
+                        <div class='teamInfo'>
+                            <div>
+                                <h3 class='teamName'> {team.name}</h3>
+                            </div>
+                            <div>
+                                <button class='teamBtn'>Players</button>
+                                <button class='teamBtn'>Stats</button>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <h3>NFC West</h3>
+            <div id='allTeamCont'>
+                {nfcWest?.map(team => (
+                    <div id='teamCard' style={{ backgroundImage: "url(" + `${team.background_img}` + ")" }} key={team.id}>
+                        <div>
+                            <img src={team?.logo_img} style={{ width: '160px', height: '160px' }} />
+                        </div>
+                        <div class='teamInfo'>
+                            <div>
+                                <h3 class='teamName'> {team.name}</h3>
+                            </div>
+                            <div>
+                                <button class='teamBtn'>Players</button>
+                                <button class='teamBtn'>Stats</button>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+
+
+
+            <h3>AFC North</h3>
+            <div id='allTeamCont'>
+                {afcNorth?.map(team => (
+                    <div id='teamCard' style={{ backgroundImage: "url(" + `${team.background_img}` + ")" }} key={team.id}>
+                        <div>
+                            <img src={team?.logo_img} style={{ width: '160px', height: '160px' }} />
+                        </div>
+                        <div class='teamInfo'>
+                            <div>
+                                <h3 class='teamName'> {team.name}</h3>
+                            </div>
+                            <div>
+                                <button class='teamBtn'>Players</button>
+                                <button class='teamBtn'>Stats</button>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <h3>AFC East</h3>
+            <div id='allTeamCont'>
+                {afcEast?.map(team => (
+                    <div id='teamCard' style={{ backgroundImage: "url(" + `${team.background_img}` + ")" }} key={team.id}>
+                        <div>
+                            <img src={team?.logo_img} style={{ width: '160px', height: '160px' }} />
+                        </div>
+                        <div class='teamInfo'>
+                            <div>
+                                <h3 class='teamName'> {team.name}</h3>
+                            </div>
+                            <div>
+                                <button class='teamBtn'>Players</button>
+                                <button class='teamBtn'>Stats</button>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <h3>AFC South</h3>
+            <div id='allTeamCont'>
+                {afcSouth?.map(team => (
+                    <div id='teamCard' style={{ backgroundImage: "url(" + `${team.background_img}` + ")" }} key={team.id}>
+                        <div>
+                            <img src={team?.logo_img} style={{ width: '160px', height: '160px' }} />
+                        </div>
+                        <div class='teamInfo'>
+                            <div>
+                                <h3 class='teamName'> {team.name}</h3>
+                            </div>
+                            <div>
+                                <button class='teamBtn'>Players</button>
+                                <button class='teamBtn'>Stats</button>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <h3>AFC West</h3>
+            <div id='allTeamCont'>
+                {afcWest?.map(team => (
+                    <div id='teamCard' style={{ backgroundImage: "url(" + `${team.background_img}` + ")" }} key={team.id}>
+                        <div>
+                            <img src={team?.logo_img} style={{ width: '160px', height: '160px' }} />
+                        </div>
+                        <div class='teamInfo'>
+                            <div>
+                                <h3 class='teamName'> {team.name}</h3>
+                            </div>
+                            <div>
+                                <button class='teamBtn'>Players</button>
+                                <button class='teamBtn'>Stats</button>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
 
         </div>
+
+
+
     )
 }
 

@@ -1,0 +1,59 @@
+#allTeamCont {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 5%;
+    margin-right: 5%;
+    align-items: center;
+    justify-content: center;
+}
+
+#teamCard {
+    width: 450px;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.teamName {
+    font-family: All-ProSans, Helvetica, Arial, sans-serif;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.teamInfo {
+    margin-left: 7%;
+    /* border: solid green; */
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    height: 100%;
+    width: 100%;
+    justify-content: flex-start;
+    padding-bottom: 10%;
+}
+
+.teamBtn {
+    height: 35px;
+    width: 80px;
+    background-color: #fff;
+    color: rgb(46, 102, 255);
+    border: none;
+    margin-right: 2%;
+    font-size: 16px;
+}
+
+.teamBtn:hover {
+    cursor: pointer;
+    background-color: rgb(46, 102, 255);
+    color: #fff;
+}
