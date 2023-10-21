@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from "react-router-dom";
-import { getOneTeam } from '../../store/teams'
+import { getOneTeam } from '../../store/teams';
 import './singleTeam.css';
+
 
 function SingleTeam() {
     const dispatch = useDispatch()
@@ -20,6 +21,7 @@ function SingleTeam() {
     return (
         <div>
             <h1 className='teamname'><img src={team?.text} style={{ width: '300px', height: '100px' }} /></h1>
+           
             <div id='fighterscont'>
                 {fighters?.map(fighter => (
                     <div id='teamssCard' style={{ backgroundImage: "url(" + `${team?.bg}` + ")" }} key={fighter?.id}>

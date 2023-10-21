@@ -23,7 +23,7 @@ def get_one_team(id):
     fly = Fighter.query.filter(and_(Fighter.team_name == curr_team.name, Fighter.weight == '125')).first()
     if fly != None:
         fly = fly.to_dict()
-    bantam = Fighter.query.filter(and_(Fighter.team_name == curr_team.name, Fighter.weight == '135')).first()
+    bantam = Fighter.query.filter(and_(Fighter.team_name == curr_team.name, Fighter.weight == '133')).first()
     if bantam != None:
         bantam = bantam.to_dict()
     feather = Fighter.query.filter(and_(Fighter.team_name == curr_team.name, Fighter.weight == '149')).first()
