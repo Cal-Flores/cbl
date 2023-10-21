@@ -50,6 +50,7 @@ def get_one_team(id):
     return {'Team': {
         'id': curr_team.id,
         'name': curr_team.name,
+        'bg': curr_team.background_img,
         'conf': curr_team.conf,
         'divison': curr_team.divison,
         'fly': fly,
@@ -59,5 +60,6 @@ def get_one_team(id):
         'welter': welter,
         'middle': middle,
         'light_heavy': light_heavy,
-        'heavy': heavy
+        'heavy': heavy,
+        'text': curr_team.heavy
     }}

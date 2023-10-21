@@ -1,1 +1,83 @@
+body {
+    background-color: rgb(227, 224, 224);
+    margin-top: 7%;
+}
 
+.teamname {
+    text-align: center;
+}
+
+#fighterscont {
+    margin-left: 5%;
+    margin-left: 5%;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#teamssCard {
+    width: 255px;
+    height: 325px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.fstat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.fighterstat {
+    color: #fafafa;
+    font-family: All-ProSans, Helvetica, Arial, sans-serif;
+    font-size: 18px;
+}
+
+.fighterweight {
+    color: #fafafa;
+    font-family: All-ProSans, Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    border-bottom: 1px solid white;
+    width: 100%;
+    margin-bottom: 40%;
+    margin-top: 10%;
+}
+
+.fightername {
+    color: #fafafa;
+    font-family: All-ProSans, Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.fimg {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-bottom: 7%;
+}
+
+.finfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
+    margin-bottom: 7%;
+}
