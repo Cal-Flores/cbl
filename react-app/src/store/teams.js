@@ -1,4 +1,5 @@
 const LOAD_TEAMS = 'teams/LOAD_TEAMS'
+const LOAD_TEAM = 'teams/LOAD_TEAM'
 
 //################## Action Creators ######################
 
@@ -6,6 +7,13 @@ const loadAll = (teams) => {
     return {
         'type': LOAD_TEAMS,
         teams
+    }
+}
+
+const loadOne = (team) => {
+    return {
+        'type': LOAD_TEAM,
+        team
     }
 }
 
@@ -21,6 +29,15 @@ export const getAllTeams = () => async dispatch => {
     }
 }
 
+export const getOneTeam = (id) => async dispatch => {
+    const response = await fetch(`/api/team/${id}`)
+
+    if (response.ok) {
+        const team = await response.json()
+        dispatch(loadOne(team))
+    }
+}
+
 
 let initialState = {}
 //######################## Reducer ##########################
@@ -30,6 +47,10 @@ const teamsReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_TEAMS: {
             newState = { ...action.teams }
+            return newState
+        }
+        case LOAD_TEAM: {
+            newState = { ...action.team}
             return newState
         }
         default:

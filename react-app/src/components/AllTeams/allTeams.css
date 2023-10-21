@@ -1,3 +1,7 @@
+body {
+    background-color: rgb(227, 224, 224);
+}
+
 #teamcont {
     margin-bottom: 8%;
     margin-top: 6%;
@@ -12,6 +16,18 @@
     align-items: center;
     justify-content: center;
 }
+
+/* @media screen and (max-width: 1200px) {
+    #allTeamCont {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin-left: 5%;
+        margin-right: 5%;
+        align-items: center;
+        justify-content: center;
+    }
+} */
 
 #teamCard {
     width: 450px;
@@ -77,11 +93,13 @@ h4 {
     margin-right: 55px;
     margin-left: 55px;
     margin-bottom: 1%;
+    background-color: rgb(227, 224, 224);
+    border-bottom: .5px solid rgb(227, 224, 224);
 }
 
 .displayBtn:hover {
     cursor: pointer;
-    text-decoration: underline;
+    border-bottom: .5px solid black;
 }
 
 .conflinks {

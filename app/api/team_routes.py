@@ -26,13 +26,13 @@ def get_one_team(id):
     bantam = Fighter.query.filter(and_(Fighter.team_name == curr_team.name, Fighter.weight == '135')).first()
     if bantam != None:
         bantam = bantam.to_dict()
-    feather = Fighter.query.filter(and_(Fighter.team_name == curr_team.name, Fighter.weight == '145')).first()
+    feather = Fighter.query.filter(and_(Fighter.team_name == curr_team.name, Fighter.weight == '149')).first()
     if feather != None:
         feather = feather.to_dict()
-    light = Fighter.query.filter(and_(Fighter.team_name == curr_team.name, Fighter.weight == '155')).first()
+    light = Fighter.query.filter(and_(Fighter.team_name == curr_team.name, Fighter.weight == '157')).first()
     if light != None:
         light = light.to_dict()
-    welter = Fighter.query.filter(and_(Fighter.team_name == curr_team.name, Fighter.weight == '170')).first()
+    welter = Fighter.query.filter(and_(Fighter.team_name == curr_team.name, Fighter.weight == '174')).first()
     if welter != None:
         welter = welter.to_dict()
     middle = Fighter.query.filter(and_(Fighter.team_name == curr_team.name, Fighter.weight == '185')).first()
@@ -41,7 +41,7 @@ def get_one_team(id):
     light_heavy = Fighter.query.filter(and_(Fighter.team_name == curr_team.name, Fighter.weight == '205')).first()
     if light_heavy != None:
         light_heavy = light_heavy.to_dict()
-    heavy = Fighter.query.filter(and_(Fighter.team_name == curr_team.name, Fighter.weight == '265')).first()
+    heavy = Fighter.query.filter(and_(Fighter.team_name == curr_team.name, Fighter.weight == '285')).first()
     if heavy != None:
         heavy = heavy.to_dict()
 

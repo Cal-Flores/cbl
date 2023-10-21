@@ -64,7 +64,7 @@ def seed_fighters():
     fighter_46 = Fighter(id=46,name='Mateusz Gamrot', nickname='', prof_img='',body_img='', weight='157', team_name='Prosper Eagles')
     fighter_47 = Fighter(id=47,name='Rafael Fizziev', nickname='', prof_img='',body_img='', weight='157', team_name='Liberty Saints')
     fighter_48 = Fighter(id=48,name='Beneil Dariush', nickname='', prof_img='',body_img='', weight='157', team_name='Nazareth Chargers')
-    fighter_59 = Fighter(id=59,name='Arman Tsarukyan', nickname='', prof_img='',body_img='', weight='157', team_name='A.M Consolidated Steelers')
+    fighter_95 = Fighter(id=59,name='Arman Tsarukyan', nickname='', prof_img='',body_img='', weight='157', team_name='A.M Consolidated Steelers')
     ####################### Welter ###########################
     fighter_49 = Fighter(id=49,name='Kamaru Usman', nickname='', prof_img='',body_img='', weight='174', team_name='Arlington Bills')
     fighter_50 = Fighter(id=50,name='Khamzat Chimaev', nickname='', prof_img='',body_img='', weight='174', team_name='Prosper Eagles')
@@ -132,7 +132,7 @@ def seed_fighters():
     fighter_72, fighter_73, fighter_74, fighter_75, fighter_76, fighter_77, fighter_78,
     fighter_79, fighter_80, fighter_81, fighter_82, fighter_83, fighter_84, fighter_85,
     fighter_86, fighter_87, fighter_88, fighter_89, fighter_90, fighter_91, fighter_92,
-    fighter_93, fighter_94
+    fighter_93, fighter_94, fighter_95
 ]
 
     #seeds = [f"fighter_{i}" for i in range(1, 51)]

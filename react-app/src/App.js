@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import AllTeams from "./components/AllTeams/allTeams";
+import SingleTeam from "./components/SingleTeam/singleTeam";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +20,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route path="/teams/:teamId" >
+            <SingleTeam />
+          </Route>
           <Route path="/" >
             <AllTeams />
           </Route>
