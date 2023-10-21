@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import AllTeams from "./components/AllTeams/allTeams";
 import SingleTeam from "./components/SingleTeam/singleTeam";
+import SingleFighter from "./components/SingleFighter/singleFighter";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,11 +21,14 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/teams/:teamId" >
+          <Route exact path="/teams/:teamId" >
             <SingleTeam />
           </Route>
-          <Route path="/" >
+          <Route exact path="/" >
             <AllTeams />
+          </Route>
+          <Route exact path="/fighter/:fightId" >
+            <SingleFighter />
           </Route>
         </Switch>
       )}

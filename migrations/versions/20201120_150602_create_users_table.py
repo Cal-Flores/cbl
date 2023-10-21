@@ -39,6 +39,7 @@ def upgrade():
     sa.Column('prof_img', sa.String()),
     sa.Column('body_img', sa.String()),
     sa.Column('weight', sa.String()),
+    sa.Column('medal', sa.String()),
     sa.Column('team_name', sa.String())
     )
 
@@ -64,6 +65,13 @@ def upgrade():
     sa.Column('year', sa.String()),
     sa.Column('img', sa.String()),
     sa.Column('cons_img', sa.String()),
+    )
+
+    op.create_table('medals',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('fighter', sa.String()),
+    sa.Column('place', sa.String()),
+    sa.Column('year', sa.String()),
     )
 
     if environment == "production":

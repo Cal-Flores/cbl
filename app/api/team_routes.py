@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User, Fighter, Team
+from app.models import User, Fighter, Team, Medal
 from sqlalchemy import and_, or_
 
 team_routes = Blueprint('teams', __name__)
@@ -14,6 +14,7 @@ def get_all_teams():
     teams = []
     teams.extend([i.to_dict() for i in all_teams])
     return {'All_Teams': teams}
+
 
 
 ##### get one team ########

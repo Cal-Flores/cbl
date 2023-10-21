@@ -13,6 +13,7 @@ class Fighter(db.Model, UserMixin):
     nickname = db.Column(db.String(40))
     prof_img = db.Column(db.String)
     body_img = db.Column(db.String)
+    medal = db.Column(db.String)
     weight = db.Column(db.String)
     team_name = db.Column(db.String)
 
@@ -23,6 +24,7 @@ class Fighter(db.Model, UserMixin):
             'nickname': self.nickname,
             'prof_img': self.prof_img,
             'body_img': self.body_img,
+            'medal': self.medal,
             'weight': self.weight
         }
 
@@ -36,6 +38,17 @@ class Tournament(db.Model, UserMixin):
     year = db.Column(db.String)
     img = db.Column(db.String)
     cons_img = db.Column(db.String)
+
+class Medal(db.Model, UserMixin):
+    __tablename__ = 'Medals'
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
+    id = db.Column(db.Integer, primary_key=True)
+    fighter = db.Column(db.String)
+    place = db.Column(db.String)
+    year = db.Column(db.String)
 
 class Team(db.Model, UserMixin):
     __tablename__ = 'teams'

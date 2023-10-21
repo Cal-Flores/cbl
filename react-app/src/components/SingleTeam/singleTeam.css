@@ -16,6 +16,7 @@ body {
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
+
 }
 
 #teamssCard {
@@ -33,6 +34,12 @@ body {
     justify-content: flex-start;
 }
 
+#teamssCard:hover {
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+    transform: scale(1.05);
+}
+
 .fstat {
     display: flex;
     flex-direction: column;
@@ -44,7 +51,7 @@ body {
 .fighterstat {
     color: #fafafa;
     font-family: All-ProSans, Helvetica, Arial, sans-serif;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .fighterweight {
@@ -61,8 +68,8 @@ body {
 .fightername {
     color: #fafafa;
     font-family: All-ProSans, Helvetica, Arial, sans-serif;
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 500;
 }
 
 .fimg {
@@ -70,7 +77,7 @@ body {
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-    margin-bottom: 7%;
+    margin-bottom: 9%;
 }
 
 .finfo {
