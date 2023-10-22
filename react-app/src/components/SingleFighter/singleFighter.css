@@ -1,3 +1,98 @@
 body {
     margin-top: 8%;
+    width: 100%;
+    font-family: "Arial Narrow", Arial, sans-serif;
+}
+
+#fightercont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    /* background-color: #585b63; */
+    background-color: rgb(25, 25, 25);
+    position: fixed;
+    left: 0;
+    padding-top: 2%;
+}
+
+#fighttags {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 300px;
+}
+
+.reccont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 150px;
+}
+
+.fightpnt {
+    color: whitesmoke;
+    font-weight: bolder;
+    font-size: 35px;
+    margin-bottom: 3%;
+}
+
+.pts {
+    color: whitesmoke;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.nickname {
+    color: #b8bac3;
+    font-weight: 900;
+    font-size: 22px;
+    font-weight: bolder;
+    margin-bottom: 14%;
+}
+
+.fightname {
+    color: whitesmoke;
+    font-size: 40px;
+    font-weight: bolder;
+    margin-bottom: 7%;
+}
+
+.fightweight {
+    color: whitesmoke;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.recwins {
+    color: whitesmoke;
+    font-size: 60px;
+    font-weight: bolder;
+    border-bottom: 1px solid red;
+    margin-bottom: 15%;
+}
+
+.recloss {
+    color: whitesmoke;
+    font-size: 60px;
+    font-weight: bolder;
+    border-bottom: 1px solid red;
+    margin-bottom: 15%;
+}
+
+.wintxt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: whitesmoke;
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.line {
+    height: 100px;
+    border: .5px solid rgb(69, 69, 69);
 }

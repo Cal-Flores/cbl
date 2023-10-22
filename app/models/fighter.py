@@ -18,6 +18,7 @@ class Fighter(db.Model, UserMixin):
     team_name = db.Column(db.String)
     tour_win = db.Column(db.Integer)
     tour_loss = db.Column(db.Integer)
+    points = db.Column(db.Integer)
 
     def to_dict(self):
         return {
@@ -29,7 +30,8 @@ class Fighter(db.Model, UserMixin):
             'medal': self.medal,
             'weight': self.weight,
             'tour_win': self.tour_win,
-            'tour_loss': self.tour_loss
+            'tour_loss': self.tour_loss,
+            'points': self.points
         }
 
 class Tournament(db.Model, UserMixin):
@@ -53,6 +55,14 @@ class Medal(db.Model, UserMixin):
     fighter = db.Column(db.String)
     place = db.Column(db.String)
     year = db.Column(db.String)
+
+    def to_dict(self):
+        return {
+              'id': self.id,
+              'fighter': self.fighter,
+              'place': self.place,
+              'year': self.year
+        }
 
 class Tour_Result(db.Model, UserMixin):
     __tablename__ = 'tour_results'

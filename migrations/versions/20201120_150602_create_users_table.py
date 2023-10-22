@@ -42,7 +42,8 @@ def upgrade():
     sa.Column('medal', sa.String()),
     sa.Column('team_name', sa.String()),
     sa.Column('tour_win', sa.Integer()),
-    sa.Column('tour_loss', sa.Integer())
+    sa.Column('tour_loss', sa.Integer()),
+    sa.Column('points', sa.Integer()),
     )
 
     op.create_table('teams',

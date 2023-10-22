@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User, Fighter, Tour_Result
+from app.models import User, Fighter, Tour_Result, Medal, Team
 from sqlalchemy import or_, and_
 
 fighter_routes = Blueprint('fighters', __name__)
@@ -26,13 +26,24 @@ def get_all_fighters():
 def get_one_fighter(id):
     fighter = Fighter.query.get(id)
     tour_fights = Tour_Result.query.filter(or_(fighter.name == Tour_Result.winner,  fighter.name == Tour_Result.loser)).all()
+    all_medals = Medal.query.filter(Medal.fighter == fighter.name).all()
+    team = Team.query.filter(Team.name == fighter.team_name).first()
+    team = team.to_dict()
+
     dict_fights = {}
+    dict_medals = {}
 
     for fight in tour_fights:
         good = fight.to_dict()
         dict_fights[fight.id] = good
 
+    for medal in all_medals:
+        good = medal.to_dict()
+        dict_medals[medal.id] = good
+
     fight = fighter.to_dict()
     return {'Fighter': fight,
-            'Tour_Fights': dict_fights
+            'Tour_Fights': dict_fights,
+            'Medals': dict_medals,
+            'Team': team
             }
