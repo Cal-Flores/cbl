@@ -30,6 +30,17 @@ def get_one_fighter(id):
     team = Team.query.filter(Team.name == fighter.team_name).first()
     team = team.to_dict()
 
+    last_opp = {'winner': None, 'loser':None}
+    last_match = None
+    if len(tour_fights) > 0:
+        last_match = tour_fights[len(tour_fights) - 1]
+        if last_match.winner == fighter.name:
+            last_opp = Fighter.query.filter(Fighter.name == last_match.loser).first()
+            last_opp = last_opp.to_dict()
+        else:
+            last_opp = Fighter.query.filter(Fighter.name == last_match.winner).first()
+            last_opp = last_opp.to_dict()
+
     dict_fights = {}
     dict_medals = {}
 
@@ -45,5 +56,6 @@ def get_one_fighter(id):
     return {'Fighter': fight,
             'Tour_Fights': dict_fights,
             'Medals': dict_medals,
-            'Team': team
+            'Team': team,
+            'last_opp': last_opp
             }

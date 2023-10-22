@@ -27,7 +27,7 @@ function SingleTeam() {
 
             <div id='fighterscont'>
                 {fighters?.map(fighter => (
-                    <div key={fighter.id} id='teamssCard' onClick={(e) => history.push(`/fighter/${fighter.id}`)} style={{ backgroundImage: "url(" + `${team?.bg}` + ")" }} key={fighter?.id}>
+                    <div key={fighter?.id} id='teamssCard' onClick={(e) => history.push(`/fighter/${fighter.id}`)} style={{ backgroundImage: "url(" + `${team?.bg}` + ")" }}>
                         <div>
                             <div className='fighterweight' >{fighter?.weight} lbs</div>
                         </div>
