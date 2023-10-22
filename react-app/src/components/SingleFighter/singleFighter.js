@@ -12,6 +12,9 @@ function SingleFighter() {
     const fighterId = routeParams.fightId
 
     let fighter = useSelector(state => state.fighters.Fighter)
+    let tourMatches = useSelector(state => state.fighters.Tour_Fights)
+    console.log('heres my fighter', fighter)
+    console.log('heres his matches', tourMatches)
 
     useEffect(() => {
         if (fighterId) dispatch(getOneFighter(fighterId))

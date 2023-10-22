@@ -16,6 +16,8 @@ class Fighter(db.Model, UserMixin):
     medal = db.Column(db.String)
     weight = db.Column(db.String)
     team_name = db.Column(db.String)
+    tour_win = db.Column(db.Integer)
+    tour_loss = db.Column(db.Integer)
 
     def to_dict(self):
         return {
@@ -25,7 +27,9 @@ class Fighter(db.Model, UserMixin):
             'prof_img': self.prof_img,
             'body_img': self.body_img,
             'medal': self.medal,
-            'weight': self.weight
+            'weight': self.weight,
+            'tour_win': self.tour_win,
+            'tour_loss': self.tour_loss
         }
 
 class Tournament(db.Model, UserMixin):
@@ -49,6 +53,32 @@ class Medal(db.Model, UserMixin):
     fighter = db.Column(db.String)
     place = db.Column(db.String)
     year = db.Column(db.String)
+
+class Tour_Result(db.Model, UserMixin):
+    __tablename__ = 'tour_results'
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
+    id = db.Column(db.Integer, primary_key=True)
+    winner = db.Column(db.String)
+    loser = db.Column(db.String)
+    match = db.Column(db.String)
+    method = db.Column(db.String)
+    round = db.Column(db.String)
+    year = db.Column(db.String)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'winner': self.winner,
+            'loser': self.loser,
+            'match': self.match,
+            'round': self.round,
+            'year': self.year
+        }
+
+
 
 class Team(db.Model, UserMixin):
     __tablename__ = 'teams'

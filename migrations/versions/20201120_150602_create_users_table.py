@@ -40,7 +40,9 @@ def upgrade():
     sa.Column('body_img', sa.String()),
     sa.Column('weight', sa.String()),
     sa.Column('medal', sa.String()),
-    sa.Column('team_name', sa.String())
+    sa.Column('team_name', sa.String()),
+    sa.Column('tour_win', sa.Integer()),
+    sa.Column('tour_loss', sa.Integer())
     )
 
     op.create_table('teams',
@@ -65,6 +67,15 @@ def upgrade():
     sa.Column('year', sa.String()),
     sa.Column('img', sa.String()),
     sa.Column('cons_img', sa.String()),
+    )
+    op.create_table('tour_results',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('winner', sa.String()),
+    sa.Column('loser', sa.String()),
+    sa.Column('match', sa.String()),
+    sa.Column('method', sa.String()),
+    sa.Column('round', sa.String()),
+    sa.Column('year', sa.String()),
     )
 
     op.create_table('medals',
