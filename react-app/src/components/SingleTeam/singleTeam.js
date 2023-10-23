@@ -12,7 +12,6 @@ function SingleTeam() {
     const teamId = routeParams?.teamId
 
     let team = useSelector(state => state?.teams?.Team)
-
     let fighters = []
     fighters.push(team?.fly, team?.bantam, team?.feather, team?.light, team?.welter, team?.middle, team?.light_heavy, team?.heavy)
 
@@ -27,7 +26,7 @@ function SingleTeam() {
 
             <div id='fighterscont'>
                 {fighters?.map(fighter => (
-                    <div key={fighter?.id} id='teamssCard' onClick={(e) => history.push(`/fighter/${fighter.id}`)} style={{ backgroundImage: "url(" + `${team?.bg}` + ")" }}>
+                    <div key={fighter?.id} id='teamssCard' onClick={(e) => history.push(`/fighter/${fighter.id}`)} style={{ backgroundImage: "url(" + `${team?.bg}` + ")", border: `5px solid ${team?.border}` }}>
                         <div>
                             <div className='fighterweight' >{fighter?.weight} lbs</div>
                         </div>
@@ -46,6 +45,9 @@ function SingleTeam() {
                         </div>
                     </div>
                 ))}
+            </div>
+            <div>
+
             </div>
         </div>
     )

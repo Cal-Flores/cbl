@@ -85,6 +85,7 @@ class Tour_Result(db.Model, UserMixin):
             'loser': self.loser,
             'match': self.match,
             'round': self.round,
+            'method': self.method,
             'year': self.year
         }
 

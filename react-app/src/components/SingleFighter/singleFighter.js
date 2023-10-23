@@ -16,10 +16,14 @@ function SingleFighter() {
     let medals = useSelector(state => state.fighters.Medals)
     let team = useSelector(state => state.fighters.Team)
     let opp = useSelector(state => state.fighters.last_opp)
+    let tourMatchesArr;
+    if (tourMatches) tourMatchesArr = Object.values(tourMatches)
     let tourWins;
     let tourLoss;
     let allMedals;
     let lastMatch;
+    let wins = 0;
+    let loss = 0;
     if (tourMatches) {
         let matches = Object?.values(tourMatches)
         let wins = matches.filter(ele => ele.winner == fighter.name)
@@ -34,12 +38,13 @@ function SingleFighter() {
     if (medals) {
         allMedals = Object?.values(medals)
     }
-    // console.log('heres my fighter', fighter)
-    // console.log('here are his matches', tourMatches)
-    // console.log('here are his medals', allMedals)
-    // console.log('here is the team info', team)
-    // console.log('here is his last opp', opp)
-    // console.log('last match', lastMatch)
+    console.log('heres my fighter', fighter)
+    console.log('here are his matches', tourMatches)
+    console.log('here are his medals', allMedals)
+    console.log('here is the team info', team)
+    console.log('here is his last opp', opp)
+    console.log('last match', lastMatch)
+    console.log("here are the matches in array", tourMatchesArr)
 
     useEffect(() => {
         if (fighterId) dispatch(getOneFighter(fighterId))
@@ -112,6 +117,34 @@ function SingleFighter() {
                     </div>
                 </div>
             </div >
+            <div id='tourresbg' style={{ backgroundImage: "url(" + `${team?.background_img}` + ")" }}>
+                <div id='tourResults' >
+                    {tourMatchesArr?.map(match => (
+                        <div className='matchres' key={match?.id}>
+                            {match?.winner == fighter?.name &&
+                                <div className='frwin'>
+                                    <div className='frwinW'>W</div>
+                                    <div style={{ marginLeft: '6%', width: '300px' }}>{match?.loser}</div>
+                                    <div style={{ marginLeft: '2%', width: '100px' }}>{match?.method}</div>
+                                    <div style={{ marginLeft: '6%', width: '250px' }}>{match?.match}</div>
+                                    <div style={{ marginLeft: '3%', width: '350px' }}>NCAA Championship {match?.year}</div>
+                                    <div style={{ marginLeft: '3%', width: '100px', fontSize: '22px' }}>{wins += 1} - {loss}</div>
+                                </div>
+                            }
+                            {match?.loser == fighter?.name &&
+                                <div className='frloss'>
+                                    <div className='frlossL'>L</div>
+                                    <div style={{ marginLeft: '7.3%', width: '300px' }}>{match?.winner}</div>
+                                    <div style={{ marginLeft: '2%', width: '100px' }}>{match?.method}</div>
+                                    <div style={{ marginLeft: '6%', width: '250px' }}>{match?.match}</div>
+                                    <div className='ncaachamp' style={{ marginLeft: '3%', width: '350px' }}>NCAA Championship {match?.year}</div>
+                                    <div style={{ marginLeft: '3%', width: '100px', fontSize: '22px' }}>{wins} - {loss += 1}</div>
+                                </div>
+                            }
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
     )
 }

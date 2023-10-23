@@ -65,9 +65,10 @@ def seed_medals():
     medal_61 = Medal(id=61,fighter='Demetrious Johnson',place='Runner-Up',year='2019')
     medal_62 = Medal(id=62,fighter='Demetrious Johnson',place='8th',year='2020')
     medal_63 = Medal(id=63,fighter='Charles Oliviera',place='Champion',year='2020')
+    medal_64 = Medal(id=64,fighter='Jordan Burroughs',place='4th',year='2020')
     # medal_ = Medal(id=,fighter='',place='',year='2016')
 
-    seeds = [medal_1, medal_2, medal_3, medal_4, medal_5, medal_6, medal_7, medal_8, medal_9, medal_10, medal_11, medal_12, medal_13, medal_14, medal_15, medal_16, medal_17, medal_18, medal_19, medal_20, medal_21, medal_22, medal_23, medal_24, medal_25, medal_26, medal_27, medal_28, medal_29, medal_30, medal_31, medal_32, medal_33, medal_34, medal_35, medal_36, medal_37, medal_38, medal_39, medal_40, medal_41, medal_42, medal_43, medal_44, medal_45, medal_46, medal_47, medal_48, medal_49, medal_50, medal_51, medal_52, medal_53, medal_54, medal_55, medal_56, medal_57, medal_58, medal_59, medal_60, medal_61, medal_62, medal_63]
+    seeds = [medal_1, medal_2, medal_3, medal_4, medal_5, medal_6, medal_7, medal_8, medal_9, medal_10, medal_11, medal_12, medal_13, medal_14, medal_15, medal_16, medal_17, medal_18, medal_19, medal_20, medal_21, medal_22, medal_23, medal_24, medal_25, medal_26, medal_27, medal_28, medal_29, medal_30, medal_31, medal_32, medal_33, medal_34, medal_35, medal_36, medal_37, medal_38, medal_39, medal_40, medal_41, medal_42, medal_43, medal_44, medal_45, medal_46, medal_47, medal_48, medal_49, medal_50, medal_51, medal_52, medal_53, medal_54, medal_55, medal_56, medal_57, medal_58, medal_59, medal_60, medal_61, medal_62, medal_63, medal_64]
 
     for seed in seeds:
         db.session.add(seed)

@@ -62,5 +62,6 @@ def get_one_team(id):
         'middle': middle,
         'light_heavy': light_heavy,
         'heavy': heavy,
-        'text': curr_team.heavy
+        'text': curr_team.heavy,
+        'border': curr_team.fly
     }}

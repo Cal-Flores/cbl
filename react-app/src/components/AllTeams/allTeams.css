@@ -2,6 +2,12 @@ body {
     background-color: rgb(227, 224, 224);
 }
 
+@media screen and (max-width: 1000px) {
+    body {
+        background-color: blue;
+    }
+}
+
 #teamcont {
     margin-bottom: 8%;
     margin-top: 6%;
