@@ -25,6 +25,7 @@ body {
     left: 0;
     padding-left: 4%;
     padding-right: 2%;
+    padding-top: 1%;
 }
 
 #bodyimg {
@@ -90,6 +91,7 @@ body {
     color: whitesmoke;
     font-size: 18px;
     font-weight: bolder;
+    margin-bottom: 1%;
 }
 
 .recwins {
@@ -144,7 +146,7 @@ body {
 .lastopp {
     height: 200px;
     margin-top: 5%;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 .oppdiv {
@@ -177,7 +179,7 @@ body {
     margin-right: 5%;
     margin-left: 5%;
     width: 90%;
-    margin-top: 5%;
+    margin-top: 2%;
     margin-bottom: 5%;
 }
 
@@ -236,3 +238,33 @@ body {
         display: none;
     }
 } */
+
+.seasonchange {
+    display: flex;
+    width: 40%;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-left: 30%;
+    margin-left: 30%;
+    margin-top: 2%;
+}
+
+.seasonbtn {
+    border: 2px solid white;
+    background-color: rgb(25, 25, 25);
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 1%;
+    width: 235px;
+    height: 60px;
+}
+
+.seasonbtn:hover {
+    cursor: pointer;
+    border: none;
+    background-color: rgb(59, 58, 58);
+    border-bottom: 1px solid red;
+    transition: 1.5s;
+}

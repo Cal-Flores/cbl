@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User, Fighter, Tour_Result, Medal, Team
+from app.models import User, Fighter, Tour_Result, Medal, Team, Season_Result
 from sqlalchemy import or_, and_
 
 fighter_routes = Blueprint('fighters', __name__)
@@ -26,6 +26,7 @@ def get_all_fighters():
 def get_one_fighter(id):
     fighter = Fighter.query.get(id)
     tour_fights = Tour_Result.query.filter(or_(fighter.name == Tour_Result.winner,  fighter.name == Tour_Result.loser)).all()
+    season_fights = Season_Result.query.filter(or_(fighter.name == Season_Result.winner, fighter.name == Season_Result.loser)).all()
     all_medals = Medal.query.filter(Medal.fighter == fighter.name).all()
     team = Team.query.filter(Team.name == fighter.team_name).first()
     team = team.to_dict()
@@ -41,8 +42,14 @@ def get_one_fighter(id):
             last_opp = Fighter.query.filter(Fighter.name == last_match.winner).first()
             last_opp = last_opp.to_dict()
 
+
     dict_fights = {}
     dict_medals = {}
+    dict_season_fights = {}
+
+    for fight in season_fights:
+        good = fight.to_dict()
+        dict_season_fights[fight.id] = good
 
     for fight in tour_fights:
         good = fight.to_dict()
@@ -55,6 +62,7 @@ def get_one_fighter(id):
     fight = fighter.to_dict()
     return {'Fighter': fight,
             'Tour_Fights': dict_fights,
+            'Season_Fights': dict_season_fights,
             'Medals': dict_medals,
             'Team': team,
             'last_opp': last_opp

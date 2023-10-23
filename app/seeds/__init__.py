@@ -4,6 +4,7 @@ from .fighters import seed_fighters, undo_fighters
 from .medals import seed_medals, undo_medals
 from .teams import seed_teams, undo_teams
 from .tour_result import seed_tour_results, undo_tour_results
+from .season_result import seed_season_results, undo_season_results
 
 
 from app.models.db import db, environment, SCHEMA
@@ -25,11 +26,13 @@ def seed():
         undo_fighters()
         undo_teams()
         undo_tour_results()
+        undo_season_results()
     seed_users()
     seed_fighters()
     seed_teams()
     seed_medals()
     seed_tour_results()
+    seed_season_results()
     print('everything has been seeded!')
     # Add other seed functions here
 
@@ -42,4 +45,5 @@ def undo():
     undo_teams()
     undo_medals()
     undo_tour_results()
+    undo_season_results()
     # Add other undo functions here
