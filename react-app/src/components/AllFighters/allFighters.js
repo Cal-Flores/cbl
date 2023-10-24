@@ -10,30 +10,46 @@ function AllFighters() {
     const history = useHistory()
     let allFighters = useSelector(state => state.fighters.All_Fighters)
     let imgFighters = allFighters?.filter(fighter => fighter.prof_img.length > 0)
+    let [active, setActive] = useState('all')
+    console.log('active rn', active)
+
+
+    const getAll = async () => {
+        dispatch(getAllFighters())
+        setActive('all')
+    }
 
     const getFly = async () => {
         dispatch(getFightersByWeight(125))
+        setActive('125')
     }
     const getBantam = async () => {
         dispatch(getFightersByWeight(133))
+        setActive('133')
     }
     const getFeather = async () => {
         dispatch(getFightersByWeight(149))
+        setActive('149')
     }
     const getLight = async () => {
         dispatch(getFightersByWeight(157))
+        setActive('157')
     }
     const getWelter = async () => {
         dispatch(getFightersByWeight(174))
+        setActive('174')
     }
     const getMiddle = async () => {
         dispatch(getFightersByWeight(185))
+        setActive('185')
     }
     const getLheavy = async () => {
         dispatch(getFightersByWeight(205))
+        setActive('205')
     }
     const getHeavy = async () => {
         dispatch(getFightersByWeight(285))
+        setActive('285')
     }
 
 
@@ -42,18 +58,22 @@ function AllFighters() {
     }, [dispatch])
 
     return (
+
         <div>
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Molengo&family=Rye&display=swap');
+            </style>
             <div id='allfcont' >
                 <div className='allfnav'>
-                    <div>All</div>
-                    <div onClick={getFly} className='navnums'>125 lbs</div>
-                    <div onClick={getBantam} className='navnums'>133 lbs</div>
-                    <div onClick={getFeather} className='navnums'>149 lbs</div>
-                    <div onClick={getLight} className='navnums'>157 lbs</div>
-                    <div onClick={getWelter} className='navnums'>174 lbs</div>
-                    <div onClick={getMiddle} className='navnums'>185 lbs</div>
-                    <div onClick={getLheavy} className='navnums'>205 lbs</div>
-                    <div onClick={getHeavy} className='navnums'>HWT</div>
+                    <div onClick={getAll} className={(active == 'all') ? 'activeNow' : 'navnums'}>All</div>
+                    <div onClick={getFly} className={(active == '125') ? 'activeNow' : 'navnums'}>125</div>
+                    <div onClick={getBantam} className={(active == '133') ? 'activeNow' : 'navnums'}>133</div>
+                    <div onClick={getFeather} className={(active == '149') ? 'activeNow' : 'navnums'}>149</div>
+                    <div onClick={getLight} className={(active == '157') ? 'activeNow' : 'navnums'}>157</div>
+                    <div onClick={getWelter} className={(active == '174') ? 'activeNow' : 'navnums'}>174</div>
+                    <div onClick={getMiddle} className={(active == '185') ? 'activeNow' : 'navnums'}>185</div>
+                    <div onClick={getLheavy} className={(active == '205') ? 'activeNow' : 'navnums'}>205</div>
+                    <div onClick={getHeavy} className={(active == '285') ? 'activeNow' : 'navnums'}>HWT</div>
                 </div>
                 {imgFighters?.map(fighter => (
                     <div className='allfcard'>

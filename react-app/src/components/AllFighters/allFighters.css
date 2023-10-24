@@ -1,5 +1,9 @@
+body {
+    font-family: 'Bebas Neue', sans-serif;
+}
+
 #allfcont {
-    margin-top: 10%;
+    margin-top: 8%;
     margin-left: 2%;
     margin-right: 2%;
     width: 100%%;
@@ -20,9 +24,23 @@
     right: 0;
 }
 
+.navnums {
+    font-size: 40px;
+    font-weight: bolder;
+    padding-bottom: 2%;
+    color: gray;
+}
+
+.activeNow {
+    font-size: 40px;
+    font-weight: bolder;
+    padding-bottom: 2%;
+    color: black;
+}
+
 .navnums:hover {
     cursor: pointer;
-    text-decoration: underline rgb(30, 168, 202);
+    color: rgb(43, 42, 42);
 }
 
 

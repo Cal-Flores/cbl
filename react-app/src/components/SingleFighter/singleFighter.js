@@ -128,8 +128,9 @@ function SingleFighter() {
 
     return (
         <div className='ultdiv'>
-            {/* <div style={{ backgroundImage: "url(" + `${team?.background_img}` + ")" }} className='topsliver'></div> */}
-
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Molengo&family=Rye&display=swap');
+            </style>
             <div id='fightercont'>
                 <div id='left'>
                     <div id='fighttags'>
