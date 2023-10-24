@@ -45,8 +45,8 @@
 
 .hoverbox:hover {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    /* animation-name: example2;
-    animation-duration: 2s; */
+    animation-name: example2;
+    animation-duration: 2s;
 }
 
 @keyframes example {
@@ -70,6 +70,6 @@
 }
 
 .child:hover {
-    /* animation-name: example;
-    animation-duration: 1s; */
+    animation-name: example;
+    animation-duration: 1s;
 }

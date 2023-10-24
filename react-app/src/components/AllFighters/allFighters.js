@@ -22,7 +22,7 @@ function AllFighters() {
 
                 {imgFighters?.map(fighter => (
                     <div className='allfcard'>
-                        <div className='child' style={{ height: '250px', width: '225px', zIndex: '100', position: 'absolute', backgroundColor: 'rgb(227, 224, 224)' }}>
+                        <div className='child' style={{ height: '250px', width: '225px', zIndex: '2', position: 'absolute', backgroundColor: 'rgb(227, 224, 224)' }}>
                             <img src={fighter?.prof_img} style={{ height: '115px', width: '184px', borderBottom: '1px solid gray', }} />
                             {fighter?.nickname &&
                                 <div className='allfnick'>"{fighter?.nickname.toUpperCase()}"</div>
