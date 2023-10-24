@@ -1,0 +1,75 @@
+#allfcont {
+    margin-top: 10%;
+    margin-left: 6%;
+    margin-right: 6%;
+    width: 88%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.allfcard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 2%;
+    height: 250px;
+    width: 225px;
+    text-align: center;
+}
+
+.allfcard:hover>.child {
+    visibility: hidden;
+}
+
+.allfnick {
+    color: rgb(84, 82, 82);
+}
+
+.allfname {
+    font-size: 22px;
+    font-weight: bolder;
+}
+
+.allfclass {
+    font-size: 16px;
+}
+
+.allfteam {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.hoverbox:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /* animation-name: example2;
+    animation-duration: 2s; */
+}
+
+@keyframes example {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes example2 {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.child:hover {
+    /* animation-name: example;
+    animation-duration: 1s; */
+}

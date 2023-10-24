@@ -17,7 +17,7 @@ def get_weight_fighters(weight):
 
 @fighter_routes.route('/')
 def get_all_fighters():
-    fighters = Fighter.query.all()
+    fighters = Fighter.query.order_by(Fighter.name).all()
     all_fighters = []
     all_fighters.extend([i.to_dict() for i in fighters])
     return {'All_Fighters': all_fighters}

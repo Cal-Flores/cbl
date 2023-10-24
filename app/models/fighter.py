@@ -31,7 +31,8 @@ class Fighter(db.Model, UserMixin):
             'weight': self.weight,
             'all_win': self.all_win,
             'all_loss': self.all_loss,
-            'points': self.points
+            'points': self.points,
+            'team_name': self.team_name
         }
 
 class Tournament(db.Model, UserMixin):

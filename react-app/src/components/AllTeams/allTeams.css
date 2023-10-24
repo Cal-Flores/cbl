@@ -1,5 +1,6 @@
 body {
     background-color: rgb(227, 224, 224);
+    font-family: All-ProSans, Helvetica, Arial, sans-serif;
 }
 
 @media screen and (max-width: 1000px) {
