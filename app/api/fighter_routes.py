@@ -10,7 +10,7 @@ fighter_routes = Blueprint('fighters', __name__)
 ########### Get Fighters ############
 @fighter_routes.route('/<int:weight>')
 def get_weight_fighters(weight):
-    fighters = Fighter.query.filter(Fighter.weight == weight)
+    fighters = Fighter.query.filter(Fighter.weight == weight).order_by(Fighter.name)
     all_fighters = []
     all_fighters.extend([i.to_dict() for i in fighters])
     return {'All_Fighters': all_fighters}
