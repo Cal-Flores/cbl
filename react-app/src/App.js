@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import AllTeams from "./components/AllTeams/allTeams";
 import SingleTeam from "./components/SingleTeam/singleTeam";
 import SingleFighter from "./components/SingleFighter/singleFighter";
+import AllFighters from "./components/AllFighters/allFighters";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route exact path="/fighter/:fightId" >
             <SingleFighter />
+          </Route>
+          <Route exact path="/fighters" >
+            <AllFighters />
           </Route>
         </Switch>
       )}

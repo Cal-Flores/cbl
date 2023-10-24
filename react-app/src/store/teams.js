@@ -50,7 +50,7 @@ const teamsReducer = (state = initialState, action) => {
             return newState
         }
         case LOAD_TEAM: {
-            newState = { ...action.team}
+            newState = { ...action.team }
             return newState
         }
         default:
