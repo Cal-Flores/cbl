@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
+from app.forms import SearchForm
 from app.models import User, Fighter, Tour_Result, Medal, Team, Season_Result
 from sqlalchemy import or_, and_
 
@@ -8,6 +9,35 @@ fighter_routes = Blueprint('fighters', __name__)
 
 
 ########### Get Fighters ############
+@fighter_routes.route('/search', methods=['GET', 'POST'])
+def search():
+
+    form = SearchForm()
+
+    if form.validate_on_submit:
+        results = form.data['search']
+        results = results.lower()
+        all_fighters = Fighter.query.all()
+        fighters = []
+        for fighter in all_fighters:
+            if results in fighter.name.lower():
+
+                fighters.append({
+                    'id': fighter.id,
+                    'name': fighter.name,
+                    'nickname': fighter.nickname,
+                    'prof_img': fighter.prof_img,
+                    'body_img': fighter.body_img,
+                    'medal': fighter.medal,
+                    'weight': fighter.weight,
+                    'all_win': fighter.all_win,
+                    'all_loss': fighter.all_loss,
+                    'points': fighter.points,
+                    'team_name': fighter.team_name
+                })
+        return {'All_Fighters': fighters}
+    return 'BAD REQ'
+
 @fighter_routes.route('/<int:weight>')
 def get_weight_fighters(weight):
     fighters = Fighter.query.filter(Fighter.weight == weight).order_by(Fighter.name)

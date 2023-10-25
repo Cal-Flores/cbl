@@ -1,6 +1,7 @@
 const LOAD_FIGHTER = 'fighters/LOAD_FIGHTER'
 const LOAD_ALL_FIGHTERS = 'fighters/LOAD_ALL_FIGHTERS'
 const LOAD_FEW_FIGHTERS = 'fighters/LOAD_FEW_FIGHTERS'
+const SEARCH_FIGHTERS = 'fighters/SEARCH_FIGHTERS'
 //###################### ACTION CREATORS #############
 
 const loadOne = (fighter) => {
@@ -20,6 +21,13 @@ const loadAll = (fighters) => {
 const loadFew = (fighters) => {
     return {
         'type': LOAD_FEW_FIGHTERS,
+        fighters
+    }
+}
+
+const fighterSearch = (fighters) => {
+    return {
+        'type': SEARCH_FIGHTERS,
         fighters
     }
 }
@@ -54,6 +62,18 @@ export const getFightersByWeight = (weight) => async dispatch => {
     }
 }
 
+export const createSearch = (obj) => async dispatch => {
+    const response = await fetch(`/api/fighter/search`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(obj)
+    })
+    if (response.ok) {
+        const fighters = await response.json()
+        dispatch(fighterSearch(fighters))
+    }
+}
+
 let initialState = {}
 //######################## Reducer ##########################
 
@@ -69,6 +89,10 @@ const fightersReducer = (state = initialState, action) => {
             return newState
         }
         case LOAD_FEW_FIGHTERS: {
+            newState = { ...action.fighters }
+            return newState
+        }
+        case SEARCH_FIGHTERS: {
             newState = { ...action.fighters }
             return newState
         }

@@ -2,17 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import './allFighters.css';
 import { Link, Redirect, useHistory, useParams } from 'react-router-dom'
-import { getAllFighters, getFightersByWeight } from '../../store/fighters'
+import { createSearch, getAllFighters, getFightersByWeight } from '../../store/fighters'
 
 
 function AllFighters() {
     const dispatch = useDispatch()
     const history = useHistory()
     let allFighters = useSelector(state => state.fighters.All_Fighters)
+    let searchedFighters = useSelector(state => state.fighters)
     let imgFighters = allFighters?.filter(fighter => fighter.prof_img.length > 0)
     let [active, setActive] = useState('all')
+    const [search, setSearch] = useState('')
 
-
+    console.log('hello all', searchedFighters)
     const getAll = async () => {
         dispatch(getAllFighters())
         setActive('all')
@@ -51,6 +53,15 @@ function AllFighters() {
         setActive('285')
     }
 
+    const searcher = (e) => {
+        e.preventDefault()
+        let obj = {
+            search
+        }
+        dispatch(createSearch(obj))
+        setSearch('')
+    }
+
 
     useEffect(() => {
         dispatch(getAllFighters())
@@ -73,6 +84,13 @@ function AllFighters() {
                     <div onClick={getMiddle} className={(active == '185') ? 'activeNow' : 'navnums'}>185</div>
                     <div onClick={getLheavy} className={(active == '205') ? 'activeNow' : 'navnums'}>205</div>
                     <div onClick={getHeavy} className={(active == '285') ? 'activeNow' : 'navnums'}>HWT</div>
+                    <div style={{ width: '2000px', paddingLeft: '40%', paddingRight: '40%' }}>
+                        <form onSubmit={searcher}>
+                            <div>
+                                <input className='search' placeholder='Search Athletes' type='text' value={search} onChange={(e) => setSearch(e.target.value)} required />
+                            </div>
+                        </form>
+                    </div>
                 </div>
                 {imgFighters?.map(fighter => (
                     <div key={fighter?.id} className='allfcard'>
