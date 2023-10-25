@@ -67,6 +67,7 @@ function AllFighters() {
         dispatch(getAllFighters())
     }, [dispatch])
 
+
     return (
 
         <div>
@@ -84,9 +85,10 @@ function AllFighters() {
                     <div onClick={getMiddle} className={(active == '185') ? 'activeNow' : 'navnums'}>185</div>
                     <div onClick={getLheavy} className={(active == '205') ? 'activeNow' : 'navnums'}>205</div>
                     <div onClick={getHeavy} className={(active == '285') ? 'activeNow' : 'navnums'}>HWT</div>
-                    <div style={{ width: '2000px', paddingLeft: '40%', paddingRight: '40%' }}>
+                    <div style={{ width: '2000px', paddingLeft: '40%', paddingRight: '40%', marginBottom: '2%' }}>
                         <form onSubmit={searcher}>
                             <div>
+                                <i style={{ position: 'absolute', marginTop: '.6%', marginLeft: '.8%', color: 'gray', fontSize: '13px' }} class="fa-solid fa-magnifying-glass"></i>
                                 <input className='search' placeholder='Search Athletes' type='text' value={search} onChange={(e) => setSearch(e.target.value)} required />
                             </div>
                         </form>
