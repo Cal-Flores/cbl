@@ -247,18 +247,18 @@ def seed_fighters():
     #fighter_ = Fighter(id=,name='', nickname='', all_win=0, all_loss=0, points=0,prof_img='',body_img='', weight='205', team_name='')
 
     ############################# HEAVY WEIGHT ########################
-    fighter_83 = Fighter(id=83,name='Fedor Emileanako', nickname='', prof_img='',body_img='', weight='285', team_name='Cypress Browns')
-    fighter_84 = Fighter(id=84,name='Mohamed Ali', nickname='', prof_img='',body_img='', weight='285', team_name='Rockwall Vikings')
-    fighter_85 = Fighter(id=85,name='Francis Ngannou', nickname='', prof_img='',body_img='', weight='285', team_name='Wakeland Raiders')
-    fighter_86 = Fighter(id=86,name='Deonte Wilder', nickname='', prof_img='',body_img='', weight='285', team_name='Caprock Rams')
-    fighter_87 = Fighter(id=87,name='Gable Steveson', nickname='', prof_img='',body_img='', weight='285', team_name='Saginaw Seahawks')
-    fighter_88 = Fighter(id=88,name='Amir Aliakbari', nickname='', prof_img='',body_img='', weight='285', team_name='Chisholm Trail Colts')
-    fighter_89 = Fighter(id=89,name='Tom Aspinal', nickname='', prof_img='',body_img='', weight='285', team_name='Frisco Giants')
-    fighter_90 = Fighter(id=90,name='Kenyan Duarte', nickname='', prof_img='',body_img='', weight='285', team_name='Lamar Dolphins')
-    fighter_91 = Fighter(id=91,name='Ciryl Gane', nickname='', prof_img='',body_img='', weight='285', team_name='Colonu Buccaneers')
-    fighter_92 = Fighter(id=92,name='Greg Kerkvliet', nickname='', prof_img='',body_img='', weight='285', team_name='Creekview Cowboys')
-    fighter_93 = Fighter(id=93,name='Sergei Pavlovich', nickname='', prof_img='',body_img='', weight='285', team_name='Wylie Bengals')
-    fighter_94 = Fighter(id=94,name='Mijain Lopez', nickname='', prof_img='../../../images/mijain.png',body_img='', weight='285', team_name='A.M Consolidated Steelers')
+    fighter_83 = Fighter(id=83,name='Fedor Emileanako', nickname='The Last Emperor', prof_img='https://a.espncdn.com/i/headshots/mma/players/full/2335714.png',body_img='../../../images/fedor.png', weight='285', team_name='Cypress Browns')
+    fighter_84 = Fighter(id=84,name='Muhammed Ali', nickname='The Greatest', prof_img='../../../images/ali.png',body_img='../../../images/alibg.png', weight='285', team_name='Rockwall Vikings')
+    fighter_85 = Fighter(id=85,name='Francis Ngannou', nickname='The Predator', prof_img='https://dmxg5wxfqgb4u.cloudfront.net/styles/event_results_athlete_headshot/s3/2021-03/67964%252Fprofile-galery%252Fprofile-picture%252FNGANNOU_FRANCIS_03-27.png?itok=swbBpy9V',body_img='https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-01/NGANNOU_FRANCIS_L_03-27.png?itok=s4MVBS7x', weight='285', team_name='Wakeland Raiders')
+    fighter_86 = Fighter(id=86,name='Deontay Wilder', nickname='The Bronze Bomber', prof_img='https://box.live/wp-content/uploads/2016/08/Deontay_Wilder1.png',body_img='../../../images/wilder.png', weight='285', team_name='Caprock Rams')
+    fighter_87 = Fighter(id=87,name='Gable Steveson', prof_img='https://res.cloudinary.com/usopc-prod/image/upload/ar_1.5,c_fill,g_faces,w_616/q_auto/f_auto/dpr_2.0/c_scale,w_400/v1/NGB%20Wrestling/Athlete%20Profiles/Gable%20Steveson/Gable_Steveson-800x533?_a=BAJFJtWIA', nickname='DAN',body_img='../../../images/gable.png', weight='285', team_name='Saginaw Seahawks')
+    fighter_88 = Fighter(id=88,name='Amir Aliakbari', nickname='', prof_img='../../../images/akbaripro.png',body_img='../../../images/akbari.png', weight='285', team_name='Chisholm Trail Colts')
+    fighter_89 = Fighter(id=89,name='Tom Aspinal', nickname='', body_img='https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-07/ASPINALL_TOM_L_07-22.png?itok=K7JDkSGN',prof_img='https://dmxg5wxfqgb4u.cloudfront.net/styles/event_results_athlete_headshot/s3/2023-07/ASPINALL_TOM_07-22.png?itok=NPhrGnyp', weight='285', team_name='Frisco Giants')
+    fighter_90 = Fighter(id=90,name='Kenyan Duarte', nickname='', prof_img='../../../images/duarte.png',body_img='../../../images/duartebg.png', weight='285', team_name='Lamar Dolphins')
+    fighter_91 = Fighter(id=91,name='Ciryl Gane', nickname='BON GAMIN', prof_img='https://dmxg5wxfqgb4u.cloudfront.net/styles/event_results_athlete_headshot/s3/2023-08/GANE_CIRYL_09-02.png?itok=c0Uvcues',body_img='https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-08/GANE_CIRYL_L_09-02.png?itok=OAX3zj-j', weight='285', team_name='Colonu Buccaneers')
+    fighter_92 = Fighter(id=92,name='Greg Kerkvliet', nickname='', prof_img='../../../images/kerk.png',body_img='../../../images/kerkbg.png', weight='285', team_name='Creekview Cowboys')
+    fighter_93 = Fighter(id=93,name='Sergei Pavlovich', nickname='', prof_img='https://dmxg5wxfqgb4u.cloudfront.net/styles/event_results_athlete_headshot/s3/2023-04/PAVLOVICH_SERGEI_04-22.png?itok=N8pVamED',body_img='https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-04/PAVLOVICH_SERGEI_L_04-22.png?itok=Upm4A13Z', weight='285', team_name='Wylie Bengals')
+    fighter_94 = Fighter(id=94,name='Mijain Lopez', nickname='', prof_img='../../../images/mijain.png',body_img='../../../images/mijainbg.png', weight='285', team_name='A.M Consolidated Steelers')
 
 
 

@@ -5,6 +5,7 @@ import './singleFighter.css';
 import { getOneFighter } from '../../store/fighters';
 
 
+
 function SingleFighter() {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -52,14 +53,14 @@ function SingleFighter() {
     if (medals) {
         allMedals = Object?.values(medals)
     }
-    console.log('heres my fighter', fighter)
-    console.log('here are his matches', tourMatches)
-    console.log('here are his medals', allMedals)
-    console.log('here is the team info', team)
-    console.log('here is his last opp', opp)
-    console.log('last match', lastMatch)
-    console.log("here are the matches in array", tourMatchesArr)
-    console.log('current season matches are here', seasonArr)
+    // console.log('heres my fighter', fighter)
+    // console.log('here are his matches', tourMatches)
+    // console.log('here are his medals', allMedals)
+    // console.log('here is the team info', team)
+    // console.log('here is his last opp', opp)
+    // console.log('last match', lastMatch)
+    // console.log("here are the matches in array", tourMatchesArr)
+    // console.log('current season matches are here', seasonArr)
 
     useEffect(() => {
         if (fighterId) dispatch(getOneFighter(fighterId))
@@ -144,6 +145,7 @@ function SingleFighter() {
                         <div className='fightweight'>{fighter?.weight}lb Division</div>
                         <div className='fightweight'>Tournament Record: {tourWins} - {tourLoss}</div>
                         <div className='fightweight'>All-Time Record: 28 - 4</div>
+                        <div className='fightweight'>View Acomplishments</div>
                     </div>
                     <div className='reccont'>
                         <div className='wintxt'>

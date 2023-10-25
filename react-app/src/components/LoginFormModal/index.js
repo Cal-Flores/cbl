@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
-import { useModal } from "../../context/Modal";
+// import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
 
 function LoginFormModal() {
@@ -9,7 +9,7 @@ function LoginFormModal() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  const { closeModal } = useModal();
+  // const { closeModal } = useModal();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,13 +17,13 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
-        closeModal()
+      // closeModal()
     }
   };
 
   return (
     <>
-      <h1>Log In</h1>
+      {/* <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
@@ -49,7 +49,7 @@ function LoginFormModal() {
           />
         </label>
         <button type="submit">Log In</button>
-      </form>
+      </form> */}
     </>
   );
 }

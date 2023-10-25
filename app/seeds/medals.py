@@ -2,6 +2,7 @@ from app.models import db, Medal, environment, SCHEMA
 from sqlalchemy.sql import text
 
 def seed_medals():
+    #################################2016#########################################
     medal_1 = Medal(id=1,fighter='Demetrious Johnson',place='Champion',year='2016')
     medal_2 = Medal(id=2,fighter='John Lineker',place='Runner-Up',year='2016')
     medal_3 = Medal(id=3,fighter='Kyoji Horiguchi',place='3rd',year='2016')
@@ -60,6 +61,8 @@ def seed_medals():
     medal_56 = Medal(id=56,fighter='Junior Dos Santos',place='Runner-Up',year='2016')
     medal_57 = Medal(id=57,fighter='Shane Carwin',place='5th',year='2016')
     medal_58 = Medal(id=58,fighter='Frank Mir',place='6th',year='2016')
+
+
     medal_59 = Medal(id=59,fighter='Demetrious Johnson',place='Champion',year='2017')
     medal_60 = Medal(id=60,fighter='Demetrious Johnson',place='Runner-Up',year='2018')
     medal_61 = Medal(id=61,fighter='Demetrious Johnson',place='Runner-Up',year='2019')

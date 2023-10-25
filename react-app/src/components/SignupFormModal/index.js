@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useModal } from "../../context/Modal";
+// import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
 import "./SignupForm.css";
 
@@ -11,7 +11,7 @@ function SignupFormModal() {
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState([]);
-	const { closeModal } = useModal();
+	// const { closeModal } = useModal();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -20,7 +20,7 @@ function SignupFormModal() {
 			if (data) {
 				setErrors(data);
 			} else {
-				closeModal();
+				// closeModal();
 			}
 		} else {
 			setErrors([
@@ -32,7 +32,7 @@ function SignupFormModal() {
 	return (
 		<>
 			<h1>Sign Up</h1>
-			<form onSubmit={handleSubmit}>
+			{/* <form onSubmit={handleSubmit}>
 				<ul>
 					{errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
@@ -75,7 +75,7 @@ function SignupFormModal() {
 					/>
 				</label>
 				<button type="submit">Sign Up</button>
-			</form>
+			</form> */}
 		</>
 	);
 }
