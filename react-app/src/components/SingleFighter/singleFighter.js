@@ -141,7 +141,7 @@ function SingleFighter() {
                             }
                         </div>
                         <div className='fightname'>{fighter?.name.toUpperCase()}</div>
-                        <div className='fightweight' style={{ marginBottom: '0%' }}>{fighter?.weight}lb Division</div>
+                        <div className='fightweight'>{fighter?.weight}lb Division</div>
                         <div className='fightweight'>Tournament Record: {tourWins} - {tourLoss}</div>
                         <div className='fightweight'>All-Time Record: 28 - 4</div>
                     </div>

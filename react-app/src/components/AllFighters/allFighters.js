@@ -11,7 +11,6 @@ function AllFighters() {
     let allFighters = useSelector(state => state.fighters.All_Fighters)
     let imgFighters = allFighters?.filter(fighter => fighter.prof_img.length > 0)
     let [active, setActive] = useState('all')
-    console.log('active rn', active)
 
 
     const getAll = async () => {
@@ -63,7 +62,7 @@ function AllFighters() {
             <style>
                 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Molengo&family=Rye&display=swap');
             </style>
-            <div id='allfcont' >
+            <div id='allfcont'>
                 <div className='allfnav'>
                     <div onClick={getAll} className={(active == 'all') ? 'activeNow' : 'navnums'}>All</div>
                     <div onClick={getFly} className={(active == '125') ? 'activeNow' : 'navnums'}>125</div>
@@ -76,7 +75,7 @@ function AllFighters() {
                     <div onClick={getHeavy} className={(active == '285') ? 'activeNow' : 'navnums'}>HWT</div>
                 </div>
                 {imgFighters?.map(fighter => (
-                    <div className='allfcard'>
+                    <div key={fighter?.id} className='allfcard'>
                         <div className='child' style={{ height: '250px', width: '270px', zIndex: '2', position: 'absolute', backgroundColor: 'rgb(227, 224, 224)' }}>
                             <img src={fighter?.prof_img} style={{ height: '115px', width: '184px', borderBottom: '1px solid gray', }} />
                             {fighter?.nickname &&
@@ -84,8 +83,7 @@ function AllFighters() {
                             }
                             <div className='allfname'>{fighter?.name.toUpperCase()}</div>
                             <div >{fighter?.weight}lb Division</div>
-                            <div>12 - 5</div>
-                            <div className='allfteam'>{fighter?.team_name.split(' ')[fighter?.team_name.split(' ').length - 1]}</div>
+                            <div style={{ fontSize: '20px', fontWeight: 'bold' }}>12 - 5</div>
                         </div>
                         <div class='hoverbox' style={{ height: '250px', width: '270px', zIndex: '1' }}>
                             <div className='hboxleft'>
@@ -93,9 +91,9 @@ function AllFighters() {
                                     <div className='allfnick'>"{fighter?.nickname.toUpperCase()}"</div>
                                 }
                                 <div className='allfname'>{fighter?.name}</div>
-                                <div className='allfteam'>{fighter?.team_name.split(' ')[fighter?.team_name.split(' ').length - 1]}</div>
+                                <div className='allfname'>{fighter?.team_name.split(' ')[fighter?.team_name.split(' ').length - 1]}</div>
                                 <div className='allfteam'>{fighter?.points} Pts</div>
-                                <button className='profbtn'>FIGHTER PROFILE</button>
+                                <button onClick={(e) => history.push(`/fighter/${fighter?.id}`)} className='profbtn'>FIGHTER PROFILE</button>
                             </div>
                             <div>
                                 <img style={{ height: '175px', width: '115px', zIndex: '-1', paddingTop: '30px' }} src={fighter?.body_img} />

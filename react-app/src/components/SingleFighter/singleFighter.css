@@ -40,6 +40,7 @@ body {
     align-items: flex-start;
     height: 300px;
     margin-top: 7%;
+    margin-bottom: 7%;
 }
 
 #left {
@@ -83,7 +84,7 @@ body {
 
 .fightname {
     color: whitesmoke;
-    font-size: 40px;
+    font-size: 50px;
     font-weight: bolder;
     margin-bottom: 7%;
 }
@@ -92,7 +93,7 @@ body {
     color: whitesmoke;
     font-size: 18px;
     font-weight: bolder;
-    margin-bottom: 1%;
+    margin-bottom: 2%;
 }
 
 .recwins {
