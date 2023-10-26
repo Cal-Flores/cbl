@@ -17,6 +17,9 @@ function Navigation({ isLoaded }) {
 				<NavLink className='navlinks' exact to="/fighters">Fighters</NavLink>
 			</div>
 			<div >
+				<NavLink className='navlinks' exact to="/draft">Draft Class</NavLink>
+			</div>
+			<div >
 				<NavLink className='navlinks' exact to="/players">Tournaments</NavLink>
 			</div>
 			<div >

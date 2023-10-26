@@ -1,0 +1,40 @@
+#facont {
+    margin-left: 3%;
+    margin-right: 3%;
+    width: 94%;
+    margin-bottom: 5%;
+}
+
+.freecont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.allfacard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 2%;
+    height: 260px;
+    width: 225px;
+    text-align: center;
+    border: 1px solid rgb(147, 146, 146);
+}
+
+.allfaname {
+    font-size: 18px;
+    font-weight: bolder;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.faheader {
+    text-align: center;
+    margin-top: 100px;
+    color: rgb(93, 92, 92);
+    text-decoration: 2px underline;
+}
