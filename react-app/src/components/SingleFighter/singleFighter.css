@@ -41,7 +41,7 @@ body {
     align-items: flex-start;
     height: 300px;
     margin-top: 7%;
-    margin-bottom: 7%;
+    margin-bottom: 9%;
 }
 
 #left {
@@ -97,6 +97,27 @@ body {
     margin-bottom: 2%;
 }
 
+.fightweek {
+    color: whitesmoke;
+    font-size: 28px;
+    font-weight: bolder;
+    margin-bottom: 2%;
+}
+
+.boxtag {
+    color: whitesmoke;
+    font-size: 18px;
+    font-weight: bolder;
+    margin-bottom: 2%;
+}
+
+.boxtag:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: rgb(69, 69, 69);
+
+}
+
 .recwins {
     color: whitesmoke;
     font-size: 60px;
@@ -146,6 +167,7 @@ body {
     margin-bottom: 3%;
 }
 
+
 .lastopp {
     height: 200px;
     margin-top: 5%;
@@ -159,14 +181,34 @@ body {
     justify-content: space-between;
 }
 
+.medaldiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid white;
+    width: 350px;
+    height: 152px;
+    overflow: scroll;
+    padding-top: 5%;
+    padding-left: 5%;
+}
+
+.medalstxt {
+    color: rgb(194, 193, 193);
+    font-size: 22px;
+    margin-bottom: 2%;
+}
+
 .oppdiv2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding-bottom: 15px;
-    padding-top: 5px;
+    padding-top: 15px;
     background-color: rgb(59, 58, 58);
+    height: 30px;
 }
 
 .flogoteam {
@@ -211,7 +253,7 @@ body {
     width: 100%;
     padding-top: 5px;
     padding-bottom: 5px;
-    background-color: rgba(1, 63, 7, 0.8);
+    background-color: rgb(25, 25, 25);
 }
 
 .frloss {
@@ -221,7 +263,7 @@ body {
     width: 100%;
     padding-top: 5px;
     padding-bottom: 5px;
-    background-color: rgba(88, 1, 1, 0.8);
+    background-color: rgb(25, 25, 25);
 }
 
 .frwinW {

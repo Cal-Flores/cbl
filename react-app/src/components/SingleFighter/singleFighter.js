@@ -12,7 +12,9 @@ function SingleFighter() {
     const routeParams = useParams();
     const fighterId = routeParams.fightId
     const [seasonM, setseasonM] = useState(true)
+    const [box, setBox] = useState('season')
 
+    //############### usestates for switching the box on the right ######################
     const viewSeason = () => {
         setseasonM(false)
     }
@@ -20,25 +22,47 @@ function SingleFighter() {
         setseasonM(true)
     }
 
+    const viewLastSeason = () => {
+        setBox('season')
+    }
+    const viewLast = () => {
+        setBox('last')
+    }
+
+    const viewMedal = () => {
+        setBox('medal')
+    }
+    //####################### GRABBING RERLEVANT INFO FROM BACKEND ######################
     let fighter = useSelector(state => state.fighters.Fighter)
     let tourMatches = useSelector(state => state.fighters.Tour_Fights)
     let medals = useSelector(state => state.fighters.Medals)
     let team = useSelector(state => state.fighters.Team)
-    let opp = useSelector(state => state.fighters.last_opp)
     let seasonMatches = useSelector(state => state.fighters.Season_Fights)
-    let tourMatchesArr;
-    let seasonArr;
-    if (seasonMatches) seasonArr = Object.values(seasonMatches)
+
+
+    let opp = useSelector(state => state.fighters.last_opp) //// GRABS LAST TOUR OPPONENT
+    let seasonOpp = useSelector(state => state.fighters.last_season) //////  //// GRABS LAST SEASON OPPONENT
+    let rightBox; // This variable is the div that changes based on state
+    let tourMatchesArr; // all tournamnet matches are held here
+    let seasonArr; // all season matches are held here
+    let lastMatch; // this holds all the match deatails for TOURNAMNET
+    let lastSeason; // this holds all the match details for SEASON
+    let tourWins; // displays the total tour wins on the left side
+    let tourLoss; // displays the total tour loss on the left side
+    let allMedals; // holds all fighters medals
+    let wins = 0; // for the display below grabs all tour wins
+    let loss = 0; // for the display below grabs all tour losses
+    let week = 0; // for the display below displays the week
+    let season_wins = 0; // for the display below grabs all season wins
+    let season_loss = 0; // for the display below grabs all season loss
+
+    //########################## CHANGES THE OBJ TO ARR FOR TOUR AND SEASON MATCHES AND GRABS LAST MATCH ################
+    if (seasonMatches) {
+        seasonArr = Object.values(seasonMatches)
+        lastSeason = seasonArr[seasonArr.length - 1]
+    }
     if (tourMatches) tourMatchesArr = Object.values(tourMatches)
-    let tourWins;
-    let tourLoss;
-    let allMedals;
-    let lastMatch;
-    let wins = 0;
-    let loss = 0;
-    let week = 0;
-    let season_wins = 0;
-    let season_loss = 0;
+
     if (tourMatches) {
         let matches = Object?.values(tourMatches)
         let wins = matches.filter(ele => ele.winner == fighter.name)
@@ -49,15 +73,19 @@ function SingleFighter() {
 
         lastMatch = matches[matches.length - 1]
     }
-
+    //######################### GRABS ALL MEDALS FOR OBJ TO ARR ###################################
     if (medals) {
         allMedals = Object?.values(medals)
     }
+
+    //########### console.logs for testing #########################################################
     // console.log('heres my fighter', fighter)
     // console.log('here are his matches', tourMatches)
     // console.log('here are his medals', allMedals)
-    // console.log('here is the team info', team)
-    // console.log('here is his last opp', opp)
+    //console.log('here is the team info', team)
+    //console.log('here is his last opp', opp)
+    console.log('here is his last SEASON opp', seasonOpp)
+    console.log('this is the last season match deatils', lastSeason)
     // console.log('last match', lastMatch)
     // console.log("here are the matches in array", tourMatchesArr)
     // console.log('current season matches are here', seasonArr)
@@ -66,6 +94,7 @@ function SingleFighter() {
         if (fighterId) dispatch(getOneFighter(fighterId))
     }, [dispatch])
 
+    // ############################## conditionally renders the matches below ############################
     let contentDiv;
     if (seasonM == true) {
         contentDiv = (
@@ -127,6 +156,80 @@ function SingleFighter() {
         )
     }
 
+    // ################################### CONDITIONALLY RENDERS THE BOX ON THE RIGHT ######################################
+    if (box == 'last') {
+        rightBox = (
+            <div className='lastopp'>
+                <div className='oppdiv'>
+                    <div onClick={viewLastSeason} className='boxtag'>LAST FIGHT</div>
+                    <div onClick={viewLast} className='boxtag'>LAST TOURNAMENT</div>
+                    <div onClick={viewMedal} className='boxtag'>VIEW MEDALS</div>
+                </div>
+                <div className='oppdiv'>
+                    <img src={fighter?.prof_img} style={{ height: '108px', width: '173px' }} />
+                    {opp?.prof_img &&
+                        <div>
+                            <img src={opp?.prof_img} style={{ height: '108px', width: '173px' }} />
+                        </div>
+                    }
+                    {!opp?.prof_img &&
+                        <div>
+                            <img src={'../../../images/blank.png'} style={{ height: '108px', width: '173px' }} />
+                        </div>
+                    }
+                </div>
+                <div className='oppdiv2'>
+                    <div className='fightweight'>{lastMatch?.year} NCAA Championship</div>
+                    <div className='fightweight'>{lastMatch?.match}</div>
+                </div>
+            </div>
+        )
+    } else if (box == 'medal') {
+        rightBox = (
+            <div className='lastopp'>
+                <div className='oppdiv'>
+                    <div onClick={viewLastSeason} className='boxtag'>LAST FIGHT</div>
+                    <div onClick={viewLast} className='boxtag'>LAST TOURNAMENT</div>
+                    <div onClick={viewMedal} className='boxtag'>VIEW MEDALS</div>
+                </div>
+                <div className='medaldiv'>
+                    {allMedals?.map(medal => (
+                        <div className='medalstxt' key={medal?.id}>{medal?.place} at {medal?.year} NCAA Championship</div>
+                    ))}
+                    {allMedals.length < 1 &&
+                        <div className='medalstxt'>No Medals</div>
+                    }
+                </div>
+            </div>
+        )
+    } else {
+        rightBox = (
+            <div className='lastopp'>
+                <div className='oppdiv'>
+                    <div onClick={viewLastSeason} className='boxtag'>LAST FIGHT</div>
+                    <div onClick={viewLast} className='boxtag'>LAST TOURNAMENT</div>
+                    <div onClick={viewMedal} className='boxtag'>VIEW MEDALS</div>
+                </div>
+                <div className='oppdiv'>
+                    <img src={fighter?.prof_img} style={{ height: '108px', width: '173px' }} />
+                    {seasonOpp?.prof_img &&
+                        <div>
+                            <img src={seasonOpp?.prof_img} style={{ height: '108px', width: '173px' }} />
+                        </div>
+                    }
+                    {!seasonOpp?.prof_img &&
+                        <div>
+                            <img src={'../../../images/blank.png'} style={{ height: '108px', width: '173px' }} />
+                        </div>
+                    }
+                </div>
+                <div className='oppdiv2'>
+                    <div className='fightweek'>WEEK {seasonArr?.length}</div>
+                </div>
+            </div>
+        )
+    }
+    //#################################### END ################################################
     return (
         <div className='ultdiv'>
             <style>
@@ -145,7 +248,6 @@ function SingleFighter() {
                         <div className='fightweight'>{fighter?.weight}lb Division</div>
                         <div className='fightweight'>Tournament Record: {tourWins} - {tourLoss}</div>
                         <div className='fightweight'>All-Time Record: 28 - 4</div>
-                        <div className='fightweight'>View Acomplishments</div>
                     </div>
                     <div className='reccont'>
                         <div className='wintxt'>
@@ -166,33 +268,8 @@ function SingleFighter() {
                 </div>
                 <div id='fighterteam'>
                     <img className='flogoteam' style={{ width: '120px', height: '120px' }} src={team?.logo_img} />
-                    <div className='lastopp'>
-                        <div className='oppdiv'>
-                            <div className='fightweight'>LAST FIGHT</div>
-                            <div className='fightweight'>UFC</div>
-                        </div>
-                        <div className='oppdiv'>
-                            <img src={fighter?.prof_img} style={{ height: '108px', width: '173px' }} />
-                            {opp?.prof_img &&
-                                <div>
-                                    <img src={opp?.prof_img} style={{ height: '108px', width: '173px' }} />
-                                </div>
-                            }
-                            {!opp?.prof_img &&
-                                <div>
-                                    <img src={'../../../images/blank.png'} style={{ height: '108px', width: '173px' }} />
-                                </div>
-                            }
-                        </div>
-                        <div className='oppdiv2'>
-                            <div className='fightweight'>{lastMatch?.match}</div>
-                            <div className='fightweight'>{lastMatch?.year} NCAA Championship</div>
-                        </div>
-                    </div>
+                    {rightBox}
                     <div>
-                        {/* {allMedals?.map(medal => (
-                            <div className='fighterhistory' key={medal?.id}>{medal?.place} at {medal?.year} NCAA Championship</div>
-                        ))} */}
                         {seasonM == false && <button className='seasonbtn' onClick={viewTourn}>View Season Fights</button>}
                         {seasonM == true && <button className='seasonbtn' onClick={viewSeason}>View Tournament Fights</button>}
                     </div>

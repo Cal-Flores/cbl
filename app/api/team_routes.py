@@ -24,6 +24,9 @@ def get_one_team(id):
     fly = Fighter.query.filter(and_(Fighter.team_name == curr_team.name, Fighter.weight == '125')).first()
     if fly != None:
         fly = fly.to_dict()
+        fly_medals = Medal.query.filter(Medal.fighter == fly['name']).all()
+        fly_medal = len(fly_medals)
+        # print('MIGHTYYYYYYYYYYYYYYYY MOUSE', fly_medals)
     bantam = Fighter.query.filter(and_(Fighter.team_name == curr_team.name, Fighter.weight == '133')).first()
     if bantam != None:
         bantam = bantam.to_dict()
@@ -63,5 +66,6 @@ def get_one_team(id):
         'light_heavy': light_heavy,
         'heavy': heavy,
         'text': curr_team.heavy,
-        'border': curr_team.fly
+        'border': curr_team.fly,
+        'fly_medals': fly_medal
     }}

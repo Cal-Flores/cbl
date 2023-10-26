@@ -72,6 +72,18 @@ def get_one_fighter(id):
             last_opp = Fighter.query.filter(Fighter.name == last_match.winner).first()
             last_opp = last_opp.to_dict()
 
+    last_season = {'winner': None, 'loser': None}
+    last_smatch = None
+    if len(season_fights) > 0:
+        last_smatch = season_fights[len(season_fights) -1]
+        if last_smatch.winner == fighter.name:
+            last_season = Fighter.query.filter(Fighter.name == last_smatch.loser).first()
+            last_season = last_season.to_dict()
+        else:
+            last_season = Fighter.query.filter(Fighter.name == last_smatch.winner).first()
+            last_season = last_season.to_dict()
+
+
 
     dict_fights = {}
     dict_medals = {}
@@ -95,5 +107,6 @@ def get_one_fighter(id):
             'Season_Fights': dict_season_fights,
             'Medals': dict_medals,
             'Team': team,
-            'last_opp': last_opp
+            'last_opp': last_opp,
+            'last_season': last_season
             }

@@ -23,7 +23,6 @@ function SingleTeam() {
     return (
         <div>
             <h1 className='teamname'><img src={team?.text} style={{ width: '300px', height: '100px' }} /></h1>
-
             <div id='fighterscont'>
                 {fighters?.map(fighter => (
                     <div key={fighter?.id} id='teamssCard' onClick={(e) => history.push(`/fighter/${fighter.id}`)} style={{ backgroundImage: "url(" + `${team?.bg}` + ")", border: `5px solid ${team?.border}` }}>
@@ -39,9 +38,9 @@ function SingleTeam() {
                                 <div className='fighterstat'>16-0</div>
                                 <div className='fighterstat'>96 pts</div>
                             </div>
-                            {fighter?.medal > 0 &&
+                            {/* {fighter?.medal > 0 &&
                                 <div className='fighterstat'>{fighter?.medal}x All American</div>
-                            }
+                            } */}
                         </div>
                     </div>
                 ))}
