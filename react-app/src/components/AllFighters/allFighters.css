@@ -48,14 +48,14 @@ input {
 }
 
 .navnums {
-    font-size: 40px;
+    font-size: 45px;
     font-weight: bolder;
     padding-bottom: 2%;
     color: gray;
 }
 
 .activeNow {
-    font-size: 40px;
+    font-size: 45px;
     font-weight: bolder;
     padding-bottom: 2%;
     color: rgb(43, 42, 42);

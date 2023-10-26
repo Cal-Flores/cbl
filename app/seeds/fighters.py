@@ -93,7 +93,7 @@ def seed_fighters():
     fighter_279 = Fighter(id=279,name='Andre Fili', nickname='Touchy',wins=0,losses=0, all_win=0, all_loss=0, points=0,prof_img='',body_img='', weight='141', team_name='Humble Lions')
     fighter_280 = Fighter(id=280,name='Eddie Alvarez', nickname='The Underground King',wins=0,losses=0, all_win=0, all_loss=0, points=0,prof_img='',body_img='', weight='141', team_name='Lamar Dolphins')
     fighter_281 = Fighter(id=281,name='Evan Henderson', nickname='',wins=9,losses=7, all_win=0, all_loss=0, points=0,prof_img='',body_img='', weight='141', team_name='Boswell Jaguars')
-    fighter_282 = Fighter(id=282,name='Josh Emmett', nickname='CC0',wins=8,losses=8, all_win=0, all_loss=0, points=0,prof_img='',body_img='', weight='141', team_name='')
+    fighter_282 = Fighter(id=282,name='Josh Emmett', nickname='CC0',wins=8,losses=8, all_win=0, all_loss=0, points=0,prof_img='',body_img='', weight='141', team_name='Nazareth Chargers')
     fighter_283 = Fighter(id=283,name='Song Yadong', nickname='Kung Fu Kid',wins=7,losses=9, all_win=0, all_loss=0, points=0,prof_img='',body_img='', weight='141', team_name='Seguin Cardinals')
     fighter_284 = Fighter(id=284,name='Junichiro Hoi', nickname='',wins=7,losses=9, all_win=0, all_loss=0, points=0,prof_img='',body_img='', weight='141', team_name='College Station Jets')
     fighter_285 = Fighter(id=285,name='Austin Gomez', nickname='',wins=7,losses=9, all_win=7, all_loss=9, points=0,prof_img='',body_img='', weight='141', team_name='')
@@ -388,7 +388,8 @@ def seed_fighters():
     fighter_219, fighter_220, fighter_221, fighter_222, fighter_223, fighter_224, fighter_225, fighter_226, fighter_227, fighter_228, fighter_229, fighter_230, fighter_231, fighter_232, fighter_233, fighter_234, fighter_235, fighter_236, fighter_237, fighter_238, fighter_239, fighter_240,
     fighter_241, fighter_242, fighter_243, fighter_244, fighter_245,  fighter_245, fighter_246, fighter_247, fighter_248, fighter_249, fighter_266,
     fighter_250, fighter_251, fighter_252, fighter_253, fighter_254,fighter_255, fighter_256, fighter_257, fighter_258, fighter_259,fighter_260, fighter_261, fighter_262, fighter_263, fighter_264,fighter_265, fighter_267,
-    fighter_268
+    fighter_268,fighter_268, fighter_269, fighter_270, fighter_271, fighter_272, fighter_273, fighter_274, fighter_275, fighter_276, fighter_277, fighter_278, fighter_279, fighter_280, fighter_281, fighter_282, fighter_283, fighter_284, fighter_285, fighter_286, fighter_287, fighter_288, fighter_289, fighter_290, fighter_291, fighter_292, fighter_293, fighter_294, fighter_295, fighter_296, fighter_297, fighter_298, fighter_299, fighter_300, fighter_301, fighter_302, fighter_303, fighter_304, fighter_305, fighter_306, fighter_307, fighter_308, fighter_309, fighter_310, fighter_311, fighter_312, fighter_313, fighter_314, fighter_315, fighter_316, fighter_317, fighter_318, fighter_319, fighter_320, fighter_321, fighter_322, fighter_323, fighter_324, fighter_325, fighter_326, fighter_327, fighter_328, fighter_329, fighter_330
+
 ]
 
 

@@ -28,6 +28,10 @@ function AllFighters() {
         dispatch(getFightersByWeight(133))
         setActive('133')
     }
+    const getPhantam = async () => {
+        dispatch(getFightersByWeight(141))
+        setActive('141')
+    }
     const getFeather = async () => {
         dispatch(getFightersByWeight(149))
         setActive('149')
@@ -35,6 +39,10 @@ function AllFighters() {
     const getLight = async () => {
         dispatch(getFightersByWeight(157))
         setActive('157')
+    }
+    const getCruiser = async () => {
+        dispatch(getFightersByWeight(165))
+        setActive('165')
     }
     const getWelter = async () => {
         dispatch(getFightersByWeight(174))
@@ -79,8 +87,10 @@ function AllFighters() {
                     <div onClick={getAll} className={(active == 'all') ? 'activeNow' : 'navnums'}>All</div>
                     <div onClick={getFly} className={(active == '125') ? 'activeNow' : 'navnums'}>125</div>
                     <div onClick={getBantam} className={(active == '133') ? 'activeNow' : 'navnums'}>133</div>
+                    <div onClick={getPhantam} className={(active == '141') ? 'activeNow' : 'navnums'}>141</div>
                     <div onClick={getFeather} className={(active == '149') ? 'activeNow' : 'navnums'}>149</div>
                     <div onClick={getLight} className={(active == '157') ? 'activeNow' : 'navnums'}>157</div>
+                    <div onClick={getCruiser} className={(active == '165') ? 'activeNow' : 'navnums'}>165</div>
                     <div onClick={getWelter} className={(active == '174') ? 'activeNow' : 'navnums'}>174</div>
                     <div onClick={getMiddle} className={(active == '185') ? 'activeNow' : 'navnums'}>185</div>
                     <div onClick={getLheavy} className={(active == '205') ? 'activeNow' : 'navnums'}>205</div>
@@ -94,10 +104,10 @@ function AllFighters() {
                         </form>
                     </div>
                 </div>
-                {imgFighters?.map(fighter => (
+                {allFighters?.map(fighter => (
                     <div key={fighter?.id} className='allfcard'>
                         <div className='child' style={{ height: '250px', width: '270px', zIndex: '2', position: 'absolute', backgroundColor: 'rgb(227, 224, 224)' }}>
-                            <img src={fighter?.prof_img} style={{ height: '115px', width: '184px', borderBottom: '1px solid gray', }} />
+                            <img src={fighter?.prof_img} style={{ height: '115px', width: '184px', borderBottom: '1px solid gray', }} onError={(e) => { e.target.src = '../../../images/blank.png' }} />
                             {fighter?.nickname &&
                                 <div className='allfnick'>"{fighter?.nickname.toUpperCase()}"</div>
                             }

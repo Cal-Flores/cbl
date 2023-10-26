@@ -61,7 +61,7 @@ def seed_medals():
     medal_56 = Medal(id=56,fighter='Junior Dos Santos',place='Runner-Up',year='2016')
     medal_57 = Medal(id=57,fighter='Shane Carwin',place='5th',year='2016')
     medal_58 = Medal(id=58,fighter='Frank Mir',place='6th',year='2016')
-    #################################2016#########################################
+    #################################2017#########################################
     medal_59 = Medal(id=59,fighter='Demetrious Johnson',place='Champion',year='2017')
     medal_60 = Medal(id=60,fighter='Henry Cejudo',place='Runner-Up',year='2017')
     medal_61 = Medal(id=61,fighter='Joseph Benavidez',place='3rd',year='2017')
@@ -94,7 +94,7 @@ def seed_medals():
     medal_88 = Medal(id=88,fighter='Benson Henderson',place='6th',year='2017')
     medal_89 = Medal(id=89,fighter='Donald Cerrone',place='7th',year='2017')
     medal_90 = Medal(id=90,fighter='Dustin Poirier',place='8th',year='2017')
-    medal_91 = Medal(id=91,fighter='Stephan Thompson',place='Champion',year='2017')
+    medal_91 = Medal(id=91,fighter='Stephen Thompson',place='Champion',year='2017')
     medal_92 = Medal(id=92,fighter='Robbie Lawler',place='Runner-Up',year='2017')
     medal_93 = Medal(id=93,fighter='Rory Macdonald',place='3rd',year='2017')
     medal_94 = Medal(id=94,fighter='Georges St.Pieree',place='4th',year='2017')
