@@ -21,7 +21,7 @@ function FreeAgents() {
             <h1 className='faheader'>FREE AGENTS</h1>
             <div className='freecont'>
                 {freeAgents?.map(fighter => (
-                    <div key={fighter?.id} className='allfacard'>
+                    <div onClick={(e) => history.push(`/fighter/${fighter?.id}`)} key={fighter?.id} className='allfacard'>
                         <div className='child'>
                             <img src={fighter?.prof_img} style={{ height: '115px', width: '184px', borderBottom: '1px solid gray', marginBottom: '5%' }} />
                             {fighter?.nickname &&

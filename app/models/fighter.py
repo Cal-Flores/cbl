@@ -16,6 +16,8 @@ class Fighter(db.Model, UserMixin):
     medal = db.Column(db.String)
     weight = db.Column(db.String)
     team_name = db.Column(db.String)
+    wins = db.Column(db.Integer)
+    losses = db.Column(db.Integer)
     all_win = db.Column(db.Integer)
     all_loss = db.Column(db.Integer)
     points = db.Column(db.Integer)
@@ -29,6 +31,8 @@ class Fighter(db.Model, UserMixin):
             'body_img': self.body_img,
             'medal': self.medal,
             'weight': self.weight,
+            'wins': self.all_win,
+            'losses': self.all_loss,
             'all_win': self.all_win,
             'all_loss': self.all_loss,
             'points': self.points,

@@ -247,18 +247,18 @@ function SingleFighter() {
                         <div className='fightname'>{fighter?.name.toUpperCase()}</div>
                         <div className='fightweight'>{fighter?.weight}lb Division</div>
                         <div className='fightweight'>Tournament Record: {tourWins} - {tourLoss}</div>
-                        <div className='fightweight'>All-Time Record: 28 - 4</div>
+                        <div className='fightweight'>All-Time Record: {fighter?.all_win} - {fighter?.all_loss}</div>
                     </div>
                     <div className='reccont'>
                         <div className='wintxt'>
-                            <div className='recwins'>{fighter?.all_win}</div>
+                            <div className='recwins'>{fighter?.wins}</div>
                             <div>Wins</div>
                         </div>
                         <div className='line'>
 
                         </div>
                         <div className='wintxt'>
-                            <div className='recloss'>{fighter?.all_loss}</div>
+                            <div className='recloss'>{fighter?.losses}</div>
                             <div>Losses</div>
                         </div>
                     </div>

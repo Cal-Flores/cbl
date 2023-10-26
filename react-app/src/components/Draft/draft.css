@@ -25,6 +25,11 @@
     border: 1px solid rgb(147, 146, 146);
 }
 
+.allfacard:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    cursor: pointer;
+}
+
 .allfaname {
     font-size: 18px;
     font-weight: bolder;

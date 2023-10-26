@@ -41,6 +41,8 @@ def upgrade():
     sa.Column('weight', sa.String()),
     sa.Column('medal', sa.String()),
     sa.Column('team_name', sa.String()),
+    sa.Column('wins', sa.Integer()),
+    sa.Column('losses', sa.Integer()),
     sa.Column('all_win', sa.Integer()),
     sa.Column('all_loss', sa.Integer()),
     sa.Column('points', sa.Integer()),

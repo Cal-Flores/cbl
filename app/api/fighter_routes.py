@@ -30,6 +30,8 @@ def search():
                     'body_img': fighter.body_img,
                     'medal': fighter.medal,
                     'weight': fighter.weight,
+                    'wins': fighter.wins,
+                    'losses': fighter.losses,
                     'all_win': fighter.all_win,
                     'all_loss': fighter.all_loss,
                     'points': fighter.points,

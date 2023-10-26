@@ -13,8 +13,8 @@ function SingleTeam() {
 
     let team = useSelector(state => state?.teams?.Team)
     let fighters = []
-    fighters.push(team?.fly, team?.bantam, team?.feather, team?.light, team?.welter, team?.middle, team?.light_heavy, team?.heavy)
-
+    fighters.push(team?.fly, team?.bantam, team?.phantam, team?.feather, team?.light, team?.cruiser, team?.welter, team?.middle, team?.light_heavy, team?.heavy)
+    console.log(fighters)
 
     useEffect(() => {
         if (teamId) dispatch(getOneTeam(teamId))
@@ -31,12 +31,13 @@ function SingleTeam() {
                         </div>
                         <div className='fstat'>
                             <div className='fimg'>
-                                <img src={fighter?.prof_img} style={{ height: '135px', width: '217px', marginBottom: '5%' }} />
+                                <img src={fighter?.prof_img} style={{ height: '135px', width: '217px', marginBottom: '5%' }} onError={(e) => { e.target.src = '../../../images/blank.png' }} />
                                 <div className='fightername'>{fighter?.name}</div>
                             </div>
                             <div className='finfo'>
+                                {/* <div className='fighterstat'>{fighter?.wins}-{fighter.losses}</div> */}
                                 <div className='fighterstat'>16-0</div>
-                                <div className='fighterstat'>96 pts</div>
+                                <div className='fighterstat'>{fighter?.points} pts</div>
                             </div>
                             {/* {fighter?.medal > 0 &&
                                 <div className='fighterstat'>{fighter?.medal}x All American</div>
