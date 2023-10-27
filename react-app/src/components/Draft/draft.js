@@ -21,7 +21,11 @@ function FreeAgents() {
 
     // function created copy and paste
     const openCustomModal = () => {
-        setModalContent(<DraftForm />);
+        setModalContent(
+            <DraftForm
+                closeModal={() => setModalContent(null)} // Pass the closeModal function
+            />
+        );
         setOnModalClose(() => {
             console.log('Modal Closed');
         });

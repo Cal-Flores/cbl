@@ -75,7 +75,7 @@ export const addFighterTeam = (draft, setError) => async dispatch => {
     if (response.status === 200) {
         const draft = await response.json()
         dispatch(draftFighter(draft))
-        return draft
+        return true
     } else if (response.status === 400) {
         const errorResponse = await response.json();
         // Handle the error and display it to the user
@@ -84,6 +84,7 @@ export const addFighterTeam = (draft, setError) => async dispatch => {
         // Handle other errors
         alert('An error occurred');
     }
+    return false
 }
 
 export const getAllFighters = () => async dispatch => {

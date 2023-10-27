@@ -35,7 +35,7 @@ const buttonStyle = {
 };
 
 
-function DraftForm({ fighter }) {
+function DraftForm({ fighter, closeModal }) {
     const dispatch = useDispatch()
     const history = useHistory()
     let teams = useSelector(state => state.teams.All_Teams)
@@ -80,7 +80,11 @@ function DraftForm({ fighter }) {
             weightClass,
             fighterId
         }
-        await dispatch(addFighterTeam(draft, setError));
+        const success = await dispatch(addFighterTeam(draft, setError));
+        if (success) {
+            console.log('SUCESSSSSSSSS!')
+            history.push(`/fighter/${fighterId}`)
+        }
     };
     return (
         <form onSubmit={handleSubmit} style={containerStyle}>

@@ -30,7 +30,7 @@ function SingleTeam() {
             <h1 className='teamname'><img src={team?.text} style={{ width: '300px', height: '100px' }} /></h1>
             <div id='fighterscont'>
                 {fighters?.map(fighter => (
-                    <div onClick={() => cutPlayer(fighter?.id)} key={fighter?.id} id='teamssCard' style={{ backgroundImage: "url(" + `${team?.bg}` + ")", border: `5px solid ${team?.border}` }}>
+                    <div onClick={((e) => history.push(`/fighter/${fighter.id}`))} key={fighter?.id} id='teamssCard' style={{ backgroundImage: "url(" + `${team?.bg}` + ")", border: `5px solid ${team?.border}` }}>
                         <div>
                             <div className='fighterweight' >{fighter?.weight} lbs</div>
                         </div>
@@ -46,7 +46,7 @@ function SingleTeam() {
                                     <div className='fighterstat'>{fighter?.points} pts</div>
                                 </div>
                                 <div>
-                                    <button style={{ height: '20px', width: '45px' }} class='teamBtn' >CUT</button>
+                                    <button onClick={() => cutPlayer(fighter?.id)} style={{ height: '20px', width: '45px' }} class='teamBtn' >CUT</button>
                                 </div>
                             </div>
                         </div>
