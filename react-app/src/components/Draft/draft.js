@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import './draft.css';
 import { Link, Redirect, useHistory, useParams } from 'react-router-dom'
 import { getAllFighters } from '../../store/fighters';
+// imports for the modal
+import { useModal } from "../../context/Modal";
+import DraftForm from './draftForm';
+import OpenModalButton from "../OpenModalButton";
 
 function FreeAgents() {
     const dispatch = useDispatch()
@@ -12,12 +16,16 @@ function FreeAgents() {
     freeAgents?.sort((a, b) => a.weight - b.weight)
     // console.log('free agents:', freeAgents)
 
-    const [form, setForm] = useState(false)
+    // must be imported to use the modal
+    const { setModalContent, setOnModalClose } = useModal();
 
-    const viewForm = () => {
-
-    }
-
+    // function created copy and paste
+    const openCustomModal = () => {
+        setModalContent(<DraftForm />);
+        setOnModalClose(() => {
+            console.log('Modal Closed');
+        });
+    };
 
 
     useEffect(() => {
@@ -33,7 +41,7 @@ function FreeAgents() {
                 {freeAgents?.map(fighter => (
                     <div>
                         <div style={{}} key={fighter?.id} className='allfacard'>
-                            <div className='draftchild'>
+                            <div onClick={(e) => history.push(`/fighter/${fighter?.id}`)} className='draftchild'>
                                 <img src={fighter?.prof_img} style={{ height: '115px', width: '184px', borderBottom: '1px solid gray', marginBottom: '5%' }} />
                                 {fighter?.nickname &&
                                     <div className='allfnick'>"{fighter?.nickname.toUpperCase()}"</div>
@@ -44,10 +52,12 @@ function FreeAgents() {
                                 <div className='allfaname'>{fighter?.name.toUpperCase()}</div>
                                 <div >{fighter?.weight}lb Division</div>
                             </div>
-                            <button onClick={viewForm} style={{ bottom: '0', height: '30px', width: '60px', zIndex: '2' }} className='profbtn'>DRAFT</button>
-                        </div>
-                        <div className='draftform'>
-                            <h2>DRAFT THIS FIGHTER</h2>
+
+                            <OpenModalButton
+                                modalComponent={DraftForm}
+                                buttonText="DRAFT"
+                                fighter={fighter} // Pass the fighter object directly
+                            />
                         </div>
                     </div>
                 ))}

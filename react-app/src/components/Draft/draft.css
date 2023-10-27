@@ -25,9 +25,8 @@
     width: 225px;
     text-align: center;
     border: 1px solid rgb(147, 146, 146);
-    position: absolute;
     background-color: rgb(227, 224, 224);
-    z-index: 2;
+    /* z-index: 2; */
 }
 
 .allfacard:hover {
@@ -62,4 +61,8 @@
     width: 225px;
     height: 250px;
     background-color: paleturquoise;
+}
+
+OpenModalButton {
+    width: 500px;
 }
