@@ -267,7 +267,7 @@ function SingleFighter() {
                     <img src={fighter?.body_img} style={{ height: '490px', width: '322px' }} />
                 </div>
                 <div id='fighterteam'>
-                    <img className='flogoteam' style={{ width: '120px', height: '120px' }} src={team?.logo_img} />
+                    <img onClick={((e) => history.push(`/teams/${team.id}`))} className='flogoteam' style={{ width: '120px', height: '120px' }} src={team?.logo_img} />
                     {rightBox}
                     <div>
                         {seasonM == false && <button className='seasonbtn' onClick={viewTourn}>View Season Fights</button>}

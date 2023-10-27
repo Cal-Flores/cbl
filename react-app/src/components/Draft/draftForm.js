@@ -4,6 +4,7 @@ import './draft.css';
 import { Link, Redirect, useHistory, useParams } from 'react-router-dom'
 import { getAllTeams, getOneTeam } from '../../store/teams';
 import { addFighterTeam } from '../../store/fighters';
+import { useModal } from "../../context/Modal";
 
 const containerStyle = {
     display: 'flex',
@@ -17,16 +18,16 @@ const labelStyle = {
 
 const selectStyle = {
     padding: '8px',
-    marginBottom: '16px',
+    marginBottom: '36px',
     borderRadius: '4px',
     border: '1px solid #ccc',
     width: '200px',
     fontSize: '16px',
+
 };
 
 const buttonStyle = {
-    backgroundColor: '#007bff',
-    color: 'white',
+
     padding: '12px 20px',
     border: 'none',
     borderRadius: '4px',
@@ -35,12 +36,13 @@ const buttonStyle = {
 };
 
 
-function DraftForm({ fighter, closeModal }) {
+function DraftForm({ fighter }) {
     const dispatch = useDispatch()
     const history = useHistory()
     let teams = useSelector(state => state.teams.All_Teams)
     let teamOptions = teams?.map(team => team.name)
     let fighterId = fighter.id
+    const { closeModal } = useModal();
     console.log('howdy', fighterId)
 
 
@@ -84,13 +86,15 @@ function DraftForm({ fighter, closeModal }) {
         if (success) {
             console.log('SUCESSSSSSSSS!')
             history.push(`/fighter/${fighterId}`)
+            closeModal()
         }
     };
     return (
         <form onSubmit={handleSubmit} style={containerStyle}>
+            <div className='dformname'>Draft {fighter.name}</div>
             {error && <div className="error">{error}</div>} {/* Render error message */}
             {/* ...rest of your form */}
-            <div>
+            <div className='dfromdiv'>
                 <label htmlFor="weightClass" style={labelStyle}>
                     Select Weight Class:
                 </label>
@@ -109,7 +113,7 @@ function DraftForm({ fighter, closeModal }) {
                 </select>
             </div>
 
-            <div>
+            <div className='dfromdiv'>
                 <label htmlFor="team" style={labelStyle}>
                     Select Team:
                 </label>
@@ -128,7 +132,7 @@ function DraftForm({ fighter, closeModal }) {
                 </select>
             </div>
 
-            <button type="submit" style={buttonStyle}>
+            <button style={{ fontSize: '18px' }} type="submit" className='profbtn'>
                 Submit
             </button>
         </form>
