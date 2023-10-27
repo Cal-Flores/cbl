@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
 from app.forms import SearchForm
-from app.models import User, Fighter, Tour_Result, Medal, Team, Season_Result
+from app.models import User, db,Fighter, Tour_Result, Medal, Team, Season_Result
 from sqlalchemy import or_, and_
 
 fighter_routes = Blueprint('fighters', __name__)
@@ -46,6 +46,14 @@ def get_weight_fighters(weight):
     all_fighters = []
     all_fighters.extend([i.to_dict() for i in fighters])
     return {'All_Fighters': all_fighters}
+
+@fighter_routes.route('/cut/<int:id>')
+def cut_fighter(id):
+    """Remove A fighter from a team"""
+    fighter = Fighter.query.get(id)
+    fighter.team_name = 'Free Agent'
+    db.session.commit()
+    return {'Fighter': 'cut'}
 
 
 @fighter_routes.route('/')

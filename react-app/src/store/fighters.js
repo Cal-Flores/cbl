@@ -2,6 +2,7 @@ const LOAD_FIGHTER = 'fighters/LOAD_FIGHTER'
 const LOAD_ALL_FIGHTERS = 'fighters/LOAD_ALL_FIGHTERS'
 const LOAD_FEW_FIGHTERS = 'fighters/LOAD_FEW_FIGHTERS'
 const SEARCH_FIGHTERS = 'fighters/SEARCH_FIGHTERS'
+const DELETE_FIGHTER = 'fighters/DELETE_FIGHTER'
 //###################### ACTION CREATORS #############
 
 const loadOne = (fighter) => {
@@ -25,23 +26,35 @@ const loadFew = (fighters) => {
     }
 }
 
+
+
 const fighterSearch = (fighters) => {
     return {
         'type': SEARCH_FIGHTERS,
         fighters
     }
 }
+
 //######################## Thunks ############################
 
 export const getOneFighter = (id) => async dispatch => {
-
     const response = await fetch(`/api/fighter/fighter/${id}`)
-
     if (response.ok) {
         const fighter = await response.json()
 
         dispatch(loadOne(fighter))
     }
+}
+
+export const cutOneFighter = (id) => async dispatch => {
+    console.log('cut thunk activated')
+    const response = await fetch(`/api/fighter/cut/${id}`)
+    if (response.ok) {
+        console.log('cut response was gucci')
+        return;
+    }
+    console.log('cut wasnt cash money')
+    return
 }
 
 export const getAllFighters = () => async dispatch => {
