@@ -1,6 +1,6 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request, jsonify
 from flask_login import login_required
-from app.forms import SearchForm
+from app.forms import SearchForm, DraftForm
 from app.models import User, db,Fighter, Tour_Result, Medal, Team, Season_Result
 from sqlalchemy import or_, and_
 
@@ -40,6 +40,7 @@ def search():
         return {'All_Fighters': fighters}
     return 'BAD REQ'
 
+################## get all fighter from a weight class #############################
 @fighter_routes.route('/<int:weight>')
 def get_weight_fighters(weight):
     fighters = Fighter.query.filter(Fighter.weight == weight).order_by(Fighter.name)
@@ -47,6 +48,7 @@ def get_weight_fighters(weight):
     all_fighters.extend([i.to_dict() for i in fighters])
     return {'All_Fighters': all_fighters}
 
+############################# remove a fighter from a team ##########################
 @fighter_routes.route('/cut/<int:id>')
 def cut_fighter(id):
     """Remove A fighter from a team"""
@@ -56,6 +58,7 @@ def cut_fighter(id):
     return {'Fighter': 'cut'}
 
 
+############################ get all fighters ####################
 @fighter_routes.route('/')
 def get_all_fighters():
     fighters = Fighter.query.order_by(Fighter.name).all()
@@ -63,6 +66,29 @@ def get_all_fighters():
     all_fighters.extend([i.to_dict() for i in fighters])
     return {'All_Fighters': all_fighters}
 
+############################### draft a player ######################
+@fighter_routes.route('/draft', methods=['POST'])
+def draft_fighter():
+    data = request.get_json()  # Parse JSON data from the request body
+    team_name = data['team']
+    weight_class = data['weightClass']
+    fighter_id = data['fighterId']
+    team = Team.query.filter(Team.name == team_name)
+    fighter = Fighter.query.get(fighter_id)
+
+    active_fighter = Fighter.query.filter(and_(Fighter.team_name == team_name, Fighter.weight == weight_class)).first()
+    if active_fighter:
+        return jsonify({'error': 'There is an active Fighter at this weight'}), 400  # Return an error response with status code 400
+    else:
+        fighter.weight = weight_class
+        fighter.team_name = team_name
+        db.session.commit()
+
+    fighter = fighter.to_dict()
+    return {'fighter': fighter}
+
+
+########################## get a single fighter ######################
 @fighter_routes.route('/fighter/<int:id>')
 def get_one_fighter(id):
     fighter = Fighter.query.get(id)

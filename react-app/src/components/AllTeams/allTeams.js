@@ -8,6 +8,8 @@ function AllTeams() {
     const dispatch = useDispatch()
     const history = useHistory()
     let teams = useSelector(state => state.teams.All_Teams)
+
+
     const [nfc_display, setnfc_display] = useState(true);
 
     let nfcNorth = teams?.filter(team => team.conf == 'NFC' && team.divison == 'North')
@@ -19,7 +21,6 @@ function AllTeams() {
     let afcEast = teams?.filter(team => team.conf == 'AFC' && team.divison == 'East')
     let afcSouth = teams?.filter(team => team.conf == 'AFC' && team.divison == 'South')
     let afcWest = teams?.filter(team => team.conf == 'AFC' && team.divison == 'West')
-
     let contentDiv;
 
     const changeConfNfc = () => {

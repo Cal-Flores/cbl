@@ -3,6 +3,7 @@ const LOAD_ALL_FIGHTERS = 'fighters/LOAD_ALL_FIGHTERS'
 const LOAD_FEW_FIGHTERS = 'fighters/LOAD_FEW_FIGHTERS'
 const SEARCH_FIGHTERS = 'fighters/SEARCH_FIGHTERS'
 const DELETE_FIGHTER = 'fighters/DELETE_FIGHTER'
+const DRAFT_FIGHTER = 'fighters/DRAFT_FIGHTER'
 //###################### ACTION CREATORS #############
 
 const loadOne = (fighter) => {
@@ -35,6 +36,13 @@ const fighterSearch = (fighters) => {
     }
 }
 
+const draftFighter = (draft) => {
+    return {
+        'type': DRAFT_FIGHTER,
+        draft
+    }
+}
+
 //######################## Thunks ############################
 
 export const getOneFighter = (id) => async dispatch => {
@@ -55,6 +63,27 @@ export const cutOneFighter = (id) => async dispatch => {
     }
     console.log('cut wasnt cash money')
     return
+}
+
+export const addFighterTeam = (draft, setError) => async dispatch => {
+    const response = await fetch(`/api/fighter/draft`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(draft)
+    })
+
+    if (response.status === 200) {
+        const draft = await response.json()
+        dispatch(draftFighter(draft))
+        return draft
+    } else if (response.status === 400) {
+        const errorResponse = await response.json();
+        // Handle the error and display it to the user
+        setError(errorResponse.error); // Set the error message
+    } else {
+        // Handle other errors
+        alert('An error occurred');
+    }
 }
 
 export const getAllFighters = () => async dispatch => {
