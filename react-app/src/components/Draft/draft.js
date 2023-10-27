@@ -8,6 +8,14 @@ import { useModal } from "../../context/Modal";
 import DraftForm from './draftForm';
 import OpenModalButton from "../OpenModalButton";
 
+const btnStyle = {
+    border: 'none',
+    backgroundColor: 'rgb(25, 25, 25)',
+    fontSize: '12px',
+    padding: '2%',
+    color: 'white',
+};
+
 function FreeAgents() {
     const dispatch = useDispatch()
     const history = useHistory()
@@ -56,11 +64,12 @@ function FreeAgents() {
                                 <div className='allfaname'>{fighter?.name.toUpperCase()}</div>
                                 <div >{fighter?.weight}lb Division</div>
                             </div>
-
                             <OpenModalButton
+                                className='protbtn'
                                 modalComponent={DraftForm}
                                 buttonText="DRAFT"
                                 fighter={fighter} // Pass the fighter object directly
+                                style={btnStyle}
                             />
                         </div>
                     </div>

@@ -52,7 +52,7 @@ function SingleTeam() {
                                     <div className='fighterstat'>{fighter?.points} pts</div>
                                 </div>
                                 <div>
-                                    <button onClick={(e) => cutPlayer(e, fighter.id)} class='cutBtn' >RELEASE</button>
+                                    <button onClick={(e) => cutPlayer(e, fighter.id)} style={{ color: `${team?.border}`, border: `1px solid ${team?.border}` }} class='cutBtn' >RELEASE</button>
                                 </div>
                             </div>
                         </div>

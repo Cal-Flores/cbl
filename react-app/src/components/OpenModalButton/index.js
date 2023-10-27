@@ -7,14 +7,19 @@ function OpenModalButton({
   onButtonClick, // optional: callback function that will be called once the button that opens the modal is clicked
   onModalClose, // optional: callback function that will be called once the modal is closed
   fighter, // Receive data as a prop
-  
+  style, // Custom style object
 }) {
   const { setModalContent, setOnModalClose } = useModal();
 
 
 
   return (
-    <button onClick={() => setModalContent(React.createElement(modalComponent, { fighter }))}>{buttonText}</button>
+    <button
+      onClick={() => setModalContent(React.createElement(modalComponent, { fighter }))}
+      style={style}
+    >
+      {buttonText}
+    </button>
   );
 }
 

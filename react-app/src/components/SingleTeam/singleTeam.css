@@ -104,11 +104,8 @@ body {
 
 .cutBtn {
     height: 20px;
-    width: 62px;
+    width: 65px;
     background-color: #fff;
-    color: rgb(46, 102, 255);
-    border: none;
-    /* margin-right: 2%; */
     font-size: 11px;
     font-weight: bold;
     text-align: center;
@@ -116,6 +113,6 @@ body {
 
 .cutBtn:hover {
     color: #fff;
-    background-color: rgb(46, 102, 255);
+    transform: scale(1.1);
     cursor: pointer;
 }
