@@ -51,7 +51,37 @@ function TeamDetails() {
                 <div>POINT DIFFRENTIAL -19</div>
             </div>
             <div id='dualcont'>
+                <div className="grid-header">
+                    <div style={{ marginLeft: '8%' }}>Week</div>
+                    <div style={{ paddingLeft: '10px' }}>Game</div>
+                    <div>{team?.name.split(" ")[team?.name.split(" ").length - 1]}</div>
+                    <div>Opponent</div>
+                    <div>Outcome</div>
+                </div>
 
+                {duals?.map(dual => {
+                    if (dual?.winner === team?.name) {
+                        return (
+                            <div key={dual.id} className="grid-row">
+                                <div style={{ marginLeft: '8%' }}>Week {dual?.week}</div>
+                                <div style={{ paddingLeft: '10px' }}>vs {dual?.loser}</div>
+                                <div style={{ paddingLeft: '20px', color: 'rgb(63, 63, 63)', fontWeight: 'bold' }}>{dual?.winner_score}</div>
+                                <div style={{ paddingLeft: '21px' }}>{dual?.loser_score}</div>
+                                <div style={{ color: 'green', paddingLeft: '20px' }}>W</div>
+                            </div>
+                        );
+                    } else {
+                        return (
+                            <div key={dual.id} className="grid-row">
+                                <div style={{ marginLeft: '8%' }}>Week {dual?.week}</div>
+                                <div style={{ paddingLeft: '10px' }}>vs {dual?.winner}</div>
+                                <div style={{ paddingLeft: '20px' }}>{dual?.loser_score}</div>
+                                <div style={{ paddingLeft: '20px', color: 'rgb(63, 63, 63)', fontWeight: 'bold' }}>{dual?.winner_score}</div>
+                                <div style={{ color: 'red', paddingLeft: '23px' }}>L</div>
+                            </div>
+                        )
+                    }
+                })}
             </div>
         </div>
     )

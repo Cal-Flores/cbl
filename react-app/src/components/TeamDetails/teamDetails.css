@@ -83,11 +83,38 @@
 }
 
 #dualcont {
-    height: 500px;
+    /* height: 500px; */
     margin-left: 15%;
     margin-right: 15%;
     width: 70%;
     background-color: white;
     margin-top: 8%;
     margin-bottom: 5%;
+    color: gray;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-rows: auto;
+    border: 1px solid gray;
+    gap: 5px;
+}
+
+.grid-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+    border-bottom: 1px solid gray;
+    font-weight: bold;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    color: black;
+}
+
+.grid-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+    gap: 5px;
+    border-bottom: 1px solid gray;
+    padding-top: 1%;
+    padding-bottom: 1%;
 }
