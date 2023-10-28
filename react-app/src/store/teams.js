@@ -1,6 +1,7 @@
 const LOAD_TEAMS = 'teams/LOAD_TEAMS'
 const LOAD_TEAM = 'teams/LOAD_TEAM'
 const SORT_TEAMS = 'teams/SORT_TEAMS'
+const TEAM_DUALS = 'teams/TEAM_DUALS'
 
 //################## Action Creators ######################
 
@@ -18,6 +19,12 @@ const loadOne = (team) => {
     }
 }
 
+const loadDuals = (duals) => {
+    return {
+        'type': TEAM_DUALS,
+        duals
+    }
+}
 
 //######################## Thunks ############################
 
@@ -43,6 +50,15 @@ export const teamStandings = (filteredTeams) => async dispatch => {
 
 }
 
+export const teamDuals = (id) => async dispatch => {
+    const response = await fetch(`/api/team/duals/<int:id>`)
+
+    if (response.ok) {
+        const duals = await response.json()
+        dispatch(loadDuals(duals))
+    }
+}
+
 
 let initialState = {}
 //######################## Reducer ##########################
@@ -56,6 +72,10 @@ const teamsReducer = (state = initialState, action) => {
         }
         case LOAD_TEAM: {
             newState = { ...action.team }
+            return newState
+        }
+        case TEAM_DUALS: {
+            newState = { ...action.duals };
             return newState
         }
         default:

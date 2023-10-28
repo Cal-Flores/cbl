@@ -187,7 +187,7 @@ class Team_Result(db.Model, UserMixin):
             'id': self.id,
             'winner': self.winner,
             'loser': self.loser,
-            'winner_score': self.method,
-            'loser_score': self.round,
+            'winner_score': self.winner_score,
+            'loser_score': self.loser_score,
             'week': self.week
         }

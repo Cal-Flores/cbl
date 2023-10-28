@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User, Fighter, Team, Medal
+from app.models import User, Fighter, Team, Medal, Team_Result
 from sqlalchemy import and_, or_
 
 team_routes = Blueprint('teams', __name__)
@@ -51,6 +51,15 @@ def get_one_team(id):
     heavy = Fighter.query.filter(and_(Fighter.team_name == curr_team.name, Fighter.weight == '285')).first()
     if heavy != None:
         heavy = heavy.to_dict()
+    duals = Team_Result.query.filter(or_(curr_team.name == Team_Result.winner, curr_team.name == Team_Result.loser)).all()
+
+    dict_duals = {}
+
+    for dual in duals:
+        good = dual.to_dict()
+        dict_duals[dual.id] = good
+
+    # return {'Duals': dict_duals}
 
 
 
@@ -72,7 +81,20 @@ def get_one_team(id):
         'heavy': heavy,
         'text': curr_team.heavy,
         'border': curr_team.fly,
+        'Duals': dict_duals
     }}
 
 
 #################### get all duals for 1 team ####################
+@team_routes.route('/duals/<int:id>')
+def team_duals(id):
+    team = Team.query.get(id)
+    duals = Team_Result.query.filter(or_(team.name == Team_Result.winner, team.name == Team_Result.loser)).all()
+
+    dict_duals = {}
+
+    for dual in duals:
+        good = dual.to_dict()
+        dict_duals[dual.id] = good
+
+    return {'Duals': dict_duals}

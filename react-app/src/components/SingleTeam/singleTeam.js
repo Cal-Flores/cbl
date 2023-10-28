@@ -13,6 +13,7 @@ function SingleTeam() {
     const teamId = routeParams?.teamId
 
     let team = useSelector(state => state?.teams?.Team)
+    console.log('heres team deputy', team)
     let fighters = []
     fighters.push(team?.fly, team?.bantam, team?.phantam, team?.feather, team?.light, team?.cruiser, team?.welter, team?.middle, team?.light_heavy, team?.heavy)
 

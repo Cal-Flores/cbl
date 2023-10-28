@@ -46,7 +46,7 @@ function AllTeams() {
                                 </div>
                                 <div>
                                     <button onClick={(e) => history.push(`/teams/${team.id}`)} class='teamBtn'>Fighters</button>
-                                    <button class='teamBtn'>Stats</button>
+                                    <button onClick={(e) => history.push(`/teams/stats/${team.id}`)} class='teamBtn'>Stats</button>
                                 </div>
                             </div>
                         </div>
@@ -66,7 +66,7 @@ function AllTeams() {
                                 </div>
                                 <div>
                                     <button onClick={(e) => history.push(`/teams/${team.id}`)} class='teamBtn'>Players</button>
-                                    <button class='teamBtn'>Stats</button>
+                                    <button onClick={(e) => history.push(`/teams/stats/${team.id}`)} class='teamBtn'>Stats</button>
                                 </div>
                             </div>
                         </div>
@@ -86,7 +86,7 @@ function AllTeams() {
                                 </div>
                                 <div>
                                     <button onClick={(e) => history.push(`/teams/${team.id}`)} class='teamBtn'>Players</button>
-                                    <button class='teamBtn'>Stats</button>
+                                    <button onClick={(e) => history.push(`/teams/stats/${team.id}`)} class='teamBtn'>Stats</button>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +106,7 @@ function AllTeams() {
                                 </div>
                                 <div>
                                     <button onClick={(e) => history.push(`/teams/${team.id}`)} class='teamBtn'>Players</button>
-                                    <button class='teamBtn'>Stats</button>
+                                    <button onClick={(e) => history.push(`/teams/stats/${team.id}`)} class='teamBtn'>Stats</button>
                                 </div>
                             </div>
                         </div>
@@ -131,7 +131,7 @@ function AllTeams() {
                                 </div>
                                 <div>
                                     <button onClick={(e) => history.push(`/teams/${team.id}`)} class='teamBtn'>Players</button>
-                                    <button class='teamBtn'>Stats</button>
+                                    <button onClick={(e) => history.push(`/teams/stats/${team.id}`)} class='teamBtn'>Stats</button>
                                 </div>
                             </div>
                         </div>
@@ -151,7 +151,7 @@ function AllTeams() {
                                 </div>
                                 <div>
                                     <button onClick={(e) => history.push(`/teams/${team.id}`)} class='teamBtn'>Players</button>
-                                    <button class='teamBtn'>Stats</button>
+                                    <button onClick={(e) => history.push(`/teams/stats/${team.id}`)} class='teamBtn'>Stats</button>
                                 </div>
                             </div>
                         </div>
@@ -171,7 +171,7 @@ function AllTeams() {
                                 </div>
                                 <div>
                                     <button onClick={(e) => history.push(`/teams/${team.id}`)} class='teamBtn'>Players</button>
-                                    <button class='teamBtn'>Stats</button>
+                                    <button onClick={(e) => history.push(`/teams/stats/${team.id}`)} class='teamBtn'>Stats</button>
                                 </div>
                             </div>
                         </div>
@@ -191,7 +191,7 @@ function AllTeams() {
                                 </div>
                                 <div>
                                     <button onClick={(e) => history.push(`/teams/${team.id}`)} class='teamBtn'>Players</button>
-                                    <button class='teamBtn'>Stats</button>
+                                    <button onClick={(e) => history.push(`/teams/stats/${team.id}`)} class='teamBtn'>Stats</button>
                                 </div>
                             </div>
                         </div>
