@@ -1,5 +1,6 @@
 const LOAD_TEAMS = 'teams/LOAD_TEAMS'
 const LOAD_TEAM = 'teams/LOAD_TEAM'
+const SORT_TEAMS = 'teams/SORT_TEAMS'
 
 //################## Action Creators ######################
 
@@ -36,6 +37,10 @@ export const getOneTeam = (id) => async dispatch => {
         const team = await response.json()
         dispatch(loadOne(team))
     }
+}
+
+export const teamStandings = (filteredTeams) => async dispatch => {
+
 }
 
 

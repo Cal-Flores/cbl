@@ -63,6 +63,11 @@ def upgrade():
     sa.Column('middle', sa.String()),
     sa.Column('light_heavy', sa.String()),
     sa.Column('heavy', sa.String()),
+    sa.Column('win', sa.Integer()),
+    sa.Column('loss', sa.Integer()),
+    sa.Column('points', sa.Integer()),
+    sa.Column('offense', sa.Integer()),
+    sa.Column('defense', sa.Integer()),
     )
 
     op.create_table('tournaments',
@@ -87,6 +92,14 @@ def upgrade():
     sa.Column('method', sa.String()),
     sa.Column('round', sa.String()),
     sa.Column('dual_id', sa.Integer()),
+    )
+    op.create_table('team_results',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('winner', sa.String()),
+    sa.Column('loser', sa.String()),
+    sa.Column('winner_score', sa.Integer()),
+    sa.Column('loser_score', sa.Integer()),
+    sa.Column('week', sa.Integer)
     )
 
     op.create_table('medals',

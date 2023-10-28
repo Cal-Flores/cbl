@@ -73,3 +73,6 @@ def get_one_team(id):
         'text': curr_team.heavy,
         'border': curr_team.fly,
     }}
+
+
+#################### get all duals for 1 team ####################

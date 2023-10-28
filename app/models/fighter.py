@@ -128,6 +128,11 @@ class Team(db.Model, UserMixin):
     name = db.Column(db.String(40))
     logo_img = db.Column(db.String)
     background_img = db.Column(db.String)
+    win =  db.Column(db.Integer)
+    loss =  db.Column(db.Integer)
+    points =  db.Column(db.Integer)
+    offense =  db.Column(db.Integer)
+    defense =  db.Column(db.Integer)
     conf = db.Column(db.String)
     divison = db.Column(db.String)
     fly = db.Column(db.String)
@@ -145,6 +150,11 @@ class Team(db.Model, UserMixin):
         return {
             'id': self.id,
             'name': self.name,
+            'win': self.win,
+            'loss': self.loss,
+            'points': self.points,
+            'offense': self.offense,
+            'defense': self.defense,
             'logo_img': self.logo_img,
             'background_img': self.background_img,
             'conf': self.conf,
@@ -157,4 +167,27 @@ class Team(db.Model, UserMixin):
             'middle_id': self.middle,
             'light_heavy_id': self.light_heavy,
             'heavy': self.heavy
+        }
+
+class Team_Result(db.Model, UserMixin):
+    __tablename__ = 'team_results'
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
+    id = db.Column(db.Integer, primary_key=True)
+    winner = db.Column(db.String)
+    loser = db.Column(db.String)
+    winner_score = db.Column(db.Integer)
+    loser_score = db.Column(db.Integer)
+    week = db.Column(db.Integer)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'winner': self.winner,
+            'loser': self.loser,
+            'winner_score': self.method,
+            'loser_score': self.round,
+            'week': self.week
         }
