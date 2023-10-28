@@ -39,7 +39,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 40%;
+    width: 45%;
     justify-content: flex-start;
     color: gray;
 }
@@ -55,6 +55,7 @@
     border: none;
     background-color: white;
     color: #013369;
+    /* font-weight: bold; */
 }
 
 .tdbtn:hover {
@@ -69,4 +70,24 @@
     width: 175%;
     justify-content: space-between;
     font-size: 18px;
+}
+
+#pointnav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: white;
+    padding-top: .8%;
+    padding-bottom: .8%;
+    color: gray;
+}
+
+#dualcont {
+    height: 500px;
+    margin-left: 15%;
+    margin-right: 15%;
+    width: 70%;
+    background-color: white;
+    margin-top: 8%;
+    margin-bottom: 5%;
 }

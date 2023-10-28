@@ -11,6 +11,7 @@ function SingleTeam() {
     const history = useHistory();
     const routeParams = useParams();
     const teamId = routeParams?.teamId
+    const [showReleaseBtn, setShowReleaseBtn] = useState(null);
 
     let team = useSelector(state => state?.teams?.Team)
     console.log('heres team deputy', team)
@@ -37,7 +38,10 @@ function SingleTeam() {
             <h1 onClick={(e) => history.push(`/teams/stats/${team.id}`)} className='teamname'><img src={team?.text} style={{ width: '300px', height: '100px' }} /></h1>
             <div id='fighterscont'>
                 {fighters?.map(fighter => (
-                    <div key={fighter?.id} id='teamssCard' style={{ backgroundImage: "url(" + `${team?.bg}` + ")", border: `5px solid ${team?.border}` }}>
+                    <div key={fighter?.id} id='teamssCard' style={{ backgroundImage: "url(" + `${team?.bg}` + ")", border: `5px solid ${team?.border}` }}
+                        onMouseEnter={() => setShowReleaseBtn(fighter?.id)}
+                        onMouseLeave={() => setShowReleaseBtn(null)}
+                    >
                         <div>
                             <div className='fighterweight' >{fighter?.weight} lbs</div>
                         </div>
@@ -52,9 +56,9 @@ function SingleTeam() {
                                     <div className='fighterstat'>16-0</div>
                                     <div className='fighterstat'>{fighter?.points} pts</div>
                                 </div>
-                                <div>
-                                    <button onClick={(e) => cutPlayer(e, fighter.id)} style={{ color: `${team?.border}`, border: `1px solid ${team?.border}` }} class='cutBtn' >RELEASE</button>
-                                </div>
+
+                                <button onClick={(e) => cutPlayer(e, fighter.id)} style={{ color: `${team?.border}`, border: `1px solid ${team?.border}`, visibility: showReleaseBtn === fighter?.id ? 'visible' : 'hidden', }} class='cutBtn' >RELEASE</button>
+
                             </div>
                         </div>
                     </div>

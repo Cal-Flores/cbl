@@ -78,7 +78,7 @@ def draft_fighter():
 
     active_fighter = Fighter.query.filter(and_(Fighter.team_name == team_name, Fighter.weight == weight_class)).first()
     if active_fighter:
-        return jsonify({'error': f'There is an active Fighter at this weight for the {team_name}'}), 400  # Return an error response with status code 400
+        return jsonify({'error': f'There is an active Fighter at {weight_class} lbs for the {team_name}'}), 400  # Return an error response with status code 400
     else:
         fighter.weight = weight_class
         fighter.team_name = team_name
