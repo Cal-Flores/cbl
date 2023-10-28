@@ -128,6 +128,7 @@ class Team(db.Model, UserMixin):
     name = db.Column(db.String(40))
     logo_img = db.Column(db.String)
     background_img = db.Column(db.String)
+    detail_bg = db.Column(db.String)
     win =  db.Column(db.Integer)
     loss =  db.Column(db.Integer)
     points =  db.Column(db.Integer)
@@ -157,6 +158,7 @@ class Team(db.Model, UserMixin):
             'defense': self.defense,
             'logo_img': self.logo_img,
             'background_img': self.background_img,
+            'detail_bg': self.detail_bg,
             'conf': self.conf,
             'divison': self.divison,
             'fly_id': self.fly,

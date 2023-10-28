@@ -11,19 +11,40 @@ function TeamDetails() {
     const routeParams = useParams();
     const teamId = routeParams?.teamId
 
-
-
     useEffect(() => {
         dispatch(getOneTeam(teamId))
     }, [dispatch])
-    let dualsObj = useSelector(state => state?.teams?.Team?.Duals) // Access duals from the state
+
+    let team = useSelector(state => state?.teams?.Team)
+    let dualsObj = useSelector(state => state?.teams?.Team?.Duals)
+
     let duals;
     if (dualsObj) duals = Object?.values(dualsObj)
-    console.log('all duals', duals)
+    console.log('all duals', team)
 
+    //style={{ backgroundImage: "url(" + `${team?.bg}` + ")", border: `5px solid ${team?.border}` }}
     return (
-        <div style={{ marginTop: '200px' }}>
-           
+        <div id='dtcont'>
+            <div className='statdt'>
+                <h1 className='tdname'>{team?.name}</h1>
+                <div className='tdconf'>
+                    <div>{team?.conf} {team?.divison}</div>
+                    <div>Last Season: {team?.win}-{team?.loss} WILDCARD</div>
+                </div>
+                <div className='tdrec'>
+                    <div className='tdrecnum'>{team?.win} - {team?.loss}</div>
+                    {/* <div>{team?.points} pts</div>
+                    <div className='offdef'>
+                        <div>Offense: 67</div>
+                        <div>Defense: 33</div>
+                    </div> */}
+                </div>
+                <button onClick={(e) => history.push(`/teams/${team?.id}`)} className='tdbtn'>FIGHTERS</button>
+            </div>
+
+            <div id='tdetailcont' style={{ backgroundImage: "url(" + `${team?.detail_bg}` + ")" }} > </div>
+
+
         </div>
     )
 }

@@ -34,7 +34,7 @@ function SingleTeam() {
 
     return (
         <div>
-            <h1 className='teamname'><img src={team?.text} style={{ width: '300px', height: '100px' }} /></h1>
+            <h1 onClick={(e) => history.push(`/teams/stats/${team.id}`)} className='teamname'><img src={team?.text} style={{ width: '300px', height: '100px' }} /></h1>
             <div id='fighterscont'>
                 {fighters?.map(fighter => (
                     <div key={fighter?.id} id='teamssCard' style={{ backgroundImage: "url(" + `${team?.bg}` + ")", border: `5px solid ${team?.border}` }}>

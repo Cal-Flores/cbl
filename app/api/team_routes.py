@@ -66,7 +66,13 @@ def get_one_team(id):
     return {'Team': {
         'id': curr_team.id,
         'name': curr_team.name,
+        'win': curr_team.win,
+        'loss': curr_team.loss,
+        'offense': curr_team.offense,
+        'defense': curr_team.defense,
+        'points': curr_team.points,
         'bg': curr_team.background_img,
+        'detail_bg': curr_team.detail_bg,
         'conf': curr_team.conf,
         'divison': curr_team.divison,
         'fly': fly,
