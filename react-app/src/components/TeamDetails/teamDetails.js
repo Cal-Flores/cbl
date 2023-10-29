@@ -19,7 +19,26 @@ function TeamDetails() {
     let dualsObj = useSelector(state => state?.teams?.Team?.Duals)
 
     let duals;
-    if (dualsObj) duals = Object?.values(dualsObj)
+    let diff;
+    if (dualsObj) {
+        duals = Object?.values(dualsObj)
+        let pts = 0;
+        let opts = 0;
+        duals.map(dual => {
+            if (dual.winner == team.name) {
+                pts += dual.winner_score;
+                opts += dual.loser_score;
+
+            }
+            else {
+                pts += dual.loser_score;
+                opts += dual.winner_score;
+            }
+            console.log('pts', dual.winner_score)
+            console.log('opts', dual.loser_score)
+        })
+        diff = pts - opts
+    }
     console.log('all duals', team)
 
     //style={{ backgroundImage: "url(" + `${team?.bg}` + ")", border: `5px solid ${team?.border}` }}
@@ -34,11 +53,6 @@ function TeamDetails() {
                     </div>
                     <div className='tdrec'>
                         <div className='tdrecnum'>{team?.win} - {team?.loss}</div>
-                        {/* <div>{team?.points} pts</div>
-                    <div className='offdef'>
-                        <div>Offense: 67</div>
-                        <div>Defense: 33</div>
-                    </div> */}
                     </div>
                     <button onClick={(e) => history.push(`/teams/${team?.id}`)} className='tdbtn'>FIGHTERS</button>
                 </div>
@@ -48,7 +62,7 @@ function TeamDetails() {
                 <div>TEAM POINTS: {team?.points}</div>
                 <div>OFFENSE: {team?.offense}</div>
                 <div>DEFENSE: {team?.defense}</div>
-                <div>POINT DIFFRENTIAL -19</div>
+                <div>POINT DIFFRENTIAL: {diff}</div>
             </div>
             <div id='dualcont'>
                 <div className="grid-header">

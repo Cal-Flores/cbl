@@ -12,6 +12,7 @@ import AllFighters from "./components/AllFighters/allFighters";
 import FreeAgents from "./components/Draft/draft";
 import Standings from "./components/Standings/standings";
 import TeamDetails from "./components/TeamDetails/teamDetails";
+import Rankings from "./components/Rankings/rankings";
 
 function App() {
   const dispatch = useDispatch();
@@ -45,6 +46,9 @@ function App() {
           </Route>
           <Route exact path="/teams/stats/:teamId" >
             <TeamDetails />
+          </Route>
+          <Route exact path="/rankings" >
+            < Rankings />
           </Route>
         </Switch>
       )}

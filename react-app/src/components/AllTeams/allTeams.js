@@ -212,8 +212,8 @@ function AllTeams() {
     return (
         <div id='teamcont'>
             <div class='conflinks'>
-                <button class='displayBtn' onClick={changeConfNfc}><img style={{ width: '23px', height: '23px', marginRight: '10px' }} src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/American_Football_Conference_logo.svg/2560px-American_Football_Conference_logo.svg.png' />AFC Teams</button>
                 <button class='displayBtn' onClick={changeConfAfc}><img style={{ width: '23px', height: '23px', marginRight: '10px' }} src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/National_Football_Conference_logo.svg/1200px-National_Football_Conference_logo.svg.png' />NFC Teams</button>
+                <button class='displayBtn' onClick={changeConfNfc}><img style={{ width: '23px', height: '23px', marginRight: '10px' }} src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/American_Football_Conference_logo.svg/2560px-American_Football_Conference_logo.svg.png' />AFC Teams</button>
             </div>
 
             {nfc_display ? (

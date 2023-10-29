@@ -22,7 +22,10 @@ function Navigation({ isLoaded }) {
 			<div >
 				<NavLink className='navlinks' exact to="/standings">Standings</NavLink>
 			</div>
-			<div >
+			<div>
+				<NavLink className='navlinks' exact to="/rankings">Rankings</NavLink>
+			</div>
+			<div>
 				<NavLink className='navlinks' exact to="/">Tournaments</NavLink>
 			</div>
 		</div>
