@@ -49,7 +49,7 @@ function Rankings() {
     }, [dispatch]);
 
     return (
-        <div style={{ marginTop: '5%', marginLeft: '2%', marginLeft: '2%', width: '90%' }}>
+        <div style={{ marginTop: '5%', marginLeft: '2%', marginLeft: '2%', width: '96%' }}>
             <div style={{ textAlign: 'center', marginBottom: '2%', fontSize: '30px' }}>FIGHTER RANKINGS</div>
             <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-evenly', }}>
 

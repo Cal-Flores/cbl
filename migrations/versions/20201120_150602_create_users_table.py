@@ -56,6 +56,9 @@ def upgrade():
     sa.Column('detail_bg', sa.String()),
     sa.Column('conf', sa.String()),
     sa.Column('divison', sa.String()),
+    sa.Column('curr_wins', sa.Integer()),
+    sa.Column('curr_loss', sa.Integer()),
+    sa.Column('last_place', sa.String()),
     sa.Column('fly', sa.String()),
     sa.Column('bantam', sa.String()),
     sa.Column('feather', sa.String()),
@@ -108,6 +111,14 @@ def upgrade():
     sa.Column('fighter', sa.String()),
     sa.Column('place', sa.String()),
     sa.Column('year', sa.String()),
+    )
+
+    op.create_table('schedules',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('week', sa.String()),
+    sa.Column('team_1', sa.String()),
+    sa.Column('team_2', sa.String()),
+    sa.Column('completed', sa.String()),
     )
 
     if environment == "production":

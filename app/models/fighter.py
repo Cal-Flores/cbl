@@ -136,6 +136,9 @@ class Team(db.Model, UserMixin):
     defense =  db.Column(db.Integer)
     conf = db.Column(db.String)
     divison = db.Column(db.String)
+    curr_wins = db.Column(db.Integer)
+    curr_loss = db.Column(db.Integer)
+    last_place = db.Column(db.String)
     fly = db.Column(db.String)
     bantam = db.Column(db.String)
     feather = db.Column(db.String)
@@ -161,6 +164,8 @@ class Team(db.Model, UserMixin):
             'detail_bg': self.detail_bg,
             'conf': self.conf,
             'divison': self.divison,
+            'curr_wins':self.curr_wins,
+            'curr_loss':self.curr_loss,
             'fly_id': self.fly,
             'bantam_id': self.bantam,
             'feather_id': self.feather,
@@ -192,4 +197,25 @@ class Team_Result(db.Model, UserMixin):
             'winner_score': self.winner_score,
             'loser_score': self.loser_score,
             'week': self.week
+        }
+
+class Schedule(db.Model, UserMixin):
+    __tablename__ = 'schedules'
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
+    id = db.Column(db.Integer, primary_key=True)
+    week = db.Column(db.Integer)
+    team_1 = db.Column(db.String)
+    team_2 = db.Column(db.String)
+    completed = db.Column(db.Boolean)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'week': self.week,
+            'team_1':self.team_1,
+            'team_2': self.team_2,
+            'completed': self.completed
         }
