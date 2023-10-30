@@ -2,6 +2,8 @@ const LOAD_TEAMS = 'teams/LOAD_TEAMS'
 const LOAD_TEAM = 'teams/LOAD_TEAM'
 const SORT_TEAMS = 'teams/SORT_TEAMS'
 const TEAM_DUALS = 'teams/TEAM_DUALS'
+const LOAD_SCHEDULE = 'teams/LOAD_SCHEDULE'
+const ALL_DUALS = 'teams/ALL_DUALS'
 
 //################## Action Creators ######################
 
@@ -22,6 +24,18 @@ const loadOne = (team) => {
 const loadDuals = (duals) => {
     return {
         'type': TEAM_DUALS,
+        duals
+    }
+}
+const loadSchedule = (duals) => {
+    return {
+        'type': LOAD_SCHEDULE,
+        duals
+    }
+}
+const allDuals = (duals) => {
+    return {
+        'type': ALL_DUALS,
         duals
     }
 }
@@ -59,6 +73,23 @@ export const teamDuals = (id) => async dispatch => {
     }
 }
 
+export const getSchedule = (week) => async dispatch => {
+    const response = await fetch(`/api/team/schedule/${week}`)
+
+    if (response.ok) {
+        const duals = await response.json()
+        dispatch(loadSchedule(duals))
+    }
+}
+
+export const getAllSchedule = () => async dispatch => {
+    const response = await fetch(`/api/team/schedule`)
+
+    if (response.ok) {
+        const duals = await response.json()
+        dispatch(allDuals(duals))
+    }
+}
 
 let initialState = {}
 //######################## Reducer ##########################
@@ -75,6 +106,17 @@ const teamsReducer = (state = initialState, action) => {
             return newState
         }
         case TEAM_DUALS: {
+            newState = { ...action.duals };
+            return newState
+        }
+        case LOAD_SCHEDULE: {
+            return {
+                ...state, // Maintain the current state
+                ...action.duals, // Merge in the newly loaded schedule data
+            };
+        }
+
+        case ALL_DUALS: {
             newState = { ...action.duals };
             return newState
         }

@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User, Fighter, Team, Medal, Team_Result
+from app.models import User, Fighter, Team, Medal, Team_Result, Schedule
 from sqlalchemy import and_, or_
 
 team_routes = Blueprint('teams', __name__)
@@ -104,3 +104,37 @@ def team_duals(id):
         dict_duals[dual.id] = good
 
     return {'Duals': dict_duals}
+
+
+####################### get all matches based on week #####################
+@team_routes.route('/schedule/<int:week>')
+def week_schedule(week):
+    duals = Schedule.query.filter(Schedule.week == week).all()
+    dict_duals = {}
+    for dual in duals:
+        team_1 = Team.query.filter(Team.name == dual.team_1).first().to_dict()  # Fetch team_1 details
+        team_2 = Team.query.filter(Team.name == dual.team_2).first().to_dict()  # Fetch team_2 details
+        good = dual.to_dict()
+
+        good['team_1'] = team_1
+        good['team_2'] = team_2
+
+        dict_duals[dual.id] = good
+    return {'Schedule': dict_duals}
+
+@team_routes.route('/schedule')
+def schedule():
+    duals = Schedule.query.all()
+    dict_duals = {}
+    for dual in duals:
+        team_1 = Team.query.filter(Team.name == dual.team_1).first().to_dict()  # Fetch team_1 details
+        team_2 = Team.query.filter(Team.name == dual.team_2).first().to_dict()  # Fetch team_2 details
+        good = dual.to_dict()
+
+        # Assign team details to team_1 and team_2 keys
+        good['team_1'] = team_1
+        good['team_2'] = team_2
+
+        dict_duals[dual.id] = good
+
+    return {'Schedule': dict_duals}

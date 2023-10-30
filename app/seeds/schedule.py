@@ -64,7 +64,7 @@ def generate_week3_matchup():
         Schedule(id=45, week=3,team_1='Azle Titans',team_2='Argyle Texans', completed=False),
         Schedule(id=46, week=3,team_1='Wakeland Raiders',team_2='Nazareth Chargers', completed=False),
         Schedule(id=47, week=3,team_1='Allen Chiefs',team_2='Haltom City Broncos', completed=False),
-        Schedule(id=48, week=3,team_1='Lamar Dolphins',team_2='College Station Jets''', completed=False),
+        Schedule(id=48, week=3,team_1='Lamar Dolphins',team_2='College Station Jets', completed=False),
     ]
 
 

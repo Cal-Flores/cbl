@@ -1,0 +1,69 @@
+.scontcont {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+    margin-top: 6%;
+}
+
+.nflsche {
+    width: 100%;
+    background-color: white;
+    height: 165px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-left: 10%;
+    color: black;
+}
+
+#sdualcont {
+    background-color: white;
+    /* margin-left: 5%;
+    margin-right: 5%;
+    width: 90%; */
+    margin-top: .8%;
+    margin-bottom: .8%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+/*
+.dualdiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-top: .8%;
+    padding-bottom: .8%;
+} */
+
+.dualdiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2.5fr 1fr 1fr 1fr 2.5fr 1fr 1fr;
+    grid-gap: 10px;
+    align-items: center;
+    padding-top: .8%;
+    padding-bottom: .8%;
+}
+
+/* .dualdiv div,
+.dualdiv img {
+    justify-self: center;
+} */
+
+.sdualbtn {
+    width: 20px;
+    background-color: rgb(40, 83, 129);
+    ;
+
+}
+
+.weekselect {
+    outline: none;
+    cursor: pointer;
+}
+
+.sname {
+    font-size: 17px;
+    cursor: pointer;
+}

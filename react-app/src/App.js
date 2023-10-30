@@ -13,6 +13,8 @@ import FreeAgents from "./components/Draft/draft";
 import Standings from "./components/Standings/standings";
 import TeamDetails from "./components/TeamDetails/teamDetails";
 import Rankings from "./components/Rankings/rankings";
+import Schedule from "./components/Schedule/schedule";
+import GameTime from "./components/GameTime/gameTime";
 
 function App() {
   const dispatch = useDispatch();
@@ -49,6 +51,12 @@ function App() {
           </Route>
           <Route exact path="/rankings" >
             < Rankings />
+          </Route>
+          <Route exact path="/schedule" >
+            <Schedule />
+          </Route>
+          <Route exact path="/game/:id" >
+            <GameTime />
           </Route>
         </Switch>
       )}
