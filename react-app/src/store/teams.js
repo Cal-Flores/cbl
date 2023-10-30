@@ -4,6 +4,7 @@ const SORT_TEAMS = 'teams/SORT_TEAMS'
 const TEAM_DUALS = 'teams/TEAM_DUALS'
 const LOAD_SCHEDULE = 'teams/LOAD_SCHEDULE'
 const ALL_DUALS = 'teams/ALL_DUALS'
+const ONE_DUAL = 'teams/ONE_DUAL'
 
 //################## Action Creators ######################
 
@@ -37,6 +38,13 @@ const allDuals = (duals) => {
     return {
         'type': ALL_DUALS,
         duals
+    }
+}
+
+const oneDual = (dual) => {
+    return {
+        'type': ONE_DUAL,
+        dual
     }
 }
 
@@ -91,6 +99,15 @@ export const getAllSchedule = () => async dispatch => {
     }
 }
 
+export const getOneDual = (id) => async dispatch => {
+    const response = await fetch(`/api/team/game/${id}`)
+
+    if (response.ok) {
+        const dual = await response.json()
+        dispatch(oneDual(dual))
+    }
+}
+
 let initialState = {}
 //######################## Reducer ##########################
 
@@ -118,6 +135,10 @@ const teamsReducer = (state = initialState, action) => {
 
         case ALL_DUALS: {
             newState = { ...action.duals };
+            return newState
+        }
+        case ONE_DUAL: {
+            newState = { ...action.dual };
             return newState
         }
         default:

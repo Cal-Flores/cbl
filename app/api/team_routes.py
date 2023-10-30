@@ -138,3 +138,33 @@ def schedule():
         dict_duals[dual.id] = good
 
     return {'Schedule': dict_duals}
+
+
+############################ get info about 1 dual FORM ##########################
+@team_routes.route('/game/<int:id>')
+def gameTime(id):
+    dual = Schedule.query.get(id)
+    dual_dict = dual.to_dict()
+    dict_fighters_one = {}
+    dict_fighters_two = {}
+
+    fighters_one = Fighter.query.filter(Fighter.team_name == dual.team_1).all()
+    fighters_two = Fighter.query.filter(Fighter.team_name == dual.team_2).all()
+
+    for fighter in fighters_one:
+        good = fighter.to_dict()
+        dict_fighters_one[fighter.id] = good
+
+    for fighter in fighters_two:
+        good = fighter.to_dict()
+        dict_fighters_two[fighter.id] = good
+
+
+    # print('AMYYYYYYYYUYYYY#######################', dict_fighters_one)
+    # print('AMYYYYYYYYUYYYY#######################', dict_fighters_two)
+    print({'Dual_Stats': {'dual': dual_dict, 'team_1': dict_fighters_one, 'team_2': dict_fighters_two}})
+    return {'Dual_Stats': {
+        'dual': dual_dict,
+        'team_1': dict_fighters_one,
+        'team_2': dict_fighters_two
+    }}

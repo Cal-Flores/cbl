@@ -1,22 +1,35 @@
 // Inside the GameTime component
-import React from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
+function GameTime() {
+    const dispatch = useDispatch();
+    const [dualInfo, setDualInfo] = useState(null);
+    const { id } = useParams();
 
-function GameTime(props) {
-    const location = useLocation();
-    const { state } = location;
-    const dualInfo = state?.dualInfo;
-    const team1Info = state?.team1Info;
-    const team2Info = state?.team2Info;
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`/api/team/game/${id}`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok.');
+                }
+                const data = await response.json();
+                setDualInfo(data.Dual_Stats);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+        fetchData();
+    }, [id]);
 
-    console.log('this game days dual Info', dualInfo);
-    console.log('heres team 1', team1Info);
-    console.log('heres team 2', team2Info);
+    console.log('Dual Info:', dualInfo);
 
     return (
         <div style={{ marginTop: '6%' }}>
             <h1>GAME DAY</h1>
+            {/* Render the retrieved data in your component */}
         </div>
     );
 }
