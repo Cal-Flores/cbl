@@ -18,9 +18,6 @@
     width: 100%;
 }
 
-.squadOne {}
-
-
 
 .gamehead {
     text-align: center;
@@ -89,6 +86,7 @@
     width: 150px;
     text-align: center;
     outline: 1px dotted #013369;
+    cursor: pointer;
 }
 
 .squadweight {
@@ -100,4 +98,32 @@
     background-color: #013369;
     color: white;
     height: 15%;
+}
+
+.squadbtn {
+    display: flex;
+    flex-direction: column;
+}
+
+.addbtn {
+    background-color: none;
+    border: none;
+    color: green;
+    cursor: pointer;
+    border-bottom: 1px solid black;
+}
+
+.addbtn:active {
+    background-color: green;
+}
+
+.subbtn:active {
+    background-color: red;
+}
+
+.subbtn {
+    background-color: none;
+    border: none;
+    color: red;
+    cursor: pointer;
 }

@@ -26,25 +26,43 @@ function GameTime() {
         fetchData();
     }, [id]);
 
-    //console.log('Dual Info:', dualInfo);
+    console.log('Dual Info:', dualInfo?.dual?.team_1);
     let squadOne;
     let squadTwo;
     if (dualInfo?.team_1) {
         squadOne = Object.values(dualInfo?.team_1).sort((a, b) => a.weight - b.weight)
-        console.log('HERE IS SQUAD 1', squadOne)
+        console.log('HERE IS SQUAD DUALS', dualInfo)
     }
     if (dualInfo?.team_2) {
         squadTwo = Object.values(dualInfo?.team_2).sort((a, b) => a.weight - b.weight)
-        console.log('HERE IS SQUAD 2', squadTwo)
     }
 
-    let scoreOne = 0;
-    let scoreTwo = 0;
+    const [scoreOne, setScoreOne] = useState(0); // Using the useState hook
+    const [scoreTwo, setScoreTwo] = useState(0); // Using the useState hook
+
+    const scoreOnePlus = () => {
+        setScoreOne(scoreOne + 1);
+    };
+
+    const scoreOneMinus = () => {
+        setScoreOne(scoreOne - 1);
+    };
+    const scoreTwoPlus = () => {
+        setScoreTwo(scoreTwo + 1);
+    };
+
+    const scoreTwoMinus = () => {
+        setScoreTwo(scoreTwo - 1);
+    };
     return (
         <div id='gameday'>
             <h1 style={{ textAlign: 'center' }}>Week {dualInfo?.dual?.week} Dual  #{dualInfo?.dual?.id}</h1>
             <div className='gamehead'>
                 <div className='scoreteam'>
+                    <div className='squadbtn'>
+                        <button className='addbtn' onClick={scoreOnePlus}>+</button>
+                        <button className='subbtn' onClick={scoreOneMinus}>-</button>
+                    </div>
                     <div>{dualInfo?.dual?.team_1}</div>
                     <div>{scoreOne}</div>
                 </div>
@@ -52,6 +70,10 @@ function GameTime() {
                 <div className='scoreteam'>
                     <div>{scoreTwo}</div>
                     <div>{dualInfo?.dual?.team_2}</div>
+                    <div className='squadbtn'>
+                        <button className='addbtn' onClick={scoreTwoPlus}>+</button>
+                        <button className='subbtn' onClick={scoreTwoMinus}>-</button>
+                    </div>
                 </div>
             </div>
             <div id='squadcont'>
@@ -66,7 +88,7 @@ function GameTime() {
                     ))}
                 </div>
                 <div>
-                    <GameTimeForm />
+                    <GameTimeForm scoreOne={scoreOne} scoreTwo={scoreTwo} />
                 </div>
 
 

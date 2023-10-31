@@ -177,19 +177,42 @@ def gameTime(id):
 def game_results(id):
     data = request.get_json()
 
-    # Print the received data
-    print('Received Data:', data)
-    print('Received ID:', id)
 
-    for fight in data:
+    score_one = data.get('scoreOne')
+    score_two = data.get('scoreTwo')
+
+    schedule = Schedule.query.get(id)
+    team_1 = schedule.team_1
+    team_2 = schedule.team_2
+
+    actual_team_one = Team.query.filter(Team.name == team_1).first()
+    actual_team_two = Team.query.filter(Team.name == team_2).first()
+    actual_team_one.points += int(score_one)
+    actual_team_two.points += int(score_two)
+    db.session.commit()
+
+
+    if score_one > score_two:
+        new_res = Team_Result(id=id, week=schedule.week, winner=team_1, loser=team_2, winner_score=score_one, loser_score=score_two)
+        db.session.add(new_res)
+        db.session.commit()
+    else:
+        new_res = Team_Result(id=id, week=schedule.week, winner=team_2, loser=team_1, winner_score=score_two, loser_score=score_one)
+        db.session.add(new_res)
+        db.session.commit()
+
+
+    # Process each fight in the 'fights' list
+    for fight in data.get('fights', []):
         winner = fight.get('winner')
         loser = fight.get('loser')
         method = fight.get('method')
         round = fight.get('round')
 
+
         fight_winner = Fighter.query.filter(Fighter.name == winner).first()
         fight_winner.wins = fight_winner.wins + 1
-        fight_winner.all_win = fight_winner.all_win + 1
+        # fight_winner.all_win = fight_winner.all_win + 1
         if method == 'KO' or method == 'TKO' or method == 'SUB':
             fight_winner.points += 6
         elif method == 'M.DEC':
@@ -198,11 +221,13 @@ def game_results(id):
             fight_winner.points += 3
 
         fight_loser = Fighter.query.filter(Fighter.name == loser).first()
+        print('loser:####################################', fight_loser.losses)
         fight_loser.losses = fight_loser.losses + 1
-        fight_loser.all_loss = fight_loser.all_loss + 1
+        # fight_loser.all_loss = fight_loser.all_loss + 1
 
         new_res = Season_Result(id=id,winner=winner, loser=loser,method=method,round=round,dual_id=100)
         db.session.add(new_res)
         db.session.commit()
+
 
     return {'team': 'team'}

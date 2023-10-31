@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-const GameTimeForm = () => {
+const GameTimeForm = ({ scoreOne, scoreTwo }) => {
 
     const { id } = useParams();
     let [dualInfo, setDualInfo] = useState([])
@@ -22,16 +22,13 @@ const GameTimeForm = () => {
         fetchData();
     }, [id]);
 
-
     let squadOne;
     let squadTwo;
     if (dualInfo?.team_1) {
         squadOne = Object.values(dualInfo?.team_1).sort((a, b) => a.weight - b.weight)
-        console.log('HERE IS SQUAD 1 DUAL INFOOOOOOO', dualInfo)
     }
     if (dualInfo?.team_2) {
         squadTwo = Object.values(dualInfo?.team_2).sort((a, b) => a.weight - b.weight)
-        console.log('HERE IS SQUAD 2 FORMM', squadTwo)
     }
 
 
@@ -71,12 +68,18 @@ const GameTimeForm = () => {
         e.preventDefault();
 
         // Extract only the necessary details to be sent to the backend
-        const dataToSend = allFightDetails.map((fight) => ({
-            winner: fight.winner,
-            loser: fight.loser,
-            method: fight.method,
-            round: fight.round
-        }));
+        const dataToSend = {
+            // Add scoreOne and scoreTwo to the data being sent
+            scoreOne: scoreOne,
+            scoreTwo: scoreTwo,
+            // Include other fight details (winner, loser, method, round) as needed
+            fights: allFightDetails.map((fight) => ({
+                winner: fight.winner,
+                loser: fight.loser,
+                method: fight.method,
+                round: fight.round
+            }))
+        };
 
         fetch(`/api/team/gameFinish/${id}`, {
             method: 'POST',
