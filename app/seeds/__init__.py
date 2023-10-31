@@ -29,7 +29,6 @@ def seed():
         undo_teams()
         undo_tour_results()
         undo_season_results()
-        undo_team_results()
         undo_schedule
     seed_users()
     seed_fighters()

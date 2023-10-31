@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User, Fighter, Team, Medal, Team_Result, Schedule
+from app.models import User, Fighter, Team, Medal, Team_Result, Schedule, Season_Result, db
 from sqlalchemy import and_, or_
+from flask import request
 
 team_routes = Blueprint('teams', __name__)
 #url_prefix='/api/team'
@@ -168,3 +169,40 @@ def gameTime(id):
         'team_1': dict_fighters_one,
         'team_2': dict_fighters_two
     }}
+
+
+
+############### MEGA FORM ##############
+@team_routes.route('/gameFinish/<int:id>', methods=['POST'])
+def game_results(id):
+    data = request.get_json()
+
+    # Print the received data
+    print('Received Data:', data)
+    print('Received ID:', id)
+
+    for fight in data:
+        winner = fight.get('winner')
+        loser = fight.get('loser')
+        method = fight.get('method')
+        round = fight.get('round')
+
+        fight_winner = Fighter.query.filter(Fighter.name == winner).first()
+        fight_winner.wins = fight_winner.wins + 1
+        fight_winner.all_win = fight_winner.all_win + 1
+        if method == 'KO' or method == 'TKO' or method == 'SUB':
+            fight_winner.points += 6
+        elif method == 'M.DEC':
+            fight_winner.points += 4
+        else:
+            fight_winner.points += 3
+
+        fight_loser = Fighter.query.filter(Fighter.name == loser).first()
+        fight_loser.wins = fight_loser.losses + 1
+        fight_loser.all_win = fight_loser.all_loss + 1
+
+        new_res = Season_Result(id=id,winner=winner, loser=loser,method=method,round=round,dual_id=100)
+        db.session.add(new_res)
+        db.session.commit()
+
+    return {'team': 'team'}

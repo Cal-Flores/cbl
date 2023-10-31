@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import './gameTime.css';
+import GameTimeForm from './GameTimeForm';
 
 function GameTime() {
     const dispatch = useDispatch();
@@ -25,7 +26,7 @@ function GameTime() {
         fetchData();
     }, [id]);
 
-    console.log('Dual Info:', dualInfo);
+    //console.log('Dual Info:', dualInfo);
     let squadOne;
     let squadTwo;
     if (dualInfo?.team_1) {
@@ -54,28 +55,26 @@ function GameTime() {
                 </div>
             </div>
             <div id='squadcont'>
-                <div className='squadOne'>
+                <div style={{ marginLeft: '15%' }} className='squadOne'>
                     {squadOne?.map(fighter => (
-                        <div>
+                        <div className='squadcard'>
                             <img style={{ height: '115px', width: '184px', borderBottom: '1px solid gray', }} onError={(e) => { e.target.src = '../../../images/blank.png' }} src={fighter.prof_img} />
-                            <div>{fighter?.name}</div>
+                            <div className='sqaudname'>{fighter?.name}</div>
                             <div>{fighter.points} pts</div>
                             <div>{fighter?.wins} - {fighter?.losses}</div>
                         </div>
                     ))}
                 </div>
                 <div>
-                    <form>
-                        
-                    </form>
+                    <GameTimeForm />
                 </div>
 
 
-                <div className='squadOne'>
+                <div style={{ marginRight: '15%' }} className='squadOne'>
                     {squadTwo?.map(fighter => (
-                        <div>
+                        <div className='squadcard'>
                             <img style={{ height: '115px', width: '184px', borderBottom: '1px solid gray', }} onError={(e) => { e.target.src = '../../../images/blank.png' }} src={fighter.prof_img} />
-                            <div>{fighter?.name}</div>
+                            <div className='sqaudname'>{fighter?.name}</div>
                             <div>{fighter.points} pts</div>
                             <div>{fighter?.wins} - {fighter?.losses}</div>
                         </div>
