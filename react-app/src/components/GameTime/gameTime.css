@@ -49,8 +49,8 @@
 }
 
 .squadcard {
-    margin-bottom: 20%;
-    height: 250px;
+    margin-bottom: 15%;
+    height: 235px;
     width: 250px;
     background-color: white;
     display: flex;
@@ -62,4 +62,42 @@
 .sqaudname {
     font-size: 18px;
     font-weight: bold;
+}
+
+.formcont {
+    border: 1px solid;
+    margin-bottom: 40%;
+    height: 180px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    background-color: white;
+}
+
+.sqform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.squadselect {
+    height: 25px;
+    width: 150px;
+    text-align: center;
+    outline: 1px dotted #013369;
+}
+
+.squadweight {
+    font-size: 18px;
+    font-weight: bolder;
+    border-bottom: 1px solid gray;
+    width: 100%;
+    text-align: center;
+    background-color: #013369;
+    color: white;
+    height: 15%;
 }

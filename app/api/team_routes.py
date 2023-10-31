@@ -198,8 +198,8 @@ def game_results(id):
             fight_winner.points += 3
 
         fight_loser = Fighter.query.filter(Fighter.name == loser).first()
-        fight_loser.wins = fight_loser.losses + 1
-        fight_loser.all_win = fight_loser.all_loss + 1
+        fight_loser.losses = fight_loser.losses + 1
+        fight_loser.all_loss = fight_loser.all_loss + 1
 
         new_res = Season_Result(id=id,winner=winner, loser=loser,method=method,round=round,dual_id=100)
         db.session.add(new_res)

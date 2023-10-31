@@ -107,42 +107,42 @@ const GameTimeForm = () => {
             {squadOne && squadTwo && (
                 <form onSubmit={handleSubmit}>
                     {allFightDetails.map((fight, index) => (
-                        <div key={index}>
-                            <h3>{squadOne[index]?.weight} lbs</h3>
-                            <div>
-                                <label>
+                        <div className='formcont' key={index}>
+                            <div className='squadweight'>{squadOne[index]?.weight} lbs</div>
+                            <div className='sqform'>
+                                <div>
                                     Winner:
-                                    <select value={fight.winner} onChange={(e) => handleWinnerChange(e, index)}>
-                                        <option value="">Select winner</option>
-                                        <option value={squadOne[index]?.name}>{squadOne[index]?.name}</option>
-                                        <option value={squadTwo[index]?.name}>{squadTwo[index]?.name}</option>
-                                    </select>
-                                </label>
+                                </div>
+                                <select className='squadselect' value={fight.winner} onChange={(e) => handleWinnerChange(e, index)}>
+                                    <option value="">Select winner</option>
+                                    <option value={squadOne[index]?.name}>{squadOne[index]?.name}</option>
+                                    <option value={squadTwo[index]?.name}>{squadTwo[index]?.name}</option>
+                                </select>
                             </div>
-                            <div>
+                            <div className='sqform'>
                                 <label>
                                     Method:
-                                    <select value={fight.method} onChange={(e) => handleMethodChange(e, index)}>
-                                        <option value="">Select method</option>
-                                        <option value="KO">KO</option>
-                                        <option value="TKO">TKO</option>
-                                        <option value="SUB">SUB</option>
-                                        <option value="DEC">DEC</option>
-                                        <option value="M.DEC">M.DEC</option>
-                                        <option value="S.DEC">S.DEC</option>
-                                    </select>
                                 </label>
+                                <select className='squadselect' value={fight.method} onChange={(e) => handleMethodChange(e, index)}>
+                                    <option value="">Select method</option>
+                                    <option value="KO">KO</option>
+                                    <option value="TKO">TKO</option>
+                                    <option value="SUB">SUB</option>
+                                    <option value="DEC">DEC</option>
+                                    <option value="M.DEC">M.DEC</option>
+                                    <option value="S.DEC">S.DEC</option>
+                                </select>
                             </div>
-                            <div>
+                            <div className='sqform'>
                                 <label>
                                     Round:
-                                    <select value={fight.round} onChange={(e) => handleRoundChange(e, index)}>
-                                        <option value="">Select method</option>
-                                        <option value='1'>1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                    </select>
                                 </label>
+                                <select className='squadselect' value={fight.round} onChange={(e) => handleRoundChange(e, index)}>
+                                    <option value="">Select Round</option>
+                                    <option value='1'>1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
                             </div>
                         </div>
                     ))}
