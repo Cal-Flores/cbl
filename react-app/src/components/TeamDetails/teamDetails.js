@@ -16,7 +16,6 @@ function TeamDetails() {
     }, [dispatch])
 
     let team = useSelector(state => state?.teams?.Team)
-    console.log('FUCKKKKKKKK YO', team)
     let dualsObj = useSelector(state => state?.teams?.Team?.Duals)
 
     let duals;
@@ -35,12 +34,10 @@ function TeamDetails() {
                 pts += dual.loser_score;
                 opts += dual.winner_score;
             }
-            console.log('pts', dual.winner_score)
-            console.log('opts', dual.loser_score)
         })
         diff = pts - opts
     }
-    console.log('all duals', team)
+    console.log('heere is the team fam', team)
 
     //style={{ backgroundImage: "url(" + `${team?.bg}` + ")", border: `5px solid ${team?.border}` }}
     return (
@@ -49,8 +46,8 @@ function TeamDetails() {
                 <div className='statdt'>
                     <h1 className='tdname'>{team?.name}</h1>
                     <div className='tdconf'>
-                        <div>{team?.conf} {team?.divison}</div>
-                        <div>Last Season: {team?.win}-{team?.loss}</div>
+                        <div>{team?.last_place} {team?.conf} {team?.divison}</div>
+                        <div>Last Season: {team?.win} - {team?.loss} {team?.post_season}</div>
                     </div>
                     <div className='tdrec'>
                         <div className='tdrecnum'>{team?.curr_wins} - {team?.curr_loss}</div>

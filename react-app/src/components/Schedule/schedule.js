@@ -89,11 +89,11 @@ function Schedule() {
                                 <div className='dualdiv'>
                                     <div style={{ color: 'green' }}>COMPLETE</div>
                                     <div>({dual?.team_1?.curr_wins} - {dual?.team_1?.curr_loss})</div>
-                                    <div className='sname'>{dual?.team_1?.name}</div>
+                                    <div onClick={(e) => history.push(`/teams/stats/${dual?.team_1?.id}`)} className='sname'>{dual?.team_1?.name}</div>
                                     <img style={{ height: '45px', width: '45px' }} src={dual?.team_1?.logo_img} />
                                     <div>VS</div>
                                     <img style={{ height: '45px', width: '45px' }} src={dual?.team_2?.logo_img} />
-                                    <div className='sname'>{dual?.team_2?.name}</div>
+                                    <div onClick={(e) => history.push(`/teams/stats/${dual?.team_2?.id}`)} className='sname'>{dual?.team_2?.name}</div>
                                     <div>({dual?.team_2?.curr_wins} - {dual?.team_2?.curr_loss})</div>
                                     <div>FINAL</div>
                                 </div>

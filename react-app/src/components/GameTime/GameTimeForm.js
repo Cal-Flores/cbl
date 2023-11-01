@@ -149,7 +149,7 @@ const GameTimeForm = ({ scoreOne, scoreTwo }) => {
                             </div>
                         </div>
                     ))}
-                    <button type="submit">Submit</button>
+                    <button className='squadfinalbtn' type="submit">FINAL</button>
                 </form>
             )}
         </div>

@@ -7,7 +7,7 @@
     align-items: center;
     margin-left: 5%;
     margin-right: 5%;
-
+    margin-bottom: 5%;
 }
 
 #squadcont {
@@ -125,5 +125,23 @@
     background-color: none;
     border: none;
     color: red;
+    cursor: pointer;
+}
+
+.squadfinalbtn {
+    height: 35px;
+    width: 70px;
+    text-align: center;
+    background-color: #013369;
+    color: white;
+    border: none;
+    text-align: center;
+    margin-left: 30%;
+}
+
+.squadfinalbtn:hover {
+    background-color: white;
+    color: #013369;
+    border: 1px double #013369;
     cursor: pointer;
 }

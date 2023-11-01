@@ -53,7 +53,7 @@ function SingleTeam() {
                             <div className='finforcont'>
                                 <div className='finfo'>
                                     {/* <div className='fighterstat'>{fighter?.wins}-{fighter.losses}</div> */}
-                                    <div className='fighterstat'>16-0</div>
+                                    <div className='fighterstat'>{fighter?.wins} - {fighter?.losses}</div>
                                     <div className='fighterstat'>{fighter?.points} pts</div>
                                 </div>
 

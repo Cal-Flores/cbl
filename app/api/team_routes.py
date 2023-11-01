@@ -71,6 +71,8 @@ def get_one_team(id):
         'loss': curr_team.loss,
         'curr_wins': curr_team.curr_wins,
         'curr_loss': curr_team.curr_loss,
+        'last_place': curr_team.last_place,
+        'post_season': curr_team.post_season,
         'offense': curr_team.offense,
         'defense': curr_team.defense,
         'points': curr_team.points,
