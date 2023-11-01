@@ -59,13 +59,13 @@ function Schedule() {
                             {dual.completed == false &&
                                 <div className='dualdiv'>
                                     <div style={{ color: 'rgb(40, 83, 129)' }}>In Progress</div>
-                                    <div>({dual?.team_1?.win} - {dual?.team_1?.loss})</div>
+                                    <div>({dual?.team_1?.curr_wins} - {dual?.team_1?.curr_loss})</div>
                                     <div onClick={(e) => history.push(`/teams/stats/${dual?.team_1?.id}`)} className='sname'>{dual?.team_1?.name}</div>
                                     <img style={{ height: '45px', width: '45px' }} src={dual?.team_1?.logo_img} />
                                     <div>VS</div>
                                     <img style={{ height: '45px', width: '45px' }} src={dual?.team_2?.logo_img} />
                                     <div onClick={(e) => history.push(`/teams/stats/${dual?.team_2?.id}`)} className='sname'>{dual?.team_2?.name}</div>
-                                    <div>({dual?.team_2?.win} - {dual?.team_2?.loss})</div>
+                                    <div>({dual?.team_2?.curr_wins} - {dual?.team_2?.curr_loss})</div>
 
 
                                     <button
@@ -85,19 +85,19 @@ function Schedule() {
 
                                 </div>
                             }
-                            {/* {dual.completed == true &&
+                            {dual.completed == true &&
                                 <div className='dualdiv'>
-                                    <div style={{ color: 'rgb(40, 83, 129)' }}>Complete</div>
-                                    <div>({dual?.team_1?.win} - {dual?.team_1?.loss})</div>
+                                    <div style={{ color: 'green' }}>COMPLETE</div>
+                                    <div>({dual?.team_1?.curr_wins} - {dual?.team_1?.curr_loss})</div>
                                     <div className='sname'>{dual?.team_1?.name}</div>
                                     <img style={{ height: '45px', width: '45px' }} src={dual?.team_1?.logo_img} />
                                     <div>VS</div>
                                     <img style={{ height: '45px', width: '45px' }} src={dual?.team_2?.logo_img} />
                                     <div className='sname'>{dual?.team_2?.name}</div>
-                                    <div>({dual?.team_2?.win} - {dual?.team_2?.loss})</div>
-                                    <div>Complete</div>
+                                    <div>({dual?.team_2?.curr_wins} - {dual?.team_2?.curr_loss})</div>
+                                    <div>FINAL</div>
                                 </div>
-                            } */}
+                            }
                         </div>
                     ))}
                 </div>

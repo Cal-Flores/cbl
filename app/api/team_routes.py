@@ -69,6 +69,8 @@ def get_one_team(id):
         'name': curr_team.name,
         'win': curr_team.win,
         'loss': curr_team.loss,
+        'curr_wins': curr_team.curr_wins,
+        'curr_loss': curr_team.curr_loss,
         'offense': curr_team.offense,
         'defense': curr_team.defense,
         'points': curr_team.points,
@@ -182,11 +184,14 @@ def game_results(id):
     score_two = data.get('scoreTwo')
 
     schedule = Schedule.query.get(id)
+    schedule.completed = True
+    db.session.commit()
     team_1 = schedule.team_1
     team_2 = schedule.team_2
 
     actual_team_one = Team.query.filter(Team.name == team_1).first()
     actual_team_two = Team.query.filter(Team.name == team_2).first()
+
     actual_team_one.points += int(score_one)
     actual_team_two.points += int(score_two)
     db.session.commit()
@@ -194,10 +199,14 @@ def game_results(id):
 
     if score_one > score_two:
         new_res = Team_Result(id=id, week=schedule.week, winner=team_1, loser=team_2, winner_score=score_one, loser_score=score_two)
+        actual_team_one.curr_wins += 1
+        actual_team_two.curr_loss += 1
         db.session.add(new_res)
         db.session.commit()
     else:
         new_res = Team_Result(id=id, week=schedule.week, winner=team_2, loser=team_1, winner_score=score_two, loser_score=score_one)
+        actual_team_two.curr_wins += 1
+        actual_team_one.curr_loss += 1
         db.session.add(new_res)
         db.session.commit()
 
@@ -221,11 +230,50 @@ def game_results(id):
             fight_winner.points += 3
 
         fight_loser = Fighter.query.filter(Fighter.name == loser).first()
-        print('loser:####################################', fight_loser.losses)
         fight_loser.losses = fight_loser.losses + 1
         # fight_loser.all_loss = fight_loser.all_loss + 1
 
-        new_res = Season_Result(id=id,winner=winner, loser=loser,method=method,round=round,dual_id=100)
+
+        weight_classes = ['125', '133', '141', '149', '157']
+
+        # Check if the fight winner's weight is in the specified weight classes
+        if fight_winner.weight in weight_classes:
+            # If the winner's team has the same name as the actual_team_one
+            if fight_winner.team_name == actual_team_one.name:
+                if method in ['KO', 'TKO', 'SUB']:
+                    actual_team_one.offense += 6
+                elif method == 'M.DEC':
+                    actual_team_one.offense += 4
+                else:
+                    actual_team_one.offense += 3
+            else:
+                # Increment the opponent's defense points
+                if method in ['KO', 'TKO', 'SUB']:
+                    actual_team_two.offense += 6
+                elif method == 'M.DEC':
+                    actual_team_two.offense += 4
+                else:
+                    actual_team_two.offense += 3
+        else:
+            # Perform opposite logic for different weight classes
+            if fight_winner.team_name == actual_team_one.name:
+                # Increment opponent's defense points
+                if method in ['KO', 'TKO', 'SUB']:
+                    actual_team_one.defense += 6
+                elif method == 'M.DEC':
+                    actual_team_one.defense += 4
+                else:
+                    actual_team_one.defense += 3
+            else:
+                # Increment own team's offense points
+                if method in ['KO', 'TKO', 'SUB']:
+                    actual_team_two.defense += 6
+                elif method == 'M.DEC':
+                    actual_team_two.defense += 4
+                else:
+                    actual_team_two.defense += 3
+
+        new_res = Season_Result(id=id,winner=winner, loser=loser,method=method,round=round,dual_id=id)
         db.session.add(new_res)
         db.session.commit()
 

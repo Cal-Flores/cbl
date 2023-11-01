@@ -118,7 +118,7 @@ def upgrade():
     sa.Column('week', sa.String()),
     sa.Column('team_1', sa.String()),
     sa.Column('team_2', sa.String()),
-    sa.Column('completed', sa.String()),
+    sa.Column('completed', sa.Boolean()),
     )
 
     if environment == "production":

@@ -81,6 +81,6 @@ def undo_schedule():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM schedule"))
+        db.session.execute(text("DELETE FROM schedules"))
 
     db.session.commit()

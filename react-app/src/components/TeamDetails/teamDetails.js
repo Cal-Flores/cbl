@@ -16,6 +16,7 @@ function TeamDetails() {
     }, [dispatch])
 
     let team = useSelector(state => state?.teams?.Team)
+    console.log('FUCKKKKKKKK YO', team)
     let dualsObj = useSelector(state => state?.teams?.Team?.Duals)
 
     let duals;
@@ -49,10 +50,10 @@ function TeamDetails() {
                     <h1 className='tdname'>{team?.name}</h1>
                     <div className='tdconf'>
                         <div>{team?.conf} {team?.divison}</div>
-                        <div>Last Season: {team?.win}-{team?.loss} WILDCARD</div>
+                        <div>Last Season: {team?.win}-{team?.loss}</div>
                     </div>
                     <div className='tdrec'>
-                        <div className='tdrecnum'>{team?.win} - {team?.loss}</div>
+                        <div className='tdrecnum'>{team?.curr_wins} - {team?.curr_loss}</div>
                     </div>
                     <button onClick={(e) => history.push(`/teams/${team?.id}`)} className='tdbtn'>FIGHTERS</button>
                 </div>
