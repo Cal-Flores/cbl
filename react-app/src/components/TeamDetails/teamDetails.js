@@ -48,6 +48,7 @@ function TeamDetails() {
                     <div className='tdconf'>
                         <div>{team?.last_place} {team?.conf} {team?.divison}</div>
                         <div>Last Season: {team?.win} - {team?.loss} {team?.post_season}</div>
+                        <div>Division Record: {team?.div_win} - {team?.div_loss}</div>
                     </div>
                     <div className='tdrec'>
                         <div className='tdrecnum'>{team?.curr_wins} - {team?.curr_loss}</div>
@@ -60,7 +61,7 @@ function TeamDetails() {
                 <div>TEAM POINTS: {team?.points}</div>
                 <div>OFFENSE: {team?.offense}</div>
                 <div>DEFENSE: {team?.defense}</div>
-                <div>POINT DIFFRENTIAL: {diff}</div>
+                <div>POINT DIFFERENTIAL: {diff}</div>
             </div>
             <div id='dualcont'>
                 <div className="grid-header">

@@ -7,7 +7,7 @@ import { getAllSchedule, getSchedule } from '../../store/teams';
 function Schedule() {
     const dispatch = useDispatch();
     const history = useHistory()
-    const [week, setWeek] = useState('All');
+    const [week, setWeek] = useState('1');
     const [headerValue, setHeaderValue] = useState('');
     const [scores, setScores] = useState(null);
     const [scoresOBJ, setScoresOBJ] = useState(null);
@@ -36,7 +36,7 @@ function Schedule() {
     let sArr
     if (scheduleWeek) {
         sArr = Object.values(scheduleWeek)
-        console.log('night showwww', sArr)
+        console.log('NIGHT SHOWW', sArr)
     }
 
     const handleSearch = (e) => {
@@ -45,6 +45,8 @@ function Schedule() {
         setWeek(e.target.value);
         setHeaderValue(selectedWeek);
         dispatch(getSchedule(selectedWeek));
+        setScoresOBJ(JSON.stringify(scores));
+        console.log('YEEEA', scoresOBJ)
     };
 
     const weekOptions = [];
@@ -59,7 +61,7 @@ function Schedule() {
     useEffect(() => {
         if (scores !== null) {
             setScoresOBJ(JSON.stringify(scores));
-            console.log('YEEEA', scoresOBJ)
+
         }
     }, [scores]);
 
@@ -112,17 +114,17 @@ function Schedule() {
                             }
                             {dual.completed == true &&
                                 <div>
-                                    {dual?.team_1.name == scoresObject[`${index + 1}`]?.winner ? (
+                                    {dual?.team_1.name == scoresObject[`${dual?.id}`]?.winner ? (
                                         <div className='dualdiv2'>
                                             <div style={{ color: 'green' }}>Complete</div>
                                             <div>({dual?.team_1?.curr_wins} - {dual?.team_1?.curr_loss})</div>
-                                            <div style={{ fontWeight: 'bolder' }} onClick={(e) => history.push(`/teams/stats/${dual?.team_1?.id}`)} className='sname'>{scoresObject[`${index + 1}`]?.winner}</div>
+                                            <div style={{ fontWeight: 'bolder' }} onClick={(e) => history.push(`/teams/stats/${dual?.team_1?.id}`)} className='sname'>{scoresObject[`${dual?.id}`]?.winner}</div>
                                             <img style={{ height: '45px', width: '45px' }} src={dual?.team_1?.logo_img} />
-                                            <div className='scoree' style={{ fontWeight: 'bolder' }}>{scoresObject[`${index + 1}`]?.winner_score}</div>
+                                            <div className='scoree' style={{ fontWeight: 'bolder' }}>{scoresObject[`${dual?.id}`]?.winner_score}</div>
                                             <div>VS</div>
-                                            <div className='scoree'>{scoresObject[`${index + 1}`]?.loser_score}</div>
+                                            <div className='scoree'>{scoresObject[`${dual?.id}`]?.loser_score}</div>
                                             <img style={{ height: '45px', width: '45px' }} src={dual?.team_2?.logo_img} />
-                                            <div onClick={(e) => history.push(`/teams/stats/${dual?.team_2?.id}`)} className='sname'>{scoresObject[`${index + 1}`]?.loser}</div>
+                                            <div onClick={(e) => history.push(`/teams/stats/${dual?.team_2?.id}`)} className='sname'>{scoresObject[`${dual?.id}`]?.loser}</div>
                                             <div>({dual?.team_2?.curr_wins} - {dual?.team_2?.curr_loss})</div>
                                             <div>FINAL</div>
                                         </div>
@@ -130,15 +132,15 @@ function Schedule() {
                                         <div className='dualdiv2'>
                                             <div style={{ color: 'green' }}>Complete</div>
                                             <div>({dual?.team_1?.curr_wins} - {dual?.team_1?.curr_loss})</div>
-                                            <div onClick={(e) => history.push(`/teams/stats/${dual?.team_1?.id}`)} className='sname'>{scoresObject[`${index + 1}`]?.loser}</div>
+                                            <div onClick={(e) => history.push(`/teams/stats/${dual?.team_1?.id}`)} className='sname'>{scoresObject[`${dual?.id}`]?.loser}</div>
                                             <img style={{ height: '45px', width: '45px' }} src={dual?.team_1?.logo_img} />
-                                            <div className='scoree'>{scoresObject[`${index + 1}`]?.loser_score}</div>
+                                            <div className='scoree'>{scoresObject[`${dual?.id}`]?.loser_score}</div>
 
                                             <div>VS</div>
 
-                                            <div className='scoree' style={{ fontWeight: 'bolder' }}>{scoresObject[`${index + 1}`]?.winner_score}</div>
+                                            <div className='scoree' style={{ fontWeight: 'bolder' }}>{scoresObject[`${dual?.id}`]?.winner_score}</div>
                                             <img style={{ height: '45px', width: '45px' }} src={dual?.team_2?.logo_img} />
-                                            <div style={{ fontWeight: 'bolder' }} onClick={(e) => history.push(`/teams/stats/${dual?.team_2?.id}`)} className='sname'>{scoresObject[`${index + 1}`]?.winner}</div>
+                                            <div style={{ fontWeight: 'bolder' }} onClick={(e) => history.push(`/teams/stats/${dual?.team_2?.id}`)} className='sname'>{scoresObject[`${dual?.id}`]?.winner}</div>
                                             <div>({dual?.team_2?.curr_wins} - {dual?.team_2?.curr_loss})</div>
                                             <div>FINAL</div>
                                         </div>
