@@ -9,17 +9,40 @@ function Schedule() {
     const history = useHistory()
     const [week, setWeek] = useState('All');
     const [headerValue, setHeaderValue] = useState('');
+    const [scores, setScores] = useState(null);
     const scheduleWeek = useSelector(state => state.teams?.Schedule);
-    console.log('HERES THE DUALS THIS WEEK', scheduleWeek)
+    //console.log('HERES THE DUALS THIS WEEK', scheduleWeek)
+
+    const fetchScores = async () => {
+        try {
+            const response = await fetch('/api/team/scores');
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            const data = await response.json();
+            setScores(data.Scores);
+        } catch (error) {
+            console.error('Error fetching scores:', error);
+        }
+    };
+
+    let scoreArr;
+    if (scores) {
+        scoreArr = Object.values(scores)
+        console.log('##############################', scoreArr)
+    }
+
 
 
     useEffect(() => {
         dispatch(getAllSchedule());
+        fetchScores();
     }, [dispatch]);
 
     let sArr
     if (scheduleWeek) {
         sArr = Object.values(scheduleWeek)
+        console.log('night showwww', sArr)
     }
 
     const handleSearch = (e) => {
@@ -40,6 +63,7 @@ function Schedule() {
     }
 
 
+    console.log('SCORE', JSON.stringify(scores))
 
     return (
         <div style={{ color: 'rgb(85, 83, 83)', marginTop: '6%', marginBottom: '6%' }}>
@@ -53,7 +77,7 @@ function Schedule() {
             </div>
             <div className='scontcont'>
                 <div>
-                    {sArr?.map(dual => (
+                    {sArr?.map((dual, index) => (
                         <div id='sdualcont' key={dual.id}>
 
                             {dual.completed == false &&
@@ -86,16 +110,40 @@ function Schedule() {
                                 </div>
                             }
                             {dual.completed == true &&
-                                <div className='dualdiv'>
-                                    <div style={{ color: 'green' }}>COMPLETE</div>
-                                    <div>({dual?.team_1?.curr_wins} - {dual?.team_1?.curr_loss})</div>
-                                    <div onClick={(e) => history.push(`/teams/stats/${dual?.team_1?.id}`)} className='sname'>{dual?.team_1?.name}</div>
-                                    <img style={{ height: '45px', width: '45px' }} src={dual?.team_1?.logo_img} />
-                                    <div>VS</div>
-                                    <img style={{ height: '45px', width: '45px' }} src={dual?.team_2?.logo_img} />
-                                    <div onClick={(e) => history.push(`/teams/stats/${dual?.team_2?.id}`)} className='sname'>{dual?.team_2?.name}</div>
-                                    <div>({dual?.team_2?.curr_wins} - {dual?.team_2?.curr_loss})</div>
-                                    <div>FINAL</div>
+                                <div>
+                                    {dual?.team_1.name == scoreArr[index]?.winner ? (
+                                        <div className='dualdiv2'>
+                                            <div style={{ color: 'green' }}>Complete</div>
+                                            <div>({dual?.team_1?.curr_wins} - {dual?.team_1?.curr_loss})</div>
+                                            <div onClick={(e) => history.push(`/teams/stats/${dual?.team_1?.id}`)} className='sname'>{scoreArr[index]?.winner}</div>
+                                            <img style={{ height: '45px', width: '45px' }} src={dual?.team_1?.logo_img} />
+                                            <div className='scoree' style={{ fontWeight: 'bolder' }}>{scoreArr[index]?.winner_score}</div>
+                                            <div>VS</div>
+                                            <div className='scoree'>{scoreArr[index]?.loser_score}</div>
+                                            <img style={{ height: '45px', width: '45px' }} src={dual?.team_2?.logo_img} />
+                                            <div onClick={(e) => history.push(`/teams/stats/${dual?.team_2?.id}`)} className='sname'>{dual?.team_2?.name}</div>
+                                            <div>({dual?.team_2?.curr_wins} - {dual?.team_2?.curr_loss})</div>
+                                            <div>FINAL</div>
+                                        </div>
+                                    ) : (
+                                        <div className='dualdiv2'>
+                                            <div style={{ color: 'green' }}>Complete</div>
+                                            <div>({dual?.team_1?.curr_wins} - {dual?.team_1?.curr_loss})</div>
+                                            <div onClick={(e) => history.push(`/teams/stats/${dual?.team_1?.id}`)} className='sname'>{scoreArr[index]?.loser}</div>
+                                            <img style={{ height: '45px', width: '45px' }} src={dual?.team_1?.logo_img} />
+                                            <div className='scoree'>{scoreArr[index]?.loser_score}</div>
+
+                                            <div>VS</div>
+
+                                            <div className='scoree' style={{ fontWeight: 'bolder' }}>{scoreArr[index]?.winner_score}</div>
+                                            <img style={{ height: '45px', width: '45px' }} src={dual?.team_2?.logo_img} />
+                                            <div onClick={(e) => history.push(`/teams/stats/${dual?.team_2?.id}`)} className='sname'>{dual?.team_1?.name}</div>
+                                            <div>({dual?.team_2?.curr_wins} - {dual?.team_2?.curr_loss})</div>
+                                            <div>FINAL</div>
+                                        </div>
+                                    )
+                                    }
+
                                 </div>
                             }
                         </div>
@@ -107,6 +155,7 @@ function Schedule() {
 }
 
 export default Schedule;
+
 
 
 

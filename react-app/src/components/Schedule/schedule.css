@@ -46,10 +46,16 @@
     padding-bottom: .8%;
 }
 
-/* .dualdiv div,
-.dualdiv img {
-    justify-self: center;
-} */
+.dualdiv2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 3fr 1fr 1fr 1fr 1fr 1fr 3fr 1fr 1fr;
+    grid-gap: 10px;
+    align-items: center;
+    padding-top: .8%;
+    padding-bottom: .8%;
+}
+
+
 
 .sdualbtn {
     width: 20px;
@@ -66,4 +72,8 @@
 .sname {
     font-size: 17px;
     cursor: pointer;
+}
+
+.scoree {
+    font-size: 20px;
 }

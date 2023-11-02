@@ -101,6 +101,8 @@ const GameTimeForm = ({ scoreOne, scoreTwo }) => {
             .catch(error => {
                 console.error('Error sending data:', error);
             });
+
+        // history.push()
     };
 
 

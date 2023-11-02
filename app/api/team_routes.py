@@ -144,7 +144,15 @@ def schedule():
 
     return {'Schedule': dict_duals}
 
-
+@team_routes.route('/scores')
+def scores():
+    scores = Team_Result.query.all()
+    print('###########################################', scores)
+    dict_scores = {}  # Corrected variable name
+    for score in scores:
+        good = score.to_dict()
+        dict_scores[score.id] = good  # Using dict_scores instead of dict_duals
+    return {'Scores': dict_scores}
 ############################ get info about 1 dual FORM ##########################
 @team_routes.route('/game/<int:id>')
 def gameTime(id):
