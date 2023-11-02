@@ -59,6 +59,8 @@ def upgrade():
     sa.Column('post_season', sa.String()),
     sa.Column('curr_wins', sa.Integer()),
     sa.Column('curr_loss', sa.Integer()),
+    sa.Column('div_loss', sa.Integer()),
+    sa.Column('div_win', sa.Integer()),
     sa.Column('last_place', sa.String()),
     sa.Column('fly', sa.String()),
     sa.Column('bantam', sa.String()),

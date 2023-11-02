@@ -71,6 +71,8 @@ def get_one_team(id):
         'loss': curr_team.loss,
         'curr_wins': curr_team.curr_wins,
         'curr_loss': curr_team.curr_loss,
+        'div_win': curr_team.div_win,
+        'div_loss': curr_team.div_loss,
         'last_place': curr_team.last_place,
         'post_season': curr_team.post_season,
         'offense': curr_team.offense,
@@ -213,12 +215,20 @@ def game_results(id):
         actual_team_two.curr_loss += 1
         db.session.add(new_res)
         db.session.commit()
+        if schedule.week == '3' or schedule.week == '5' or schedule.week == '8' or schedule.week == '11' or schedule.week == '14' or schedule.week == '16':
+             actual_team_one.div_win += 1
+             actual_team_two.div_loss += 1
+             db.session.commit()
     else:
         new_res = Team_Result(id=id, week=schedule.week, winner=team_2, loser=team_1, winner_score=score_two, loser_score=score_one)
         actual_team_two.curr_wins += 1
         actual_team_one.curr_loss += 1
         db.session.add(new_res)
         db.session.commit()
+        if schedule.week == '3' or schedule.week == '5' or schedule.week == '8' or schedule.week == '11' or schedule.week == '14' or schedule.week == '16':
+             actual_team_two.div_win += 1
+             actual_team_one.div_loss += 1
+             db.session.commit()
 
 
     # Process each fight in the 'fights' list

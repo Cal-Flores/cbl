@@ -139,6 +139,8 @@ class Team(db.Model, UserMixin):
     post_season = db.Column(db.String)
     curr_wins = db.Column(db.Integer)
     curr_loss = db.Column(db.Integer)
+    div_win = db.Column(db.Integer, default=0)
+    div_loss = db.Column(db.Integer, default=0)
     last_place = db.Column(db.String)
     fly = db.Column(db.String)
     bantam = db.Column(db.String)
@@ -169,6 +171,8 @@ class Team(db.Model, UserMixin):
             'last_place': self.last_place,
             'curr_wins':self.curr_wins,
             'curr_loss':self.curr_loss,
+            'div_win':self.div_win,
+            'div_loss':self.div_loss,
             'fly_id': self.fly,
             'bantam_id': self.bantam,
             'feather_id': self.feather,
