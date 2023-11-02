@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 const GameTimeForm = ({ scoreOne, scoreTwo }) => {
 
+    const history = useHistory()
     const { id } = useParams();
     let [dualInfo, setDualInfo] = useState([])
     useEffect(() => {
@@ -102,7 +103,7 @@ const GameTimeForm = ({ scoreOne, scoreTwo }) => {
                 console.error('Error sending data:', error);
             });
 
-        // history.push()
+        history.push(`/Schedule`)
     };
 
 
