@@ -15,6 +15,7 @@ import TeamDetails from "./components/TeamDetails/teamDetails";
 import Rankings from "./components/Rankings/rankings";
 import Schedule from "./components/Schedule/schedule";
 import GameTime from "./components/GameTime/gameTime";
+import Playoffs from "./components/Playoffs/playoffs";
 
 function App() {
   const dispatch = useDispatch();
@@ -57,6 +58,9 @@ function App() {
           </Route>
           <Route exact path="/game/:id" >
             <GameTime />
+          </Route>
+          <Route exact path="/playoffs" >
+            <Playoffs />
           </Route>
         </Switch>
       )}

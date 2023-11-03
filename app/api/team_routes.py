@@ -243,9 +243,9 @@ def game_results(id):
         fight_winner.wins = fight_winner.wins + 1
         # fight_winner.all_win = fight_winner.all_win + 1
         if method == 'KO' or method == 'TKO' or method == 'SUB':
-            fight_winner.points += 6
+            fight_winner.points += 7
         elif method == 'M.DEC':
-            fight_winner.points += 4
+            fight_winner.points += 5
         else:
             fight_winner.points += 3
 
@@ -261,17 +261,17 @@ def game_results(id):
             # If the winner's team has the same name as the actual_team_one
             if fight_winner.team_name == actual_team_one.name:
                 if method in ['KO', 'TKO', 'SUB']:
-                    actual_team_one.offense += 6
+                    actual_team_one.offense += 7
                 elif method == 'M.DEC':
-                    actual_team_one.offense += 4
+                    actual_team_one.offense += 5
                 else:
                     actual_team_one.offense += 3
             else:
                 # Increment the opponent's defense points
                 if method in ['KO', 'TKO', 'SUB']:
-                    actual_team_two.offense += 6
+                    actual_team_two.offense += 7
                 elif method == 'M.DEC':
-                    actual_team_two.offense += 4
+                    actual_team_two.offense += 5
                 else:
                     actual_team_two.offense += 3
         else:
@@ -279,17 +279,17 @@ def game_results(id):
             if fight_winner.team_name == actual_team_one.name:
                 # Increment opponent's defense points
                 if method in ['KO', 'TKO', 'SUB']:
-                    actual_team_one.defense += 6
+                    actual_team_one.defense += 7
                 elif method == 'M.DEC':
-                    actual_team_one.defense += 4
+                    actual_team_one.defense += 5
                 else:
                     actual_team_one.defense += 3
             else:
                 # Increment own team's offense points
                 if method in ['KO', 'TKO', 'SUB']:
-                    actual_team_two.defense += 6
+                    actual_team_two.defense += 7
                 elif method == 'M.DEC':
-                    actual_team_two.defense += 4
+                    actual_team_two.defense += 5
                 else:
                     actual_team_two.defense += 3
 
@@ -299,3 +299,86 @@ def game_results(id):
 
 
     return {'team': 'team'}
+
+
+def sorter(conf, div, name):
+    teams = []
+
+    team_objects = Team.query.filter(and_(Team.conf == conf, Team.divison == div)) \
+        .order_by(
+            Team.curr_wins.desc(),
+            Team.div_win.desc(),
+            Team.points.desc()
+        ) \
+        .all()
+
+    for team in team_objects:
+        teams.append(team.to_dict())
+
+    return {name: teams}
+
+
+######################## Standings Page ##########################
+@team_routes.route('/standings')
+def standings():
+    afc_north = sorter('AFC', 'North', 'aNorth')
+    afc_south = sorter('AFC', 'South', 'aSouth')
+    afc_east = sorter('AFC', 'East', 'aEast')
+    afc_west = sorter('AFC', 'West', 'aWest')
+
+    nfc_north = sorter('NFC', 'North', 'nNorth')
+    nfc_east = sorter('NFC', 'East', 'nEast')
+    nfc_south = sorter('NFC', 'South', 'nSouth')
+    nfc_west = sorter('NFC', 'West', 'nWest')
+
+
+
+    return {
+        "standings": {
+            "aNorth": afc_north,
+            "aSouth": afc_south,
+            "aEast": afc_east,
+            "aWest": afc_west,
+            'nNorth': nfc_north,
+            'nSouth': nfc_south,
+            'nEast': nfc_east,
+            'nWest': nfc_west
+        }
+    }
+
+################## Playoff picture ##########################
+@team_routes.route('/playoffs')
+def playoffs():
+    # Fetch standings as before
+    afc_north = sorter('AFC', 'North', 'aNorth')
+    afc_south = sorter('AFC', 'South', 'aSouth')
+    afc_east = sorter('AFC', 'East', 'aEast')
+    afc_west = sorter('AFC', 'West', 'aWest')
+
+    nfc_north = sorter('NFC', 'North', 'nNorth')
+    nfc_east = sorter('NFC', 'East', 'nEast')
+    nfc_south = sorter('NFC', 'South', 'nSouth')
+    nfc_west = sorter('NFC', 'West', 'nWest')
+
+    # Get the first-place teams from each division in the AFC and NFC
+    afc_leaders = afc_north['aNorth'][:1] + afc_south['aSouth'][:1] + afc_east['aEast'][:1] + afc_west['aWest'][:1]
+    nfc_leaders = nfc_north['nNorth'][:1] + nfc_east['nEast'][:1] + nfc_south['nSouth'][:1] + nfc_west['nWest'][:1]
+
+    # Sort the AFC and NFC leader lists based on the given criteria
+    afc_sorted_leaders = sorted(afc_leaders, key=lambda team: (team['curr_wins'], team['div_win'], team['points']), reverse=True)
+    nfc_sorted_leaders = sorted(nfc_leaders, key=lambda team: (team['curr_wins'], team['div_win'], team['points']), reverse=True)
+
+    # Remove first-place teams from each division in the AFC
+    afc_teams = afc_north['aNorth'][1:] + afc_south['aSouth'][1:] + afc_east['aEast'][1:] + afc_west['aWest'][1:]
+    nfc_teams = nfc_north['nNorth'][1:] + nfc_east['nEast'][1:] + nfc_south['nSouth'][1:] + nfc_west['nWest'][1:]
+
+    # Sort the remaining 12 teams based on the same criteria as before
+    afc_playoff_teams = sorted(afc_teams, key=lambda team: (team['curr_wins'], team['div_win'], team['points']), reverse=True)
+    nfc_playoff_teams = sorted(nfc_teams, key=lambda team: (team['curr_wins'], team['div_win'], team['points']), reverse=True)
+
+    return {
+        "afc_leaders": afc_sorted_leaders,
+        "nfc_leaders": nfc_sorted_leaders,
+        "afc_playoff_teams": afc_playoff_teams,
+        "nfc_playoff_teams": nfc_playoff_teams
+    }

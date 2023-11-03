@@ -8,31 +8,191 @@ import { Link, Redirect, useHistory, useParams } from 'react-router-dom'
 function Standings() {
     const dispatch = useDispatch()
     const history = useHistory()
-    let teams = useSelector(state => state.teams.All_Teams)
+    const [standingsData, setStandingsData] = useState(null);
+    const [nfc_display, setnfc_display] = useState(true);
 
-    let nfcNorth = teams?.filter(team => team.conf == 'NFC' && team.divison == 'North').sort((a, b) => a.wins - b.wins)
-    let nfcEast = teams?.filter(team => team.conf == 'NFC' && team.divison == 'East')
-    let nfcSouth = teams?.filter(team => team.conf == 'NFC' && team.divison == 'South')
-    let nfcWest = teams?.filter(team => team.conf == 'NFC' && team.divison == 'West')
+    useEffect(() => {
+        const fetchStandings = async () => {
+            try {
+                const response = await fetch('/api/team/standings');
+                if (response.ok) {
+                    const data = await response.json();
+                    setStandingsData(data);
+                    console.log('Standings Data:', data);
+                } else {
+                }
+            } catch (error) {
+            }
+        };
 
-    let afcNorth = teams?.filter(team => team.conf == 'AFC' && team.divison == 'North')
-    let afcEast = teams?.filter(team => team.conf == 'AFC' && team.divison == 'East')
-    let afcSouth = teams?.filter(team => team.conf == 'AFC' && team.divison == 'South')
-    let afcWest = teams?.filter(team => team.conf == 'AFC' && team.divison == 'West')
+        fetchStandings();
+    }, []);
 
-    console.log('HERES THE STANDINGS', nfcNorth)
-    const divisionLeader = (allTeams, conf, div) => {
-        teams = allTeams.filter(team => team => team.conf == 'NFC' && team.divison == 'North').sort((a, b) => a.wins - b.wins)
+    const changeConfNfc = () => {
+        setnfc_display(false)
+    }
+    const changeConfAfc = () => {
+        setnfc_display(true)
     }
 
 
-    useEffect(() => {
-        dispatch(getAllTeams())
-    }, [dispatch])
-    return (
-        <div style={{ marginTop: '200px' }}>
-            <h1>STANDINGS</h1>
 
+    return (
+
+        <div style={{ marginTop: '125px' }}>
+            <div class='conflinks'>
+                <button class='displayBtn' onClick={changeConfAfc}><img style={{ width: '23px', height: '23px', marginRight: '10px' }} src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/American_Football_Conference_logo.svg/2560px-American_Football_Conference_logo.svg.png' />AFC Teams</button>
+                <button class='displayBtn' onClick={changeConfNfc}><img style={{ width: '23px', height: '23px', marginRight: '10px' }} src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/National_Football_Conference_logo.svg/1200px-National_Football_Conference_logo.svg.png' />NFC Teams</button>
+            </div>
+            {nfc_display ? (
+                <div>
+                    {standingsData &&
+                        <div id='stancont'>
+                            <div className='standcard'>
+                                <div className='standdiv'>North</div>
+                                {standingsData?.standings?.aNorth?.aNorth.map(team => (
+                                    <div className='standindv'>
+                                        <div className='standname'>{team?.name}</div>
+                                        <img style={{ height: '55px', width: '55px' }} src={team?.logo_img} />
+                                        <div className='standrec'>{team?.curr_wins} - {team?.curr_loss}</div>
+                                        <div className='standdivrec'>{team?.div_win} - {team?.div_loss}</div>
+                                        <div className='standpts'>Points: {team?.points}</div>
+                                        <div className='standoff'>
+                                            <div>Offense: {team?.offense}</div>
+                                            <div>Defense: {team?.defense}</div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className='standcard'>
+                                <div className='standdiv'>East</div>
+                                {standingsData?.standings?.aEast?.aEast.map(team => (
+                                    <div className='standindv'>
+                                        <div className='standname'>{team?.name}</div>
+                                        <img style={{ height: '55px', width: '55px' }} src={team?.logo_img} />
+                                        <div className='standrec'>{team?.curr_wins} - {team?.curr_loss}</div>
+                                        <div className='standdivrec'>{team?.div_win} - {team?.div_loss}</div>
+                                        <div className='standpts'>Points: {team?.points}</div>
+                                        <div className='standoff'>
+                                            <div>Offense: {team?.offense}</div>
+                                            <div>Defense: {team?.defense}</div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className='standcard'>
+                                <div className='standdiv'>South</div>
+                                {standingsData?.standings?.aSouth?.aSouth.map(team => (
+                                    <div className='standindv'>
+                                        <div className='standname'>{team?.name}</div>
+                                        <img style={{ height: '55px', width: '55px' }} src={team?.logo_img} />
+                                        <div className='standrec'>{team?.curr_wins} - {team?.curr_loss}</div>
+                                        <div className='standdivrec'>{team?.div_win} - {team?.div_loss}</div>
+                                        <div className='standpts'>Points: {team?.points}</div>
+                                        <div className='standoff'>
+                                            <div>Offense: {team?.offense}</div>
+                                            <div>Defense: {team?.defense}</div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className='standcard'>
+                                <div className='standdiv'>West</div>
+                                {standingsData?.standings?.aWest?.aWest.map(team => (
+                                    <div className='standindv'>
+                                        <div className='standname'>{team?.name}</div>
+                                        <img style={{ height: '55px', width: '55px' }} src={team?.logo_img} />
+                                        <div className='standrec'>{team?.curr_wins} - {team?.curr_loss}</div>
+                                        <div className='standdivrec'>{team?.div_win} - {team?.div_loss}</div>
+                                        <div className='standpts'>Points: {team?.points}</div>
+                                        <div className='standoff'>
+                                            <div>Offense: {team?.offense}</div>
+                                            <div>Defense: {team?.defense}</div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+
+                        </div>
+                    }
+                </div>
+            ) : (
+                <div>
+                    {standingsData &&
+                        <div id='stancont'>
+                            <div className='standcard'>
+                                <div className='standdiv'>North</div>
+                                {standingsData?.standings?.nNorth?.nNorth.map(team => (
+                                    <div className='standindv'>
+                                        <div className='standname'>{team?.name}</div>
+                                        <img style={{ height: '55px', width: '55px' }} src={team?.logo_img} />
+                                        <div className='standrec'>{team?.curr_wins} - {team?.curr_loss}</div>
+                                        <div className='standdivrec'>{team?.div_win} - {team?.div_loss}</div>
+                                        <div className='standpts'>Points: {team?.points}</div>
+                                        <div className='standoff'>
+                                            <div>Offense: {team?.offense}</div>
+                                            <div>Defense: {team?.defense}</div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className='standcard'>
+                                <div className='standdiv'>East</div>
+                                {standingsData?.standings?.nEast?.nEast.map(team => (
+                                    <div className='standindv'>
+                                        <div className='standname'>{team?.name}</div>
+                                        <img style={{ height: '55px', width: '55px' }} src={team?.logo_img} />
+                                        <div className='standrec'>{team?.curr_wins} - {team?.curr_loss}</div>
+                                        <div className='standdivrec'>{team?.div_win} - {team?.div_loss}</div>
+                                        <div className='standpts'>Points: {team?.points}</div>
+                                        <div className='standoff'>
+                                            <div>Offense: {team?.offense}</div>
+                                            <div>Defense: {team?.defense}</div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className='standcard'>
+                                <div className='standdiv'>South</div>
+                                {standingsData?.standings?.nSouth?.nSouth.map(team => (
+                                    <div className='standindv'>
+                                        <div className='standname'>{team?.name}</div>
+                                        <img style={{ height: '55px', width: '55px' }} src={team?.logo_img} />
+                                        <div className='standrec'>{team?.curr_wins} - {team?.curr_loss}</div>
+                                        <div className='standdivrec'>{team?.div_win} - {team?.div_loss}</div>
+                                        <div className='standpts'>Points: {team?.points}</div>
+                                        <div className='standoff'>
+                                            <div>Offense: {team?.offense}</div>
+                                            <div>Defense: {team?.defense}</div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className='standcard'>
+                                <div className='standdiv'>West</div>
+                                {standingsData?.standings?.nWest?.nWest.map(team => (
+                                    <div className='standindv'>
+                                        <div className='standname'>{team?.name}</div>
+                                        <img style={{ height: '55px', width: '55px' }} src={team?.logo_img} />
+                                        <div className='standrec'>{team?.curr_wins} - {team?.curr_loss}</div>
+                                        <div className='standdivrec'>{team?.div_win} - {team?.div_loss}</div>
+                                        <div className='standpts'>Points: {team?.points}</div>
+                                        <div className='standoff'>
+                                            <div>Offense: {team?.offense}</div>
+                                            <div>Defense: {team?.defense}</div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+
+                        </div>
+                    }
+                </div>
+            )
+
+            }
         </div>
     )
 }

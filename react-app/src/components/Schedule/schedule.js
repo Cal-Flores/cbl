@@ -7,7 +7,7 @@ import { getAllSchedule, getSchedule } from '../../store/teams';
 function Schedule() {
     const dispatch = useDispatch();
     const history = useHistory()
-    const [week, setWeek] = useState('1');
+    const [week, setWeek] = useState('All');
     const [headerValue, setHeaderValue] = useState('');
     const [scores, setScores] = useState(null);
     const [scoresOBJ, setScoresOBJ] = useState(null);
