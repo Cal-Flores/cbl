@@ -113,7 +113,7 @@ function AllFighters() {
                             }
                             <div className='allfname'>{fighter?.name.toUpperCase()}</div>
                             <div >{fighter?.weight}lb Division</div>
-                            <div style={{ fontSize: '20px', fontWeight: 'bold' }}>12 - 5</div>
+                            <div style={{ fontSize: '20px', fontWeight: 'bold' }}>{fighter?.wins} - {fighter?.losses}</div>
                         </div>
                         <div class='hoverbox' style={{ height: '250px', width: '270px', zIndex: '1' }}>
                             <div className='hboxleft'>

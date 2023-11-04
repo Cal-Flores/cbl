@@ -36,7 +36,7 @@ function Playoffs() {
                             {playoffData?.afc_leaders?.map((team, index) => (
                                 <div className='playcardwrap'>
                                     <div className='playcard' key={index}>
-                                        <span>{index + 1}</span>
+                                        <div className= 'span'>{index + 1}</div>
                                         <img style={{ height: '55px', width: '55px' }} src={team?.logo_img} />
                                         <img style={{ width: '150px', height: '28px', marginRight: '15%', marginLeft: '4%' }} src={team.heavy} />
                                         <div>{team?.curr_wins} - {team?.curr_loss}</div>
@@ -54,7 +54,7 @@ function Playoffs() {
                             {playoffData?.afc_playoff_teams?.map((team, index) => (
                                 <div className='playcardwrap'>
                                     <div className='playcard' key={index}>
-                                        <span>{index + 5}</span>
+                                        <div className='span'>{index + 5}</div>
                                         <img style={{ height: '55px', width: '55px' }} src={team?.logo_img} />
                                         <img style={{ width: '150px', height: '28px', marginRight: '15%', marginLeft: '4%' }} src={team.heavy} />
                                         <div>{team?.curr_wins} - {team?.curr_loss}</div>
@@ -76,7 +76,7 @@ function Playoffs() {
                             {playoffData?.nfc_leaders?.map((team, index) => (
                                 <div className='playcardwrap'>
                                     <div className='playcard' key={index}>
-                                        <span>{index + 1}</span>
+                                        <div className='span'>{index + 1}</div>
                                         <img style={{ height: '55px', width: '55px' }} src={team?.logo_img} />
                                         <img style={{ width: '150px', height: '28px', marginRight: '15%', marginLeft: '4%' }} src={team.heavy} />
                                         <div>{team?.curr_wins} - {team?.curr_loss}</div>
@@ -94,7 +94,7 @@ function Playoffs() {
                             {playoffData?.nfc_playoff_teams?.map((team, index) => (
                                 <div className='playcardwrap'>
                                     <div className='playcard' key={index}>
-                                        <span>{index + 5}</span>
+                                        <div className='span'>{index + 5}</div>
                                         <img style={{ height: '55px', width: '55px' }} src={team?.logo_img} />
                                         <img style={{ width: '150px', height: '28px', marginRight: '15%', marginLeft: '4%' }} src={team.heavy} />
                                         <div>{team?.curr_wins} - {team?.curr_loss}</div>
