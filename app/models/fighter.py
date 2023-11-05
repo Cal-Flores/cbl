@@ -226,3 +226,16 @@ class Schedule(db.Model, UserMixin):
             'team_2': self.team_2,
             'completed': self.completed
         }
+
+class Draft_Order(db.Model, UserMixin):
+    __tablename__ = 'draft_orders'
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
+
+    id = db.Column(db.Integer, primary_key=True)
+    team = db.Column(db.String)
+    pick = db.Column(db.Integer)
+    round = db.Column(db.Integer)
+    completed = db.Column(db.Boolean, default=False)

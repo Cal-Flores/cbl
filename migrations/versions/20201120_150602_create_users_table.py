@@ -124,6 +124,14 @@ def upgrade():
     sa.Column('completed', sa.Boolean()),
     )
 
+    op.create_table('draft_orders',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('team', sa.String()),
+    sa.Column('pick', sa.Integer()),
+    sa.Column('round', sa.Integer()),
+    sa.Column('completed', sa.Boolean()),
+    )
+
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###qqqqqqqqq
