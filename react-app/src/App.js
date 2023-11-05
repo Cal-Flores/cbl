@@ -16,6 +16,7 @@ import Rankings from "./components/Rankings/rankings";
 import Schedule from "./components/Schedule/schedule";
 import GameTime from "./components/GameTime/gameTime";
 import Playoffs from "./components/Playoffs/playoffs";
+import DraftOrder from "./components/Draft/DraftOrder";
 
 function App() {
   const dispatch = useDispatch();
@@ -61,6 +62,9 @@ function App() {
           </Route>
           <Route exact path="/playoffs" >
             <Playoffs />
+          </Route>
+          <Route exact path="/order" >
+            <DraftOrder />
           </Route>
         </Switch>
       )}

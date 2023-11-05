@@ -1,6 +1,8 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from sqlalchemy import ForeignKey
+from sqlalchemy.orm import relationship
 
 class Fighter(db.Model, UserMixin):
     __tablename__ = 'fighters'
@@ -151,6 +153,8 @@ class Team(db.Model, UserMixin):
     light_heavy = db.Column(db.String)
     heavy = db.Column(db.String)
 
+    draft_order = relationship("Draft_Order", backref="draft_order")
+
 
 
     def to_dict(self):
@@ -239,3 +243,16 @@ class Draft_Order(db.Model, UserMixin):
     pick = db.Column(db.Integer)
     round = db.Column(db.Integer)
     completed = db.Column(db.Boolean, default=False)
+
+    #relationship
+    team = db.Column(db.String, ForeignKey('teams.name'))
+
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'team': self.team,
+            'pick': self.pick,
+            'round': self.round,
+            'completed': self.completed
+        }

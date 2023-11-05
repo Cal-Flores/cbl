@@ -49,6 +49,7 @@ function FreeAgents() {
     return (
         <div id='facont'>
             <h1 className='faheader'>FREE AGENTS</h1>
+            <div onClick={(e) => history.push('/order')} className='dorder'>Draft Order</div>
             <div className='freecont'>
                 {freeAgents?.map(fighter => (
                     <div>

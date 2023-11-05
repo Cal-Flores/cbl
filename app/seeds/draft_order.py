@@ -30,13 +30,13 @@ def seed_draft_order():
         ## COLTS deducted a 3rd round pick Kevin Holland, Matt Schnell
         Draft_Order(id=21,team='Humble Lions', pick=21, round=1),
         ## LIONS deducted a 2nd round pick Pantoja
-        Draft_Order(id=22,team='Bryan Chiefs', pick=22, round=1),
+        Draft_Order(id=22,team='Allen Chiefs', pick=22, round=1),
         Draft_Order(id=23,team='Boswell Jaguars', pick=23, round=1),
         Draft_Order(id=24,team='Canyon Randall Packers', pick=24, round=1),
         ## PACKERS deducted a 2nd round pick Alex Peireira
         Draft_Order(id=25,team='A.M Consolidated Steelers', pick=25, round=1),
         # STEELERS deducted a 2nd round pick Belal Mohammed
-        Draft_Order(id=26,team='Boswell Broncos', pick=26, round=1),
+        Draft_Order(id=26,team='Haltom City Broncos', pick=26, round=1),
         Draft_Order(id=27,team='Rockwall Vikings', pick=27, round=1),
         Draft_Order(id=28,team='Colony Buccaneers', pick=28, round=1),
         Draft_Order(id=29,team='Liberty Saints', pick=29, round=1),

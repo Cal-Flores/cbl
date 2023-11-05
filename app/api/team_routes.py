@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User, Fighter, Team, Medal, Team_Result, Schedule, Season_Result, db
+from app.models import User, Fighter, Team, Medal, Team_Result, Schedule, Season_Result, db, Draft_Order
 from sqlalchemy import and_, or_
 from flask import request
 
@@ -382,3 +382,22 @@ def playoffs():
         "afc_playoff_teams": afc_playoff_teams,
         "nfc_playoff_teams": nfc_playoff_teams
     }
+
+@team_routes.route('/order')
+def order():
+    all_picks = Draft_Order.query.all()
+    picks = []
+
+    for pick in all_picks:
+        # Assuming to_dict() returns serializable data for Draft_Order
+        pick_data = pick.to_dict()
+
+        # Fetch the associated Team information
+        team = Team.query.filter_by(name=pick.team).first()
+        if team:
+            # Add the serialized Team data to the pick's information
+            pick_data['team_info'] = team.to_dict()  # Assuming to_dict() exists for Team
+
+        picks.append(pick_data)
+
+    return jsonify({'Picks': picks})
