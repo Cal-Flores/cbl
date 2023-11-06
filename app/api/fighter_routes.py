@@ -58,6 +58,14 @@ def cut_fighter(id):
     return {'Fighter': 'cut'}
 
 
+@fighter_routes.route('/trade/<int:id>')
+def trade_fighter(id):
+    print('IVE BEEN HIT!')
+    fighter = Fighter.query.get(id)
+    fighter.trade = True
+    db.session.commit()
+    return {'Fighter': 'Trade'}
+
 ############################ get all fighters ####################
 @fighter_routes.route('/')
 def get_all_fighters():
@@ -147,3 +155,14 @@ def get_one_fighter(id):
             'last_opp': last_opp,
             'last_season': last_season
             }
+
+
+@fighter_routes.route('/tradedFighters')
+def get_traded_fighters():
+    all_fighters = Fighter.query.filter(Fighter.trade == True)
+    dict_fighters = {}
+
+    for fighter in all_fighters:
+        good = fighter.to_dict()
+        dict_fighters[fighter.id] = good
+    return {'Traded': dict_fighters}

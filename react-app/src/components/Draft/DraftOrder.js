@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 function DraftOrder() {
 
     const [picks, setPicks] = useState(null);
+    const [round, setRound] = useState(1);
     const history = useHistory()
 
     useEffect(() => {
@@ -52,26 +53,37 @@ function DraftOrder() {
             <div onClick={(e) => history.push('/draft')} className='orderimg'>
                 <img src='https://upload.wikimedia.org/wikipedia/en/f/f6/2021_NFL_Draft_logo.png' />
             </div>
+            {/* <div className='orderround'>
+                <div>Round 1</div>
+                <div>Round 2</div>
+            </div> */}
             {picks &&
                 <div className='pickcont'>
-                    {picks.map(pick => (
-                        <div className='pickcard' key={pick.id}>
-                            <img style={{ height: '45px', width: '45px' }} src={pick?.team_info?.logo_img} />
-                            <div style={{ cursor: 'pointer' }} onClick={(e) => history.push(`/teams/${pick?.team_info?.id}`)}>{pick?.team}</div>
-                            <div>Round {pick?.round}</div>
-                            <div>Pick {pick?.pick}</div>
-                            <div style={{ cursor: 'pointer' }}>
-                                <input
-                                    type="checkbox"
-                                    checked={isChecked[pick.id]}
-                                    onChange={() => handleCheckboxChange(pick.id)}
-                                />
-                                <label>Pick is in</label>
-                            </div>
+                    {round == 1 ? (
+                        <div>
+                            {picks.slice(0, 32).map(pick => (
+                                <div className='pickcard' key={pick.id}>
+                                    <img style={{ height: '45px', width: '45px' }} src={pick?.team_info?.logo_img} />
+                                    <div style={{ cursor: 'pointer' }} onClick={(e) => history.push(`/teams/${pick?.team_info?.id}`)}>{pick?.team}</div>
+                                    <div>Round {pick?.round}</div>
+                                    <div>Pick {pick?.pick}</div>
+                                    <div style={{ cursor: 'pointer' }}>
+                                        <input
+                                            type="checkbox"
+                                            checked={isChecked[pick.id]}
+                                            onChange={() => handleCheckboxChange(pick.id)}
+                                        />
+                                        <label>Pick is in</label>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                    ))}
-
-
+                    ) : (
+                        <div>
+                            <h2>ROUND 2</h2>
+                        </div>
+                    )
+                    }
                 </div>
             }
         </div>

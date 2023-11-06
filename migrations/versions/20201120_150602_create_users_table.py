@@ -46,6 +46,7 @@ def upgrade():
     sa.Column('all_win', sa.Integer()),
     sa.Column('all_loss', sa.Integer()),
     sa.Column('points', sa.Integer()),
+     sa.Column('trade', sa.Boolean()),
     )
 
     op.create_table('teams',

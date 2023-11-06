@@ -48,12 +48,17 @@ function FreeAgents() {
 
     return (
         <div id='facont'>
-            <h1 className='faheader'>FREE AGENTS</h1>
-            <div onClick={(e) => history.push('/order')} className='dorder'>Draft Order</div>
+            <h1 className='faheader'>
+                Free Agents
+            </h1>
+            <div className='falinks'>
+                <div onClick={(e) => history.push('/order')} className='dorder'>Draft Order</div>
+                <div onClick={(e) => history.push('/trades')} className='dorder'>Trades</div>
+            </div>
             <div className='freecont'>
                 {freeAgents?.map(fighter => (
                     <div>
-                        <div style={{}} key={fighter?.id} className='allfacard'>
+                        <div style={{ backgroundColor: 'rgb(227, 224, 224)' }} key={fighter?.id} className='allfacard'>
                             <div onClick={(e) => history.push(`/fighter/${fighter?.id}`)} className='draftchild'>
                                 <img src={fighter?.prof_img} style={{ height: '115px', width: '184px', borderBottom: '1px solid gray', marginBottom: '5%' }} />
                                 {fighter?.nickname &&

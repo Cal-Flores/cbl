@@ -36,7 +36,7 @@ function Playoffs() {
                             {playoffData?.afc_leaders?.map((team, index) => (
                                 <div className='playcardwrap'>
                                     <div className='playcard' key={index}>
-                                        <div className= 'span'>{index + 1}</div>
+                                        <div className='span'>{index + 1}</div>
                                         <img style={{ height: '55px', width: '55px' }} src={team?.logo_img} />
                                         <img style={{ width: '150px', height: '28px', marginRight: '15%', marginLeft: '4%' }} src={team.heavy} />
                                         <div>{team?.curr_wins} - {team?.curr_loss}</div>

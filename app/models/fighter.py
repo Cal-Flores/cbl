@@ -20,6 +20,7 @@ class Fighter(db.Model, UserMixin):
     team_name = db.Column(db.String)
     wins = db.Column(db.Integer, default=0)
     losses = db.Column(db.Integer, default=0)
+    trade = db.Column(db.Boolean, default=False)
     all_win = db.Column(db.Integer)
     all_loss = db.Column(db.Integer)
     points = db.Column(db.Integer)
@@ -38,7 +39,8 @@ class Fighter(db.Model, UserMixin):
             'all_win': self.all_win,
             'all_loss': self.all_loss,
             'points': self.points,
-            'team_name': self.team_name
+            'team_name': self.team_name,
+            'trade': self.trade
         }
 
 class Tournament(db.Model, UserMixin):
@@ -256,3 +258,5 @@ class Draft_Order(db.Model, UserMixin):
             'round': self.round,
             'completed': self.completed
         }
+
+

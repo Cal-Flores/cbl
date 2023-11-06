@@ -29,6 +29,31 @@ function SingleTeam() {
         }
     }
 
+    const tradePlayer = (e, id) => {
+        const isConfirmed = window.confirm(
+            'Trade this fighter? Other teams can begin sending offeres for this fighter'
+        );
+        if (isConfirmed) {
+            fetch(`/api/fighter/trade/${id}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log('Trade successful', data);
+                    // Perform actions after a successful trade if needed
+                })
+                .catch((error) => {
+                    console.error('Trade failed:', error);
+                    // Handle error scenario
+                });
+        } else {
+            history.push(`/teams/${teamId}`)
+        }
+    }
+
     useEffect(() => {
         if (teamId) dispatch(getOneTeam(teamId))
     }, [dispatch])
@@ -58,6 +83,7 @@ function SingleTeam() {
                                 </div>
 
                                 <button onClick={(e) => cutPlayer(e, fighter.id)} style={{ color: `${team?.border}`, border: `1px solid ${team?.border}`, visibility: showReleaseBtn === fighter?.id ? 'visible' : 'hidden', }} class='cutBtn' >RELEASE</button>
+                                <button onClick={(e) => tradePlayer(e, fighter.id)} style={{ color: `${team?.border}`, border: `1px solid ${team?.border}`, visibility: showReleaseBtn === fighter?.id ? 'visible' : 'hidden', }} class='cutBtn' >TRADE</button>
 
                             </div>
                         </div>
