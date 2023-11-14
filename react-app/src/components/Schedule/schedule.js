@@ -66,6 +66,7 @@ function Schedule() {
     }, [scores]);
 
     const scoresObject = JSON.parse(scoresOBJ);
+    console.log('GUTS', scoresObject)
 
     return (
 

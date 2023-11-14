@@ -38,7 +38,7 @@ function Playoffs() {
                                     <div className='playcard' key={index}>
                                         <div className='span'>{index + 1}</div>
                                         <img style={{ height: '55px', width: '55px' }} src={team?.logo_img} />
-                                        <img style={{ width: '150px', height: '28px', marginRight: '15%', marginLeft: '4%' }} src={team.heavy} />
+                                        <img style={{ width: '160px', height: '34px', marginRight: '15%', marginLeft: '4%' }} src={team.heavy} />
                                         <div>{team?.curr_wins} - {team?.curr_loss}</div>
                                         <div>·</div>
                                         <div>{team?.conf} {team?.divison}</div>
