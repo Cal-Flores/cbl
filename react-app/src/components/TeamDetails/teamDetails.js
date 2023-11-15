@@ -53,7 +53,10 @@ function TeamDetails() {
                     <div className='tdrec'>
                         <div className='tdrecnum'>{team?.curr_wins} - {team?.curr_loss}</div>
                     </div>
-                    <button onClick={(e) => history.push(`/teams/${team?.id}`)} className='tdbtn'>FIGHTERS</button>
+                    <div>
+                        <button onClick={(e) => history.push(`/teams/${team?.id}`)} className='tdbtn'>FIGHTERS</button>
+                        <button onClick={(e) => history.push(`/schedule/team/${team?.id}`)} className='tdbtn'>SCHEDULE</button>
+                    </div>
                 </div>
                 <div id='tdetailcont' style={{ backgroundImage: "url(" + `${team?.detail_bg}` + ")" }} > </div>
             </div>

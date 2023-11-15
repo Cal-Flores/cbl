@@ -18,6 +18,7 @@ import GameTime from "./components/GameTime/gameTime";
 import Playoffs from "./components/Playoffs/playoffs";
 import DraftOrder from "./components/Draft/DraftOrder";
 import TradedFighters from "./components/Draft/Trade";
+import TeamSchedule from "./components/TeamSchedule/teamSchedule";
 
 function App() {
   const dispatch = useDispatch();
@@ -69,6 +70,9 @@ function App() {
           </Route>
           <Route exact path="/trades" >
             <TradedFighters />
+          </Route>
+          <Route exact path="/schedule/team/:id" >
+            <TeamSchedule />
           </Route>
         </Switch>
       )}

@@ -112,6 +112,20 @@ def team_duals(id):
 
     return {'Duals': dict_duals}
 
+######################### get the schedule for one team ######################
+@team_routes.route('/schedule/:teamId')
+def team_schedule(teamId):
+    team = Team.query.get(teamId)
+    duals = Schedule.query.filter(_or(Schedule.team_1 == team.name, Schedule.team_2 == team.name)).all()
+
+    dict_duals = {}
+
+    for dual in duals:
+        good = dual.to_dict()
+        dict_duals[dual.id] = good
+
+    return {'Duals': dict_duals}
+
 
 ####################### get all matches based on week #####################
 @team_routes.route('/schedule/<int:week>')
