@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllFighters } from '../../store/fighters';
 
 
-function getFilteredFighters(allFighters, weight, limit = 10) {
+function getFilteredFighters(allFighters, weight, limit = 12) {
     return allFighters
         ?.filter(fighter => fighter?.weight === weight)
         .sort((a, b) => {
@@ -20,9 +20,7 @@ function renderWeightClass(allFighters, weight, title) {
             <div style={{ marginBottom: '2%', width: '335px', marginLeft: '3%', marginRight: '3%', color: 'rgb(88, 88, 88)' }}>
                 <img
                     style={{ height: '135px', width: '217px', marginLeft: '25%', borderBottom: '1px solid gray' }}
-                    onError={e => {
-                        e.target.src = '../../../images/blank.png';
-                    }}
+               
                     src={fighters[0]?.prof_img}
                     alt={title}
                 />

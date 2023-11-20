@@ -51,7 +51,7 @@ function Standings() {
                             <div className='standcard'>
                                 <div className='standdiv'>North</div>
                                 {standingsData?.standings?.aNorth?.aNorth.map(team => (
-                                    <div className='standindv'>
+                                    <div className='standindv' onClick={(e) => history.push(`/teams/stats/${team?.id}`)}>
                                         <div className='standname'>{team?.name}</div>
                                         <img style={{ height: '55px', width: '55px' }} src={team?.logo_img} />
                                         <div className='standrec'>{team?.curr_wins} - {team?.curr_loss}</div>
@@ -67,7 +67,7 @@ function Standings() {
                             <div className='standcard'>
                                 <div className='standdiv'>East</div>
                                 {standingsData?.standings?.aEast?.aEast.map(team => (
-                                    <div className='standindv'>
+                                    <div className='standindv' onClick={(e) => history.push(`/teams/stats/${team?.id}`)}>
                                         <div className='standname'>{team?.name}</div>
                                         <img style={{ height: '55px', width: '55px' }} src={team?.logo_img} />
                                         <div className='standrec'>{team?.curr_wins} - {team?.curr_loss}</div>
@@ -83,7 +83,7 @@ function Standings() {
                             <div className='standcard'>
                                 <div className='standdiv'>South</div>
                                 {standingsData?.standings?.aSouth?.aSouth.map(team => (
-                                    <div className='standindv'>
+                                    <div className='standindv' onClick={(e) => history.push(`/teams/stats/${team?.id}`)}>
                                         <div className='standname'>{team?.name}</div>
                                         <img style={{ height: '55px', width: '55px' }} src={team?.logo_img} />
                                         <div className='standrec'>{team?.curr_wins} - {team?.curr_loss}</div>
@@ -99,7 +99,7 @@ function Standings() {
                             <div className='standcard'>
                                 <div className='standdiv'>West</div>
                                 {standingsData?.standings?.aWest?.aWest.map(team => (
-                                    <div className='standindv'>
+                                    <div className='standindv' onClick={(e) => history.push(`/teams/stats/${team?.id}`)}>
                                         <div className='standname'>{team?.name}</div>
                                         <img style={{ height: '55px', width: '55px' }} src={team?.logo_img} />
                                         <div className='standrec'>{team?.curr_wins} - {team?.curr_loss}</div>
@@ -124,7 +124,7 @@ function Standings() {
                             <div className='standcard'>
                                 <div className='standdiv'>North</div>
                                 {standingsData?.standings?.nNorth?.nNorth.map(team => (
-                                    <div className='standindv'>
+                                    <div className='standindv' onClick={(e) => history.push(`/teams/stats/${team?.id}`)}>
                                         <div className='standname'>{team?.name}</div>
                                         <img style={{ height: '55px', width: '55px' }} src={team?.logo_img} />
                                         <div className='standrec'>{team?.curr_wins} - {team?.curr_loss}</div>
@@ -140,7 +140,7 @@ function Standings() {
                             <div className='standcard'>
                                 <div className='standdiv'>East</div>
                                 {standingsData?.standings?.nEast?.nEast.map(team => (
-                                    <div className='standindv'>
+                                    <div className='standindv' onClick={(e) => history.push(`/teams/stats/${team?.id}`)}>
                                         <div className='standname'>{team?.name}</div>
                                         <img style={{ height: '55px', width: '55px' }} src={team?.logo_img} />
                                         <div className='standrec'>{team?.curr_wins} - {team?.curr_loss}</div>
@@ -156,7 +156,7 @@ function Standings() {
                             <div className='standcard'>
                                 <div className='standdiv'>South</div>
                                 {standingsData?.standings?.nSouth?.nSouth.map(team => (
-                                    <div className='standindv'>
+                                    <div className='standindv' onClick={(e) => history.push(`/teams/stats/${team?.id}`)}>
                                         <div className='standname'>{team?.name}</div>
                                         <img style={{ height: '55px', width: '55px' }} src={team?.logo_img} />
                                         <div className='standrec'>{team?.curr_wins} - {team?.curr_loss}</div>
@@ -172,7 +172,7 @@ function Standings() {
                             <div className='standcard'>
                                 <div className='standdiv'>West</div>
                                 {standingsData?.standings?.nWest?.nWest.map(team => (
-                                    <div className='standindv'>
+                                    <div className='standindv' onClick={(e) => history.push(`/teams/stats/${team?.id}`)}>
                                         <div className='standname'>{team?.name}</div>
                                         <img style={{ height: '55px', width: '55px' }} src={team?.logo_img} />
                                         <div className='standrec'>{team?.curr_wins} - {team?.curr_loss}</div>
