@@ -80,7 +80,7 @@ function TeamDetails() {
                         return (
                             <div key={dual.id} className="grid-row">
                                 <div style={{ marginLeft: '8%' }}>Week {dual?.week}</div>
-                                <div style={{ paddingLeft: '10px' }}>vs {dual?.loser}</div>
+                                <div onClick={(e) => history.push(`/teams/stats/${dual?.loser}`)} style={{ paddingLeft: '10px' }}>vs {dual?.loser}</div>
                                 <div style={{ paddingLeft: '20px', color: 'rgb(63, 63, 63)', fontWeight: 'bold' }}>{dual?.winner_score}</div>
                                 <div style={{ paddingLeft: '21px' }}>{dual?.loser_score}</div>
                                 <div style={{ color: 'green', paddingLeft: '20px' }}>W</div>

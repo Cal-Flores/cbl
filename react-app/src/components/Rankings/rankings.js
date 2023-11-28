@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllFighters } from '../../store/fighters';
+import { Link, Redirect, useHistory, useParams } from 'react-router-dom'
 
 
 function getFilteredFighters(allFighters, weight, limit = 12) {
@@ -20,17 +21,19 @@ function renderWeightClass(allFighters, weight, title) {
             <div style={{ marginBottom: '2%', width: '335px', marginLeft: '3%', marginRight: '3%', color: 'rgb(88, 88, 88)' }}>
                 <img
                     style={{ height: '135px', width: '217px', marginLeft: '25%', borderBottom: '1px solid gray' }}
-               
+
                     src={fighters[0]?.prof_img}
                     alt={title}
                 />
                 <ol>
                     {fighters?.map(fighter => (
-                        <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '1.5%' }} key={fighter.id}>
-                            <li style={{ width: '175px' }}>{fighter.name}</li>
-                            <div style={{ width: '70px' }}>{fighter.points}pts</div>
-                            <div>{fighter.wins} - {fighter.losses}</div>
-                        </div>
+                        <Link style={{ color: 'black', textDecoration: 'none' }} to={`/fighter/${fighter.id}`}>
+                            <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '1.5%' }} key={fighter.id}>
+                                <li style={{ width: '175px' }}>{fighter.name}</li>
+                                <div style={{ width: '70px' }}>{fighter.points}pts</div>
+                                <div>{fighter.wins} - {fighter.losses}</div>
+                            </div>
+                        </Link>
                     ))}
                 </ol>
             </div>

@@ -47,6 +47,7 @@ function Playoffs() {
                                         <div className='playnext'>Next Week Matchup</div>
                                         <img style={{ height: '30px', width: '30px' }} src={team?.logo_img} />
                                         <div>Bye</div>
+                                        <div>{team?.points} <a style={{ color: 'gray' }}>Team Points</a></div>
                                     </div>
                                 </div>
 
@@ -65,6 +66,7 @@ function Playoffs() {
                                         <div className='playnext'>Next Week Matchup</div>
                                         <img style={{ height: '30px', width: '30px' }} src={team?.logo_img} />
                                         <div>Bye</div>
+                                        <div>{team?.points} <a style={{ color: 'gray' }}>Team Points</a></div>
                                     </div>
                                 </div>
                             ))}
@@ -87,6 +89,7 @@ function Playoffs() {
                                         <div className='playnext'>Next Week Matchup</div>
                                         <img style={{ height: '30px', width: '30px' }} src={team?.logo_img} />
                                         <div>Bye</div>
+                                        <div>{team?.points} <a style={{ color: 'gray' }}>Team Points</a></div>
                                     </div>
                                 </div>
 
@@ -105,6 +108,7 @@ function Playoffs() {
                                         <div className='playnext'>Next Week Matchup</div>
                                         <img style={{ height: '30px', width: '30px' }} src={team?.logo_img} />
                                         <div>Bye</div>
+                                        <div>{team?.points} <a style={{ color: 'gray' }}>Team Points</a></div>
                                     </div>
                                 </div>
                             ))}
