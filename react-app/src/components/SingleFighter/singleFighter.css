@@ -314,3 +314,29 @@ body {
     border-bottom: 1px solid red;
     transition: 1.5s;
 }
+
+.frwin {
+    display: grid;
+    grid-template-columns: .5fr 1.5fr 1fr 1fr 1fr 1fr;
+    /* gap: 5px; */
+    padding-top: .7%;
+    padding-bottom: .7%;
+    padding-left: 5%;
+}
+
+.frloss {
+    display: grid;
+    grid-template-columns: .5fr 1.5fr 1fr 1fr 1fr 1fr;
+    /* gap: 5px; */
+    padding-top: .7%;
+    padding-bottom: .7%;
+    padding-left: 5%;
+}
+
+.frwinW {
+    grid-column: 1;
+}
+
+.frlossL {
+    grid-column: 1;
+}

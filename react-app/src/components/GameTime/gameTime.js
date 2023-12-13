@@ -1,12 +1,13 @@
 // Inside the GameTime component
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory, } from 'react-router-dom';
 import './gameTime.css';
 import GameTimeForm from './GameTimeForm';
 
 function GameTime() {
     const dispatch = useDispatch();
+    const history = useHistory()
     const [dualInfo, setDualInfo] = useState(null);
     const { id } = useParams();
 
@@ -80,7 +81,7 @@ function GameTime() {
                 <div style={{ marginLeft: '15%' }} className='squadOne'>
                     {squadOne?.map(fighter => (
                         <div className='squadcard'>
-                            <img style={{ height: '115px', width: '184px', borderBottom: '1px solid gray', }} onError={(e) => { e.target.src = '../../../images/blank.png' }} src={fighter.prof_img} />
+                            <img onClick={(e) => history.push(`/fighter/${fighter?.id}`)} style={{ height: '115px', width: '184px', borderBottom: '1px solid gray', }} onError={(e) => { e.target.src = '../../../images/blank.png' }} src={fighter.prof_img} />
                             <div className='sqaudname'>{fighter?.name}</div>
                             <div>{fighter.points} pts</div>
                             <div>{fighter?.wins} - {fighter?.losses}</div>
@@ -94,12 +95,12 @@ function GameTime() {
 
                 <div style={{ marginRight: '15%' }} className='squadOne'>
                     {squadTwo?.map(fighter => (
-                        <div className='squadcard'>
+                        <button onClick={(e) => history.push(`/fighter/${fighter?.id}`)} className='squadcard'>
                             <img style={{ height: '115px', width: '184px', borderBottom: '1px solid gray', }} onError={(e) => { e.target.src = '../../../images/blank.png' }} src={fighter.prof_img} />
                             <div className='sqaudname'>{fighter?.name}</div>
                             <div>{fighter.points} pts</div>
                             <div>{fighter?.wins} - {fighter?.losses}</div>
-                        </div>
+                        </button>
                     ))}
                 </div>
             </div>

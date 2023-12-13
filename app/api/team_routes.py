@@ -14,6 +14,22 @@ def get_all_teams():
     all_teams = Team.query.all()
     teams = []
     teams.extend([i.to_dict() for i in all_teams])
+    #### EMEGENCY ADDITIONS EDIT
+    # match_2 = Season_Result(id=42,winner='Saul Alvarez',loser='Caleb Plant',method='M.DEC',round=3,dual_id=42)
+    # match_3 = Season_Result(id=42,winner='Carter Starocci',loser='Randy Brown',method='SUB',round=3,dual_id=42)
+    # match_4 = Season_Result(id=42,winner='Hassan Yazdanicharati',loser='Aaron Brooks',method='S.DEC',round=3,dual_id=42)
+    # match_5 = Season_Result(id=42,winner='Gordan Ryan',loser='Carlos Ulberg',method='SUB',round=1,dual_id=42)
+    # match_6 = Season_Result(id=42,winner='Sergei Pavlovich',loser='Fedor Emileanako',method='TKO',round=1,dual_id=42)
+    # db.session.add(match_2)
+    # db.session.add(match_3)
+    # db.session.add(match_4)
+    # db.session.add(match_5)
+    # db.session.add(match_6)
+
+    # teamonee = Team.query.filter(Team.name == 'Centennial Patriots').first()
+    # teamonee.points = 105
+    # db.session.commit()
+
     return {'All_Teams': teams}
 
 

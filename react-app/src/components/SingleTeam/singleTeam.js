@@ -82,8 +82,8 @@ function SingleTeam() {
                                     <div className='fighterstat'>{fighter?.points} pts</div>
                                 </div>
 
-                                <button onClick={(e) => cutPlayer(e, fighter.id)} style={{ color: `${team?.border}`, border: `1px solid ${team?.border}`, visibility: showReleaseBtn === fighter?.id ? 'visible' : 'hidden', }} class='cutBtn' >RELEASE</button>
-                                <button onClick={(e) => tradePlayer(e, fighter.id)} style={{ color: `${team?.border}`, border: `1px solid ${team?.border}`, visibility: showReleaseBtn === fighter?.id ? 'visible' : 'hidden', }} class='cutBtn' >TRADE</button>
+                                {/* <button onClick={(e) => cutPlayer(e, fighter.id)} style={{ color: `${team?.border}`, border: `1px solid ${team?.border}`, visibility: showReleaseBtn === fighter?.id ? 'visible' : 'hidden', }} class='cutBtn' >RELEASE</button>
+                                <button onClick={(e) => tradePlayer(e, fighter.id)} style={{ color: `${team?.border}`, border: `1px solid ${team?.border}`, visibility: showReleaseBtn === fighter?.id ? 'visible' : 'hidden', }} class='cutBtn' >TRADE</button> */}
 
                             </div>
                         </div>

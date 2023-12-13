@@ -104,21 +104,23 @@ function SingleFighter() {
                         {match?.winner == fighter?.name &&
                             <div className='frwin'>
                                 <div className='frwinW'>W</div>
-                                <div style={{ marginLeft: '6%', width: '300px' }}>{match?.loser}</div>
-                                <div style={{ marginLeft: '2%', width: '100px' }}>{match?.method}</div>
+                                <div >{match?.loser}</div>
+                                <div>{match?.method}</div>
+                                <div>Round {match?.round}</div>
                                 {/* <div style={{ marginLeft: '6%', width: '250px' }}>{match?.match}</div> */}
-                                <div style={{ marginLeft: '3%', width: '350px' }}>WEEK {week += 1}</div>
-                                <div style={{ marginLeft: '3%', width: '100px', fontSize: '22px' }}>{season_wins += 1} - {season_loss}</div>
+                                <div>Week {week += 1}</div>
+                                <div>{season_wins += 1} - {season_loss}</div>
                             </div>
                         }
                         {match?.loser == fighter?.name &&
                             <div className='frloss'>
                                 <div className='frlossL'>L</div>
-                                <div style={{ marginLeft: '6%', width: '300px' }}>{match?.winner}</div>
-                                <div style={{ marginLeft: '2%', width: '100px' }}>{match?.method}</div>
+                                <div>{match?.winner}</div>
+                                <div>{match?.method}</div>
+                                <div >Round {match?.round}</div>
                                 {/* <div style={{ marginLeft: '6%', width: '250px' }}>{match?.match}</div> */}
-                                <div style={{ marginLeft: '3%', width: '350px' }}>WEEK {week += 1}</div>
-                                <div style={{ marginLeft: '3%', width: '100px', fontSize: '22px' }}>{season_wins} - {season_loss += 1}</div>
+                                <div >Week {week += 1}</div>
+                                <div>{season_wins} - {season_loss += 1}</div>
                             </div>
                         }
                     </div>
@@ -166,15 +168,15 @@ function SingleFighter() {
                     <div onClick={viewMedal} className='boxtag'>VIEW MEDALS</div>
                 </div>
                 <div className='oppdiv'>
-                    <img src={fighter?.prof_img} style={{ height: '108px', width: '173px' }} />
+                    <img src={fighter?.prof_img} style={{ height: '108px', width: '173px' }} onError={(e) => { e.target.src = 'https://www.ufc.com/themes/custom/ufc/assets/img/no-profile-image.png' }} />
                     {opp?.prof_img &&
                         <div>
-                            <img src={opp?.prof_img} style={{ height: '108px', width: '173px' }} />
+                            <img src={opp?.prof_img} style={{ height: '108px', width: '173px' }} onError={(e) => { e.target.src = 'https://www.ufc.com/themes/custom/ufc/assets/img/no-profile-image.png' }}/>
                         </div>
                     }
                     {!opp?.prof_img &&
                         <div>
-                            <img src={'../../../images/blank.png'} style={{ height: '108px', width: '173px' }} />
+                            <img src={'../../../images/blank.png'} style={{ height: '108px', width: '173px' }} onError={(e) => { e.target.src = 'https://www.ufc.com/themes/custom/ufc/assets/img/no-profile-image.png' }} />
                         </div>
                     }
                 </div>
@@ -214,12 +216,12 @@ function SingleFighter() {
                     <img src={fighter?.prof_img} style={{ height: '108px', width: '173px' }} />
                     {seasonOpp?.prof_img &&
                         <div>
-                            <img src={seasonOpp?.prof_img} style={{ height: '108px', width: '173px' }} />
+                            <img src={seasonOpp?.prof_img} style={{ height: '108px', width: '173px' }} onError={(e) => { e.target.src = 'https://www.ufc.com/themes/custom/ufc/assets/img/no-profile-image.png' }} />
                         </div>
                     }
                     {!seasonOpp?.prof_img &&
                         <div>
-                            <img src={'../../../images/blank.png'} style={{ height: '108px', width: '173px' }} />
+                            <img src={'../../../images/blank.png'} style={{ height: '108px', width: '173px' }} onError={(e) => { e.target.src = 'https://www.ufc.com/themes/custom/ufc/assets/img/no-profile-image.png' }} />
                         </div>
                     }
                 </div>
@@ -267,7 +269,7 @@ function SingleFighter() {
                     <img src={fighter?.body_img} style={{ height: '490px', width: '322px' }} />
                 </div>
                 <div id='fighterteam'>
-                    <img onClick={((e) => history.push(`/teams/${team.id}`))} className='flogoteam' style={{ width: '120px', height: '120px' }} src={team?.logo_img} />
+                    <img onClick={((e) => history.push(`/teams/stats/${team.id}`))} className='flogoteam' style={{ width: '120px', height: '120px' }} src={team?.logo_img} />
                     {rightBox}
                     <div>
                         {seasonM == false && <button className='seasonbtn' onClick={viewTourn}>View Season Fights</button>}
