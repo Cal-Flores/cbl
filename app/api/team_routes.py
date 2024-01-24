@@ -460,3 +460,33 @@ def order():
         picks.append(pick_data)
 
     return jsonify({'Picks': picks})
+
+
+def calculate_elo_rating(winner_rating, loser_rating, k=32):
+    """
+    Calculate new Elo ratings after a game.
+
+    Args:
+    - winner_rating: Elo rating of the winner
+    - loser_rating: Elo rating of the loser
+    - k: Weight constant (default is 32)
+
+    Returns:
+    - Tuple of updated Elo ratings for the winner and loser
+    """
+    winner_expected = 1 / (1 + 10 ** ((loser_rating - winner_rating) / 400))
+    loser_expected = 1 / (1 + 10 ** ((winner_rating - loser_rating) / 400))
+
+    winner_new_rating = winner_rating + k * (1 - winner_expected)
+    loser_new_rating = loser_rating + k * (0 - loser_expected)
+
+    return winner_new_rating, loser_new_rating
+
+# Example usage:
+winner_rating = 1600
+loser_rating = 1400
+
+new_winner_rating, new_loser_rating = calculate_elo_rating(winner_rating, loser_rating)
+
+print(f"New winner rating: {new_winner_rating}")
+print(f"New loser rating: {new_loser_rating}")
