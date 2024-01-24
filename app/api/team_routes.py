@@ -15,20 +15,49 @@ def get_all_teams():
     teams = []
     teams.extend([i.to_dict() for i in all_teams])
     #### EMEGENCY ADDITIONS EDIT
-    # match_2 = Season_Result(id=42,winner='Saul Alvarez',loser='Caleb Plant',method='M.DEC',round=3,dual_id=42)
-    # match_3 = Season_Result(id=42,winner='Carter Starocci',loser='Randy Brown',method='SUB',round=3,dual_id=42)
-    # match_4 = Season_Result(id=42,winner='Hassan Yazdanicharati',loser='Aaron Brooks',method='S.DEC',round=3,dual_id=42)
-    # match_5 = Season_Result(id=42,winner='Gordan Ryan',loser='Carlos Ulberg',method='SUB',round=1,dual_id=42)
-    # match_6 = Season_Result(id=42,winner='Sergei Pavlovich',loser='Fedor Emileanako',method='TKO',round=1,dual_id=42)
-    # db.session.add(match_2)
-    # db.session.add(match_3)
-    # db.session.add(match_4)
-    # db.session.add(match_5)
-    # db.session.add(match_6)
+    # match_10 = Season_Result(id=88,winner='Kai Kara-France',loser='Azat Maksum',method='DEC',round=3,dual_id=42)
+    # match_11 = Season_Result(id=88,winner='Said Nurmagomedov',loser='Farid Basharat',method='SUB',round=3,dual_id=42)
+    # match_12 = Season_Result(id=88,winner='Mark Ironside',loser='Junichiro Hoi',method='SUB',round=3,dual_id=42)
+    # match_13 = Season_Result(id=88,winner='Max Askren',loser='Bryce Mitchell',method='DEC',round=3,dual_id=42)
+    # match_14 = Season_Result(id=88,winner='Jordan Burroughs',loser='Dustin Poirier',method='DEC',round=3,dual_id=42)
+    # match_15 = Season_Result(id=88,winner='Mark Perry',loser='Ismael Bonfim',method='SUB',round=2,dual_id=42)
+    # match_16 = Season_Result(id=88,winner='Geoff Neal',loser='Logan Storley',method='DEC',round=3,dual_id=42)
+    # match_17 = Season_Result(id=88,winner='Paul Craig',loser='Jake Paul',method='DEC',round=3,dual_id=42)
+    # match_18 = Season_Result(id=88,winner='Ibragim Chuzhigaev',loser='Kollin Moore',method='TKO',round=1,dual_id=42)
+    # match_19 = Season_Result(id=88,winner='Greg Kerkvliet',loser='Ciryl Gane',method='TKO',round=1,dual_id=42)
 
-    # teamonee = Team.query.filter(Team.name == 'Centennial Patriots').first()
-    # teamonee.points = 105
+    # player_rn = Fighter.query.filter(Fighter.name == 'Ciryl Gane').first()
+    # player_rn.losses += 1
+
+
+    # db.session.add(match_10)
+    # db.session.add(match_11)
+    # db.session.add(match_12)
+    # db.session.add(match_13)
+    # db.session.add(match_14)
+    # db.session.add(match_15)
+    # db.session.add(match_16)
+    # db.session.add(match_17)
+    # db.session.add(match_18)
+    # db.session.add(match_19)
+
+
+    # teamonee = Team.query.filter(Team.name == 'Colony Buccaneers').first()
+    # teamonee.points += 29
+    # teamonee.offense += 9
+    # teamonee.defense += 20
+    # teamonee.curr_wins += 1
+
+
+    #match_6 = Team_Result(id=97,winner='Colony Buccaneers',loser='Creekview Cowboys',winner_score=29,loser_score=21,week=6)
+    # dual_6 = Schedule(id=246, week=6,team_1='Prosper Eagles',team_2='Grapevine Falcons', completed=False)
+    # db.session.add(dual_6)
+
+
+    # hooker = Fighter.query.filter(Fighter.name == 'Dan Hooker').first()
+    # hooker.points = 6
     # db.session.commit()
+
 
     return {'All_Teams': teams}
 

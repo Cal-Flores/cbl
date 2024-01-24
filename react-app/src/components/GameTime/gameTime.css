@@ -49,23 +49,24 @@
     margin-bottom: 15%;
     height: 235px;
     width: 250px;
-    background-color: white;
+    background-color: #003e80;
+    color: whitesmoke;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    border: 1px solid white;
+    border: 0px solid white;
 }
 
 .squadcard:hover {
     cursor: pointer;
-    border: 1px solid #013369;
 }
 
 .sqaudname {
     font-size: 18px;
     font-weight: bold;
 }
+
 
 .formcont {
     border: 1px solid;
@@ -98,7 +99,7 @@
 .squadweight {
     font-size: 18px;
     font-weight: bolder;
-    border-bottom: 1px solid gray;
+    /* border-bottom: 1px solid gray; */
     width: 100%;
     text-align: center;
     background-color: #013369;
