@@ -58,6 +58,9 @@ def get_all_teams():
     # hooker.points = 6
     # db.session.commit()
 
+    # new_dual =  Schedule(id=337, week=9,team_1='Prosper Eagles',team_2='Seguin Cardinals', completed=False)
+    # db.session.add(new_dual)
+    # db.session.commit()
 
     return {'All_Teams': teams}
 
