@@ -493,3 +493,5 @@ new_winner_rating, new_loser_rating = calculate_elo_rating(winner_rating, loser_
 
 print(f"New winner rating: {new_winner_rating}")
 print(f"New loser rating: {new_loser_rating}")
+
+
