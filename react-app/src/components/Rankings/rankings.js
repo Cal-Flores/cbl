@@ -4,7 +4,7 @@ import { getAllFighters } from '../../store/fighters';
 import { Link, Redirect, useHistory, useParams } from 'react-router-dom'
 
 
-function getFilteredFighters(allFighters, weight, limit = 15) {
+function getFilteredFighters(allFighters, weight, limit = 32) {
     return allFighters
         ?.filter(fighter => fighter?.weight === weight)
         .sort((a, b) => {
